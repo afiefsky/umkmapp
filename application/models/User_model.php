@@ -18,7 +18,7 @@ class User_model extends CI_Model
             $user_data = $user->row_array();
             $this->session->set_userdata([
                 'id' => $user_data['id'],
-                'user_id' => $user_data['id'],
+                'user_id' => $user_data['id'], // use the session be it id or user_id
                 'username' => $user_data['username']
             ]);
             return 1;

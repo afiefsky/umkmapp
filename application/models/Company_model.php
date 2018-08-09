@@ -45,4 +45,14 @@ class Company_model extends CI_Model
         $this->db->order_by('com.id');
         return $this->db->get();
     }
+
+    public function product($company_id)
+    {
+        $query = "SELECT *
+                    FROM
+                    products
+                    WHERE
+                    company_id = $company_id";
+        return $this->db->query($query);
+    }
 }

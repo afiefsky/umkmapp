@@ -26,7 +26,7 @@
           </tr>
           <tr>
             <td><b><?php echo $record['name']; ?></b></td>
-            <td><?php echo anchor('umkm/manage/add', 'Add Product', ['class' => 'btn btn-default']); ?></td>
+            <td><?php echo anchor('umkm/manage/product', 'Manage Product', ['class' => 'btn btn-default']); ?></td>
           </tr>
         </table>
       </div>

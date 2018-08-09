@@ -37,7 +37,7 @@
           <ul class="nav navbar-nav side-nav">
             <li <?php if ($active_page=='dashboard') { echo 'class="active"'; } ?>><?php echo anchor('dashboard', '<i class="fa fa-dashboard"></i> Beranda');?></li>
             <li <?php if ($active_page=='umkm/manage') { echo 'class="active"'; } ?>><?php echo anchor('UMKM/manage', '<i class="fa fa-bar-chart-o"></i> UMKM');?></li>
-            <li><a href="<?php echo base_url().'assets/dist/'; ?>tables.html"><i class="fa fa-table"></i> Tables</a></li>
+            <!-- <li><a href="<?php echo base_url().'assets/dist/'; ?>tables.html"><i class="fa fa-table"></i> Tables</a></li>
             <li><a href="<?php echo base_url().'assets/dist/'; ?>forms.html"><i class="fa fa-edit"></i> Forms</a></li>
             <li><a href="<?php echo base_url().'assets/dist/'; ?>typography.html"><i class="fa fa-font"></i> Typography</a></li>
             <li><a href="<?php echo base_url().'assets/dist/'; ?>bootstrap-elements.html"><i class="fa fa-desktop"></i> Bootstrap Elements</a></li>
@@ -51,7 +51,7 @@
                 <li><a href="#">Third Item</a></li>
                 <li><a href="#">Last Item</a></li>
               </ul>
-            </li>
+            </li> -->
           </ul>
 
           <ul class="nav navbar-nav navbar-right navbar-user">
