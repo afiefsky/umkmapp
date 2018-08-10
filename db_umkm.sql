@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 10, 2018 at 08:19 AM
+-- Generation Time: Aug 10, 2018 at 10:50 PM
 -- Server version: 10.1.19-MariaDB
 -- PHP Version: 7.0.13
 
@@ -65,7 +65,8 @@ CREATE TABLE `products` (
 --
 
 INSERT INTO `products` (`id`, `name`, `file_name`, `qty`, `company_id`, `created_at`, `updated_at`) VALUES
-(3, 'Decision', '1-palm1.jpg', 90, 4, '2018-08-09 22:19:04', '2018-08-09 22:19:04');
+(3, 'Decision', '1-palm1.jpg', 90, 4, '2018-08-09 22:19:04', '2018-08-09 22:19:04'),
+(4, 'Halal', '1-plywood.jpg', 90, 2, '2018-08-10 15:40:17', '2018-08-10 15:40:17');
 
 -- --------------------------------------------------------
 
@@ -89,7 +90,8 @@ CREATE TABLE `roles` (
 INSERT INTO `roles` (`id`, `name`, `display_name`, `hidden`, `created_at`, `updated_at`) VALUES
 (1, 'super_administrator', 'Super Administrator', '1', '2018-05-20 13:20:37', '2018-05-20 13:20:37'),
 (2, 'administrator', 'Administrator', '1', '2018-05-20 13:20:37', '2018-05-20 13:20:37'),
-(3, 'customer', 'Customer', '0', '2018-05-20 13:21:12', '2018-05-20 13:21:12');
+(3, 'customer', 'Customer', '0', '2018-05-20 13:21:12', '2018-05-20 13:21:12'),
+(4, 'owner', 'Owner', '0', '2018-08-10 14:10:00', '2018-08-10 14:10:00');
 
 -- --------------------------------------------------------
 
@@ -112,7 +114,8 @@ CREATE TABLE `users` (
 INSERT INTO `users` (`id`, `username`, `password`, `created_at`, `updated_at`) VALUES
 (1, 'superadmin', '17c4520f6cfd1ab53d8745e84681eb49', '2018-05-20 13:28:34', '2018-05-20 13:28:34'),
 (2, 'afiefsky', '3e47b75000b0924b6c9ba5759a7cf15d', '2018-08-02 21:32:14', '2018-08-02 21:32:14'),
-(3, 'admin', '21232f297a57a5a743894a0e4a801fc3', '2018-08-09 13:26:58', '2018-08-09 13:26:58');
+(3, 'admin', '21232f297a57a5a743894a0e4a801fc3', '2018-08-09 13:26:58', '2018-08-09 13:26:58'),
+(4, 'potter', '3e47b75000b0924b6c9ba5759a7cf15d', '2018-08-10 14:59:29', '2018-08-10 14:59:29');
 
 -- --------------------------------------------------------
 
@@ -153,9 +156,7 @@ CREATE TABLE `users_roles` (
 --
 
 INSERT INTO `users_roles` (`id`, `user_id`, `role_id`) VALUES
-(1, 1, 1),
-(2, 1, 2),
-(3, 1, 3);
+(1, 1, 1);
 
 --
 -- Indexes for dumped tables
@@ -211,17 +212,17 @@ ALTER TABLE `companies`
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `roles`
 --
 ALTER TABLE `roles`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `users_companies`
 --
