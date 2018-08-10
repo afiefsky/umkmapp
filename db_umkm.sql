@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 05, 2018 at 11:36 AM
+-- Generation Time: Aug 10, 2018 at 08:19 AM
 -- Server version: 10.1.19-MariaDB
 -- PHP Version: 7.0.13
 
@@ -41,7 +41,8 @@ CREATE TABLE `companies` (
 INSERT INTO `companies` (`id`, `name`, `image_url`, `created_at`, `updated_at`) VALUES
 (1, 'Mikro Coy', 'market6.jpg', '2018-07-29 13:52:07', '2018-07-29 13:52:07'),
 (2, 'Gisele Alain', 'market6.jpg', '2018-08-02 21:33:29', '2018-08-02 21:33:29'),
-(3, 'Demento', 'phone2.png', '2018-08-02 21:38:03', '2018-08-02 21:38:03');
+(3, 'Demento', 'phone2.png', '2018-08-02 21:38:03', '2018-08-02 21:38:03'),
+(4, 'Perfecto', 'perfect.jpg', '2018-08-09 13:33:36', '2018-08-09 13:33:36');
 
 -- --------------------------------------------------------
 
@@ -52,10 +53,19 @@ INSERT INTO `companies` (`id`, `name`, `image_url`, `created_at`, `updated_at`) 
 CREATE TABLE `products` (
   `id` int(11) NOT NULL,
   `name` varchar(100) NOT NULL,
-  `file_name` text NOT NULL,
+  `file_name` text,
+  `qty` int(11) DEFAULT NULL,
+  `company_id` int(11) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `products`
+--
+
+INSERT INTO `products` (`id`, `name`, `file_name`, `qty`, `company_id`, `created_at`, `updated_at`) VALUES
+(3, 'Decision', '1-palm1.jpg', 90, 4, '2018-08-09 22:19:04', '2018-08-09 22:19:04');
 
 -- --------------------------------------------------------
 
@@ -101,7 +111,8 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `username`, `password`, `created_at`, `updated_at`) VALUES
 (1, 'superadmin', '17c4520f6cfd1ab53d8745e84681eb49', '2018-05-20 13:28:34', '2018-05-20 13:28:34'),
-(2, 'afiefsky', '3e47b75000b0924b6c9ba5759a7cf15d', '2018-08-02 21:32:14', '2018-08-02 21:32:14');
+(2, 'afiefsky', '3e47b75000b0924b6c9ba5759a7cf15d', '2018-08-02 21:32:14', '2018-08-02 21:32:14'),
+(3, 'admin', '21232f297a57a5a743894a0e4a801fc3', '2018-08-09 13:26:58', '2018-08-09 13:26:58');
 
 -- --------------------------------------------------------
 
@@ -122,7 +133,8 @@ CREATE TABLE `users_companies` (
 INSERT INTO `users_companies` (`id`, `user_id`, `company_id`) VALUES
 (1, 1, 1),
 (2, 2, 2),
-(3, 2, 3);
+(3, 2, 3),
+(4, 3, 4);
 
 -- --------------------------------------------------------
 
@@ -194,12 +206,12 @@ ALTER TABLE `users_roles`
 -- AUTO_INCREMENT for table `companies`
 --
 ALTER TABLE `companies`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `roles`
 --
@@ -209,12 +221,12 @@ ALTER TABLE `roles`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `users_companies`
 --
 ALTER TABLE `users_companies`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `users_roles`
 --
