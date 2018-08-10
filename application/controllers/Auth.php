@@ -29,9 +29,17 @@ class Auth extends CI_Controller
 
             if ($result == 1) {
                 // Session start
-                $this->session->set_userdata('username', $data['username']);
+                $this->session->set_userdata('username', strtolower($data['username']));
                 // End session
-                redirect('dashboard');
+
+                $user_roles = $this->db->get_where('users_roles', ['user_id' => $this->session->userdata('user_id')]);
+                $role_count = $user_roles->num_rows();                
+                if ($this->session->userdata('username')=='admin') {
+                    redirect('admin');
+                } else {
+                    $data['user_roles'] = $user_roles->result();
+                    redirect('dashboard');
+                }
             } else {
                 // Error handling using session flashdata, a one time usage session
                 $this->session->set_flashdata('error', 'Username dan password salah!!!<br /><br />');

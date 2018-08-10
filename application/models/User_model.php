@@ -1,5 +1,9 @@
 <?php
-
+/**
+ * DOCUMENTATION
+ * CERTAIN CODE STILL NEED TO BE WORKIN ON
+ * MORE CLEAN CODE NEEDED FOR BETTER DEVELOPMENT IN THE FUTURE
+ */
 class User_model extends CI_Model
 {
     public function validate($data)
@@ -21,6 +25,7 @@ class User_model extends CI_Model
                 'user_id' => $user_data['id'], // use the session be it id or user_id
                 'username' => $user_data['username']
             ]);
+
             return 1;
         } else {
             return 0;

@@ -1,11 +1,12 @@
 <?php
     $message = $this->session->flashdata('message');
+    $num_rows_companies = $this->session->userdata('num_rows_companies');
 ?>
 <div id="wrapper">
   <div id="page-wrapper">
     <div class="row">
       <div class="col-lg-12">
-        <h1>Daftar UMKM Anda</h1>
+        <h1>Daftar UMKM Terdaftar</h1>
         <ol class="breadcrumb">
           <li class="active"><i class="fa fa-bar-chart-o"></i> UMKM</li>
         </ol>
@@ -19,23 +20,27 @@
 
             }
         ?>
-        <!-- CONTENTS BELOW -->
         <table class="table table-bordered">
           <tr>
-            <td colspan="2"><img src="<?php echo base_url() . 'uploads/' . $record['image_url']; ?>" width="250" /></td>
+            <th>No</th>
+            <th>Nama</th>
+            <th>Img</th>
+            <th>Opsi</th>
           </tr>
-          <tr>
-            <td><b><?php echo $record['name']; ?></b></td>
-            <td>
-            <?php
-            if ($this->session->userdata('username') == 'admin') {
-                echo anchor('admin/check_umkm_product', 'Check Product', ['class' => 'btn btn-default']);
-            } else {
-                echo anchor('umkm/manage/product', 'Manage Product', ['class' => 'btn btn-default']);
-            }
-            ?>              
-            </td>
-          </tr>
+          <?php
+          $no = 1;
+          foreach ($record as $r) {
+              echo "
+                  <tr>
+                    <td>$no</td>
+                    <td>$r->name</td>
+                    <td><img src='".base_url()."uploads/$r->image_url' width='50'></td>
+                    <td>".anchor('admin/check_umkm/'.$r->id, 'Enter')."</td>
+                  </tr>
+              ";
+          $no++;
+          }
+          ?>
         </table>
       </div>
     </div><!-- /.row -->
