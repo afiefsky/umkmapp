@@ -50,7 +50,14 @@
                   $delete_button = '';
               } else {
                   $edit_button = anchor('product/edit/'.$r->id, 'Edit', ['class' => 'btn btn-info']);
-                  $delete_button = anchor('product/delete/'.$r->id, 'Hapus', ['class' => 'btn btn-danger']);
+
+
+                  $delete_button = anchor('product/delete/'.$r->id, 'Hapus',
+                      [
+                          'class' => 'btn btn-danger',
+                          'onclick' => 'return confirm_delete()'
+                      ]
+                  );
               } 
               echo "<tr>
                 <td>$no</td>
@@ -71,3 +78,9 @@
     </div><!-- /.row -->
   </div><!-- /#page-wrapper -->
 </div><!-- /#wrapper -->
+
+<script type="text/javascript">
+function confirm_delete() {
+  return confirm('APAKAH ANDA YAKIN? PERINTAH TIDAK DAPAT DIBATALKAN!!');
+}
+</script>
