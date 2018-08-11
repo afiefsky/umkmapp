@@ -19,6 +19,7 @@ class Activity extends CI_Controller
         if (isset($_POST['submit'])) {
             $name = $this->input->post('name');
             $date = $this->input->post('date');
+            $description = $this->input->post('description');
             
             // uploading start
             $config['upload_path']          = './uploads/';
@@ -31,7 +32,8 @@ class Activity extends CI_Controller
                 'name' => $name,
                 'date' => $date,
                 'company_id' => $this->session->userdata('company_id'),
-                'file_name' => $image_data['file_name']
+                'file_name' => $image_data['file_name'],
+                'description' => $description
             ];
 
             $this->db->insert('activities', $data);
@@ -41,5 +43,12 @@ class Activity extends CI_Controller
         } else {
             $this->template->load('templates/main_template', 'activity/add');   
         }
+    }
+
+    public function detail()
+    {
+        $id = $this->uri->segment(3);
+        $data['record'] = $this->db->get_where('activities', ['id' => $id])->row_array();
+        $this->template->load('templates/main_template', 'activity/detail', $data);
     }
 }

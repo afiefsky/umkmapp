@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 11, 2018 at 09:24 PM
+-- Generation Time: Aug 11, 2018 at 10:51 PM
 -- Server version: 10.1.19-MariaDB
 -- PHP Version: 7.0.13
 
@@ -32,6 +32,7 @@ CREATE TABLE `activities` (
   `date` date NOT NULL,
   `file_name` text NOT NULL,
   `company_id` int(11) NOT NULL,
+  `description` text NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -40,14 +41,14 @@ CREATE TABLE `activities` (
 -- Dumping data for table `activities`
 --
 
-INSERT INTO `activities` (`id`, `name`, `date`, `file_name`, `company_id`, `created_at`, `updated_at`) VALUES
-(1, 'Jabberwocky', '2018-08-10', 'whatsapp5.png', 3, '2018-08-11 13:49:39', '0000-00-00 00:00:00'),
-(2, '12', '2018-08-06', '1-palm3.jpg', 3, '2018-08-11 13:58:16', '0000-00-00 00:00:00'),
-(3, '222', '2018-08-01', '1-plywood2.jpg', 3, '2018-08-11 13:58:30', '0000-00-00 00:00:00'),
-(4, '3333', '2018-06-07', 'trade-1.jpg', 3, '2018-08-11 13:58:50', '0000-00-00 00:00:00'),
-(5, 'hore', '2018-08-08', 'blue_color.png', 3, '2018-08-11 14:07:49', '0000-00-00 00:00:00'),
-(6, 'hooglap', '2018-08-05', 'IQEXPO.jpg', 3, '2018-08-11 14:08:11', '0000-00-00 00:00:00'),
-(7, 'Market', '2018-08-05', 'cv-background-design-1.jpg', 3, '2018-08-11 14:08:36', '0000-00-00 00:00:00');
+INSERT INTO `activities` (`id`, `name`, `date`, `file_name`, `company_id`, `description`, `created_at`, `updated_at`) VALUES
+(1, 'Jabberwocky', '2018-08-10', 'whatsapp5.png', 3, '', '2018-08-11 13:49:39', '0000-00-00 00:00:00'),
+(2, '12', '2018-08-06', '1-palm3.jpg', 3, '', '2018-08-11 13:58:16', '0000-00-00 00:00:00'),
+(3, '222', '2018-08-01', '1-plywood2.jpg', 3, '', '2018-08-11 13:58:30', '0000-00-00 00:00:00'),
+(4, '3333', '2018-06-07', 'trade-1.jpg', 3, '', '2018-08-11 13:58:50', '0000-00-00 00:00:00'),
+(5, 'hore', '2018-08-08', 'blue_color.png', 3, '', '2018-08-11 14:07:49', '0000-00-00 00:00:00'),
+(6, 'hooglap', '2018-08-05', 'IQEXPO.jpg', 3, '', '2018-08-11 14:08:11', '0000-00-00 00:00:00'),
+(7, 'Market', '2018-08-05', 'cv-background-design-1.jpg', 3, '', '2018-08-11 14:08:36', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 

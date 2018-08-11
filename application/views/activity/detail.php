@@ -89,55 +89,40 @@
   <div id="page-wrapper">
     <div class="row">
       <div class="col-lg-12">
-        <h1>Daftar Aktifitas UMKM</h1>
+        <h1>Kegiatan <?php echo $record['name']; ?></h1>
+        <ol class="breadcrumb">
+          <li class="active"><i class="fa fa-bar-chart-o"></i> UMKM</li>
+        </ol>
         <?php 
-            // message if needed
-            if ($message!='') {
-                echo '<div class="alert alert-success alert-dismissable">
-                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                    '.$message.'
-                </div>';
-            } else {
+        // in case you need a message
+        if ($message!='') {
+            echo '<div class="alert alert-success alert-dismissable">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                '.$message.'
+            </div>';
+        } else {
 
-            }
+        }
         ?>
-        <?php echo anchor('activity/add', 'Tambah Kegiatan', ['class' => 'btn btn-success']); ?><br /><br />
         <table class="table table-bordered">
           <tr>
-          <?php
-          $no = 0;
-          $counter = 2;
-          foreach ($record->result() as $r) {
-            $date = date_create($r->date);
-            // echo $no;
-              if ($no==$counter) {
-                echo "
-                <td align='center'>
-                  $r->name<br>
-                  ".date_format($date, 'l, d-m-Y')."
-                  <center>
-                  ".anchor('activity/detail/'.$r->id, '<img id="myImg" src='.base_url().'uploads/'.$r->file_name.' width="100" height="100" />')."
-                </td></tr><tr>
-                ";
-                $counter = $counter + 3;
-              } else {
-                echo "
-                <td align='center'>
-                  $r->file_name<br>
-                  ".date_format($date, 'l, d-m-Y')."
-                  <center>
-                  ".anchor('activity/detail/'.$r->id, '<img id="myImg" src='.base_url().'uploads/'.$r->file_name.' width="100" height="100" />')."
-                </td>
-                ";
-              }
-              echo '
-              ';
-              $no++;
-          }
-          ?>
+            <td width="30%" align="center">
+              <img id="myImg" src="<?php echo base_url().'uploads/'.$record['file_name'];?>" width="150">
+              <div id="myModal" class="modal">
+                <span class="close">&times;</span>
+                <img class="modal-content" id="img01">
+                <div id="caption"></div>
+              </div>
+            </td>
+            <td width="70%" align="left">
+              <b>Tanggal:</b> <?php echo date_format(date_create($record['date']), 'l, d-m-Y') ?>
+              <br /><br />
+              <b>Keterangan:</b><br />
+              abstergo
+            </td>
           </tr>
         </table>
-      </div>
+        </div>
     </div><!-- /.row -->
   </div><!-- /#page-wrapper -->
 </div><!-- /#wrapper -->

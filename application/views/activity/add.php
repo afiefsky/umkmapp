@@ -33,6 +33,14 @@
             <td><input type="file" name="file_name" placeholder="Pilih file" class="form-control" required></td>
           </tr>
           <tr>
+            <td>Keterangan Singkat</td>
+            <td>
+                <textarea rows="4" cols="50" name="description" required>
+                    Mohon isikan keterangan singkat
+                </textarea>
+            </td>
+          </tr>
+          <tr>
             <td>
               
             </td>
