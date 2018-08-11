@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 11, 2018 at 11:06 AM
+-- Generation Time: Aug 11, 2018 at 09:24 PM
 -- Server version: 10.1.19-MariaDB
 -- PHP Version: 7.0.13
 
@@ -19,6 +19,35 @@ SET time_zone = "+00:00";
 --
 -- Database: `db_umkm`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `activities`
+--
+
+CREATE TABLE `activities` (
+  `id` int(11) NOT NULL,
+  `name` text NOT NULL,
+  `date` date NOT NULL,
+  `file_name` text NOT NULL,
+  `company_id` int(11) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `activities`
+--
+
+INSERT INTO `activities` (`id`, `name`, `date`, `file_name`, `company_id`, `created_at`, `updated_at`) VALUES
+(1, 'Jabberwocky', '2018-08-10', 'whatsapp5.png', 3, '2018-08-11 13:49:39', '0000-00-00 00:00:00'),
+(2, '12', '2018-08-06', '1-palm3.jpg', 3, '2018-08-11 13:58:16', '0000-00-00 00:00:00'),
+(3, '222', '2018-08-01', '1-plywood2.jpg', 3, '2018-08-11 13:58:30', '0000-00-00 00:00:00'),
+(4, '3333', '2018-06-07', 'trade-1.jpg', 3, '2018-08-11 13:58:50', '0000-00-00 00:00:00'),
+(5, 'hore', '2018-08-08', 'blue_color.png', 3, '2018-08-11 14:07:49', '0000-00-00 00:00:00'),
+(6, 'hooglap', '2018-08-05', 'IQEXPO.jpg', 3, '2018-08-11 14:08:11', '0000-00-00 00:00:00'),
+(7, 'Market', '2018-08-05', 'cv-background-design-1.jpg', 3, '2018-08-11 14:08:36', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -70,8 +99,8 @@ CREATE TABLE `products` (
 INSERT INTO `products` (`id`, `name`, `file_name`, `qty`, `company_id`, `created_at`, `updated_at`) VALUES
 (3, 'Decision', '1-palm1.jpg', 90, 4, '2018-08-09 22:19:04', '2018-08-09 22:19:04'),
 (4, 'Market', 'market12.jpg', 90, 2, '2018-08-10 15:40:17', '2018-08-10 15:40:17'),
-(5, 'Nasgor', '800px_COLOURBOX16921115.jpg', 100, 3, '2018-08-10 16:04:42', '2018-08-10 16:04:42'),
-(6, 'Halal B', '1-palm2.jpg', 10, 2, '2018-08-10 16:23:33', '2018-08-10 16:23:33');
+(6, 'Halal B', '1-palm2.jpg', 10, 2, '2018-08-10 16:23:33', '2018-08-10 16:23:33'),
+(7, 'Pocari Sweat', 'pocari.jpeg', 100, 3, '2018-08-11 12:29:07', '2018-08-11 12:29:07');
 
 -- --------------------------------------------------------
 
@@ -172,6 +201,12 @@ INSERT INTO `users_roles` (`id`, `user_id`, `role_id`) VALUES
 --
 
 --
+-- Indexes for table `activities`
+--
+ALTER TABLE `activities`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `companies`
 --
 ALTER TABLE `companies`
@@ -213,6 +248,11 @@ ALTER TABLE `users_roles`
 --
 
 --
+-- AUTO_INCREMENT for table `activities`
+--
+ALTER TABLE `activities`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+--
 -- AUTO_INCREMENT for table `companies`
 --
 ALTER TABLE `companies`
@@ -221,7 +261,7 @@ ALTER TABLE `companies`
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 --
 -- AUTO_INCREMENT for table `roles`
 --
