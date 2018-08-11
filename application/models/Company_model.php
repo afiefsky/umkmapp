@@ -37,7 +37,7 @@ class Company_model extends CI_Model
          * com = companies table
          * ucm = users_companies table, a many to many relationship will resulting a new hidden table
          */
-        $this->db->select('com.*, com.id AS company_id');
+        $this->db->select('com.*, com.id AS company_id, com.is_confirmed');
         $this->db->from('users_companies AS ucm');
         $this->db->join('companies AS com', 'com.id = ucm.company_id', 'right');
         $this->db->join('users AS usr', 'usr.id = ucm.user_id', 'left');

@@ -30,12 +30,20 @@
           <?php
           $no = 1;
           foreach ($record as $r) {
+              $button_enter = anchor('admin/check_umkm/'.$r->id, 'Enter', ['class' => 'btn btn-default']);
+
+              if ($r->is_confirmed=='0') {
+                  $button_activate = anchor('admin/activate_umkm/'.$r->id, 'Activate', ['class' => 'btn btn-success']);
+              } else {
+                  $button_activate = '';
+              }
+              
               echo "
                   <tr>
                     <td>$no</td>
                     <td>$r->name</td>
                     <td><img src='".base_url()."uploads/$r->image_url' width='50'></td>
-                    <td>".anchor('admin/check_umkm/'.$r->id, 'Enter')."</td>
+                    <td>".$button_enter." ".$button_activate."</td>
                   </tr>
               ";
           $no++;

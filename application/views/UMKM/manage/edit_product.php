@@ -42,7 +42,7 @@
                 if ($picture == 'inactive') {
                     echo '<input type="submit" name="picture" class="btn btn-info" value="Ganti Gambar"/>';
                 } else {
-                    echo '<input type="file" name="gambar">';
+                    echo '<input type="file" name="gambar" required>';
                     echo '<br />';
                     echo anchor('product/edit/'.$this->session->userdata('product_id'), 'Batal Ganti', ['class' => 'btn btn-info']);
                 }

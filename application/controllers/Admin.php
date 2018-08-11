@@ -40,4 +40,17 @@ class Admin extends CI_Controller
         $data['record'] = $this->company->product($company_id)->result();
         $this->template->load('templates/admin_template', 'umkm/manage/product', $data);
 	}
+
+	public function activate_umkm()
+	{
+		$company_id = $this->uri->segment(3);
+		$this->db->where('id', $company_id);
+		$this->db->update('companies', ['is_confirmed' => '1']);
+
+		$data = $this->db->get_where('companies', ['id' => $company_id])->row_array();
+
+		$this->session->set_flashdata('message', 'UMKM '.$data['name'].' telah berhasil diaktivasi!!!');
+
+		redirect('admin/umkm');
+	}
 }

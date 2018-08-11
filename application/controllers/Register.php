@@ -31,4 +31,9 @@ class Register extends CI_Controller
         	$this->template->load('templates/register_template', 'register/index', $data);
     	}
     }
+
+    public function request_create_umkm()
+    {
+        $this->template->load('templates/admin_template', 'umkm/request');
+    }
 }

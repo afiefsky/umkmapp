@@ -25,7 +25,7 @@ class Register extends CI_Controller
             ];
 
             $this->company->insert($data);
-            $this->session->set_flashdata('message', 'UMKM dengan nama <b>'.$data['name'].'</b> telah berhasil dibuat!!!');
+            $this->session->set_flashdata('message', 'UMKM dengan nama <b>'.$data['name'].'</b> telah berhasil dibuat!!!<br />MOHON TUNGGU SAMPAI ADMIN MEMBERIKAN KONFIRMASI AKSES UMKM YANG BARU ANDA BUAT!!!');
             redirect('dashboard');
     	} else {
             $data['active_page'] = 'umkm/register';

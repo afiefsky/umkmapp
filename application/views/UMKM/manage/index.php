@@ -30,12 +30,17 @@
           <?php
           $no = 1;
           foreach ($record as $r) {
+            if ($r->is_confirmed=='0') {
+              $button = 'MOHON TUNGGU KONFIRMASI ADMIN';
+            } else {
+              $button = anchor('UMKM/manage/list/'.$r->company_id, 'Enter', ['class' => 'btn btn-default']);
+            }
               echo "
                   <tr>
                     <td>$no</td>
                     <td>$r->name</td>
                     <td><img src='".base_url()."uploads/$r->image_url' width='50'></td>
-                    <td>".anchor('UMKM/manage/list/'.$r->company_id, 'Enter')."</td>
+                    <td>".$button."</td>
                   </tr>
               ";
           }
