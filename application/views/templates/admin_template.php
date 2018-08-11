@@ -38,7 +38,7 @@
           <ul class="nav navbar-nav side-nav">
             <li <?php if ($active_page=='dashboard') { echo 'class="active"'; } ?>><?php echo anchor('admin', '<i class="fa fa-dashboard"></i> Beranda');?></li>
             <li <?php if ($active_page=='umkm/manage') { echo 'class="active"'; } ?>><?php echo anchor('admin/umkm', '<i class="fa fa-bar-chart-o"></i> UMKM');?></li>
-            <li <?php if ($active_page=='umkm/manage') { echo 'class="active"'; } ?>><?php echo anchor('admin/activate_company', '<i class="fa fa-desktop"></i> AKTIVASI UMKM');?></li>
+            <!-- <li <?php if ($active_page=='umkm/manage') { echo 'class="active"'; } ?>><?php echo anchor('admin/activate_company', '<i class="fa fa-desktop"></i> AKTIVASI UMKM');?></li> -->
             <!-- <li><a href="<?php echo base_url().'assets/dist/'; ?>tables.html"><i class="fa fa-table"></i> Tables</a></li>
             <li><a href="<?php echo base_url().'assets/dist/'; ?>forms.html"><i class="fa fa-edit"></i> Forms</a></li>
             <li><a href="<?php echo base_url().'assets/dist/'; ?>typography.html"><i class="fa fa-font"></i> Typography</a></li>
