@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 10, 2018 at 10:50 PM
+-- Generation Time: Aug 11, 2018 at 11:06 AM
 -- Server version: 10.1.19-MariaDB
 -- PHP Version: 7.0.13
 
@@ -30,6 +30,7 @@ CREATE TABLE `companies` (
   `id` int(11) NOT NULL,
   `name` text NOT NULL,
   `image_url` text NOT NULL,
+  `is_confirmed` enum('0','1') NOT NULL DEFAULT '0',
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -38,11 +39,13 @@ CREATE TABLE `companies` (
 -- Dumping data for table `companies`
 --
 
-INSERT INTO `companies` (`id`, `name`, `image_url`, `created_at`, `updated_at`) VALUES
-(1, 'Mikro Coy', 'market6.jpg', '2018-07-29 13:52:07', '2018-07-29 13:52:07'),
-(2, 'Gisele Alain', 'market6.jpg', '2018-08-02 21:33:29', '2018-08-02 21:33:29'),
-(3, 'Demento', 'phone2.png', '2018-08-02 21:38:03', '2018-08-02 21:38:03'),
-(4, 'Perfecto', 'perfect.jpg', '2018-08-09 13:33:36', '2018-08-09 13:33:36');
+INSERT INTO `companies` (`id`, `name`, `image_url`, `is_confirmed`, `created_at`, `updated_at`) VALUES
+(1, 'Mikro Coy', 'market6.jpg', '1', '2018-07-29 13:52:07', '2018-07-29 13:52:07'),
+(2, 'Gisele Alain', 'market6.jpg', '0', '2018-08-02 21:33:29', '2018-08-02 21:33:29'),
+(3, 'Demento', 'phone2.png', '1', '2018-08-02 21:38:03', '2018-08-02 21:38:03'),
+(4, 'Perfecto', 'perfect.jpg', '1', '2018-08-09 13:33:36', '2018-08-09 13:33:36'),
+(5, 'Abstergo', 'whatsapp3.png', '1', '2018-08-10 17:29:25', '2018-08-10 17:29:25'),
+(6, 'Halola', '1-prove.png', '0', '2018-08-10 17:30:21', '2018-08-10 17:30:21');
 
 -- --------------------------------------------------------
 
@@ -66,7 +69,9 @@ CREATE TABLE `products` (
 
 INSERT INTO `products` (`id`, `name`, `file_name`, `qty`, `company_id`, `created_at`, `updated_at`) VALUES
 (3, 'Decision', '1-palm1.jpg', 90, 4, '2018-08-09 22:19:04', '2018-08-09 22:19:04'),
-(4, 'Halal', '1-plywood.jpg', 90, 2, '2018-08-10 15:40:17', '2018-08-10 15:40:17');
+(4, 'Market', 'market12.jpg', 90, 2, '2018-08-10 15:40:17', '2018-08-10 15:40:17'),
+(5, 'Nasgor', '800px_COLOURBOX16921115.jpg', 100, 3, '2018-08-10 16:04:42', '2018-08-10 16:04:42'),
+(6, 'Halal B', '1-palm2.jpg', 10, 2, '2018-08-10 16:23:33', '2018-08-10 16:23:33');
 
 -- --------------------------------------------------------
 
@@ -103,6 +108,7 @@ CREATE TABLE `users` (
   `id` int(11) NOT NULL,
   `username` varchar(100) NOT NULL,
   `password` text NOT NULL,
+  `is_owner` enum('0','1') NOT NULL DEFAULT '0',
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -111,11 +117,12 @@ CREATE TABLE `users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `username`, `password`, `created_at`, `updated_at`) VALUES
-(1, 'superadmin', '17c4520f6cfd1ab53d8745e84681eb49', '2018-05-20 13:28:34', '2018-05-20 13:28:34'),
-(2, 'afiefsky', '3e47b75000b0924b6c9ba5759a7cf15d', '2018-08-02 21:32:14', '2018-08-02 21:32:14'),
-(3, 'admin', '21232f297a57a5a743894a0e4a801fc3', '2018-08-09 13:26:58', '2018-08-09 13:26:58'),
-(4, 'potter', '3e47b75000b0924b6c9ba5759a7cf15d', '2018-08-10 14:59:29', '2018-08-10 14:59:29');
+INSERT INTO `users` (`id`, `username`, `password`, `is_owner`, `created_at`, `updated_at`) VALUES
+(1, 'superadmin', '17c4520f6cfd1ab53d8745e84681eb49', '1', '2018-05-20 13:28:34', '2018-05-20 13:28:34'),
+(2, 'afiefsky', '3e47b75000b0924b6c9ba5759a7cf15d', '1', '2018-08-02 21:32:14', '2018-08-02 21:32:14'),
+(3, 'admin', '21232f297a57a5a743894a0e4a801fc3', '1', '2018-08-09 13:26:58', '2018-08-09 13:26:58'),
+(4, 'potter', '3e47b75000b0924b6c9ba5759a7cf15d', '0', '2018-08-10 14:59:29', '2018-08-10 14:59:29'),
+(5, 'drangleic', '3e47b75000b0924b6c9ba5759a7cf15d', '0', '2018-08-10 15:57:03', '2018-08-10 15:57:03');
 
 -- --------------------------------------------------------
 
@@ -137,7 +144,9 @@ INSERT INTO `users_companies` (`id`, `user_id`, `company_id`) VALUES
 (1, 1, 1),
 (2, 2, 2),
 (3, 2, 3),
-(4, 3, 4);
+(4, 3, 4),
+(5, 4, 5),
+(6, 4, 6);
 
 -- --------------------------------------------------------
 
@@ -207,12 +216,12 @@ ALTER TABLE `users_roles`
 -- AUTO_INCREMENT for table `companies`
 --
 ALTER TABLE `companies`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT for table `roles`
 --
@@ -222,12 +231,12 @@ ALTER TABLE `roles`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `users_companies`
 --
 ALTER TABLE `users_companies`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT for table `users_roles`
 --
