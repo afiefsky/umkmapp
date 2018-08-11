@@ -1,3 +1,4 @@
+<?php $active_page = ''; ?>
 <!DOCTYPE html>
 <html lang="en">
   <head>

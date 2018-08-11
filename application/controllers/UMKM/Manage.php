@@ -36,7 +36,7 @@ class Manage extends CI_Controller
         if (isset($_POST['submit'])) {
             // Uploading Start
             $config['upload_path']          = './uploads/';
-            $config['allowed_types']        = 'gif|jpg|png';
+            $config['allowed_types']        = 'gif|jpg|png|jpeg';
 
             $this->load->library('upload', $config);
 

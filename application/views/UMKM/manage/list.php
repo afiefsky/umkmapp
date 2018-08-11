@@ -29,9 +29,11 @@
             <td>
             <?php
             if ($this->session->userdata('username') == 'admin') {
-                echo anchor('admin/check_umkm_product', 'Check Product', ['class' => 'btn btn-default']);
+                echo anchor('admin/check_umkm_product', 'Cek Produk', ['class' => 'btn btn-default']);
             } else {
-                echo anchor('umkm/manage/product', 'Manage Product', ['class' => 'btn btn-default']);
+                echo anchor('umkm/manage/product', 'Kelola Produk', ['class' => 'btn btn-default']);
+                echo " ";
+                echo anchor('activity', 'Kelola Kegiatan', ['class' => 'btn btn-default']);
             }
             ?>              
             </td>
