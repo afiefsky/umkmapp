@@ -171,7 +171,7 @@ function hari_ini($hari){
                 <?php echo anchor('activity/edit/'.$this->uri->segment(3), 'EDIT', ['class'=>'btn btn-info']); ?>
             </td>
             <td>
-                <?php echo anchor('activity/delete/'.$this->uri->segment(3), 'HAPUS', ['class'=>'btn btn-danger']); ?>
+                <?php echo anchor('activity/delete/'.$this->uri->segment(3), 'HAPUS', ['class'=>'btn btn-danger', 'onclick' => 'return confirm_delete()']); ?>
             </td>
           </tr>
         </table>
@@ -200,4 +200,9 @@ function hari_ini($hari){
   span.onclick = function() {
     modal.style.display = "none";
   }
+</script>
+<script type="text/javascript">
+function confirm_delete() {
+  return confirm('APAKAH ANDA YAKIN? PERINTAH TIDAK DAPAT DIBATALKAN!!');
+}
 </script>
