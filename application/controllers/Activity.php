@@ -50,6 +50,7 @@ class Activity extends CI_Controller
         $id = $this->uri->segment(3);
         $data['record'] = $this->db->get_where('activities', ['id' => $id])->row_array();
         $this->session->set_userdata('company_id', $data['record']['company_id']);
+        $this->session->set_userdata('company_name', $data['record']['name']);
         $this->template->load('templates/main_template', 'activity/detail', $data);
     }
 
