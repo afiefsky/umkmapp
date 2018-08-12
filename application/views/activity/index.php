@@ -1,3 +1,43 @@
+<?php
+function hari_ini($hari){
+    switch($hari){
+        case 'Sun':
+            $hari_ini = "Minggu";
+        break;
+
+        case 'Mon':
+            $hari_ini = "Senin";
+        break;
+
+        case 'Tue':
+            $hari_ini = "Selasa";
+        break;
+
+        case 'Wed':
+            $hari_ini = "Rabu";
+        break;
+
+        case 'Thu':
+            $hari_ini = "Kamis";
+        break;
+
+        case 'Fri':
+            $hari_ini = "Jumat";
+        break;
+
+        case 'Sat':
+            $hari_ini = "Sabtu";
+        break;
+
+        default:
+            $hari_ini = "Tidak di ketahui";
+        break;
+    }
+
+    return "<b>" . $hari_ini . "</b>";
+
+}
+?>
 <head>
   <style type="text/css">
   /* Style the Image Used to Trigger the Modal */
@@ -45,13 +85,13 @@
   }
 
   /* Add Animation - Zoom in the Modal */
-  .modal-content, #caption { 
+  .modal-content, #caption {
       animation-name: zoom;
       animation-duration: 0.6s;
   }
 
   @keyframes zoom {
-      from {transform:scale(0)} 
+      from {transform:scale(0)}
       to {transform:scale(1)}
   }
 
@@ -89,8 +129,8 @@
   <div id="page-wrapper">
     <div class="row">
       <div class="col-lg-12">
-        <h1>Daftar Aktifitas UMKM</h1>
-        <?php 
+        <h1>Daftar Kegiatan UMKM <?php echo $this->session->userdata('company_name'); ?></h1>
+        <?php
             // message if needed
             if ($message!='') {
                 echo '<div class="alert alert-success alert-dismissable">
@@ -109,12 +149,13 @@
           $counter = 2;
           foreach ($record->result() as $r) {
             $date = date_create($r->date);
+            $day = date_format($date, 'D');
             // echo $no;
               if ($no==$counter) {
                 echo "
-                <td align='center'>
-                  $r->name<br>
-                  ".date_format($date, 'l, d-m-Y')."
+                <td align='center' width='33.5%'>
+                  <u>$r->name</u><br>
+                  ".hari_ini($day).", ".date_format($date, 'd-m-Y')."
                   <center>
                   ".anchor('activity/detail/'.$r->id, '<img id="myImg" src='.base_url().'uploads/'.$r->file_name.' width="100" height="100" />')."
                 </td></tr><tr>
@@ -122,9 +163,9 @@
                 $counter = $counter + 3;
               } else {
                 echo "
-                <td align='center'>
-                  $r->file_name<br>
-                  ".date_format($date, 'l, d-m-Y')."
+                <td align='center' width='33.5%'>
+                  <u>$r->file_name</u><br>
+                  ".hari_ini($day).", ".date_format($date, 'd-m-Y')."
                   <center>
                   ".anchor('activity/detail/'.$r->id, '<img id="myImg" src='.base_url().'uploads/'.$r->file_name.' width="100" height="100" />')."
                 </td>
@@ -159,7 +200,7 @@ img.onclick = function(){
 var span = document.getElementsByClassName("close")[0];
 
 // When the user clicks on <span> (x), close the modal
-span.onclick = function() { 
+span.onclick = function() {
   modal.style.display = "none";
 }
 </script>

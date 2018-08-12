@@ -5,24 +5,8 @@
   <div id="page-wrapper">
     <div class="row">
       <div class="col-lg-12">
-        <h1>
-        <?php
-        if ($this->session->userdata['username'] == 'admin') {
-            echo "Daftar UMKM terdaftar";
-        } else {
-            echo "Daftar UMKM Anda";
-        }
-        ?>
-        </h1>
-        <ol class="breadcrumb">
-          <li class="active"><i class="fa fa-bar-chart-o"></i></li>
-            <?php echo anchor('umkm/manage', 'UMKM') ?> > 
-            <?php echo anchor('umkm/manage', 'Manage') ?> > 
-            <?php echo anchor('umkm/manage/list/'.$this->session->userdata('company_id'), 'List') ?> > 
-            Manage
-        </ol>
         <!-- CONTENTS -->
-        <h2>Daftar Produk</h2>
+        <h2>Daftar Produk UMKM <?php echo $this->session->userdata['company_name']; ?></h2>
         <?php
         echo form_open('umkm/manage/product');
         ?>
@@ -34,6 +18,7 @@
         }
         ?>
         <?php echo form_close(); ?>
+        <?php echo anchor('admin/check_umkm/'.$this->session->userdata('company_id'), 'Kembali', ['class' => 'btn btn-danger']); ?><br><br>
         <table class="table table-bordered">
           <tr>
             <td>No</td>
@@ -58,7 +43,7 @@
                           'onclick' => 'return confirm_delete()'
                       ]
                   );
-              } 
+              }
               echo "<tr>
                 <td>$no</td>
                 <td>$r->name</td>

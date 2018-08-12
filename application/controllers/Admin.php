@@ -28,12 +28,13 @@ class Admin extends CI_Controller
 		$this->session->set_userdata('company_id', $company_id);
 
         $data['record'] = $this->company->detail($company_id)->row_array();
+
         $this->template->load('templates/admin_template', 'umkm/manage/list', $data);
 	}
 
 	public function check_umkm_product()
 	{
-		$data['active_page'] = 'umkm/manage';        
+		$data['active_page'] = 'umkm/manage';
         $company_id = $this->session->userdata('company_id');
         $user_id = $this->session->userdata('user_id');
 

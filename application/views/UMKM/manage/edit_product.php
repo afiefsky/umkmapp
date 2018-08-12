@@ -8,11 +8,9 @@
   <div id="page-wrapper">
     <div class="row">
       <div class="col-lg-12">
-        <h1>Daftar UMKM Anda</h1>
-        <ol class="breadcrumb">
-          <li class="active"><i class="fa fa-bar-chart-o"></i> UMKM</li>
-        </ol>
-        <?php 
+        <h1>Form Edit Produk</h1>
+        <?php echo anchor('umkm/manage/product', 'Kembali', ['class' => 'btn btn-danger']); ?><br/><br/>
+        <?php
             if ($message!='') {
                 echo '<div class="alert alert-success alert-dismissable">
                     <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
@@ -30,7 +28,7 @@
         <tr>
             <td>Nama Barang</td>
             <td><input type="text" name="name" class="form-control" value="<?php echo $r['name'] ?>"></td>
-        </tr>        
+        </tr>
         <tr>
             <td>Qty</td>
             <td><input type="number" name="qty" class="form-control" value="<?php echo $r['qty'] ?>"></td>

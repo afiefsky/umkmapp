@@ -1,3 +1,43 @@
+<?php
+function hari_ini($hari){
+    switch($hari){
+        case 'Sun':
+            $hari_ini = "Minggu";
+        break;
+
+        case 'Mon':
+            $hari_ini = "Senin";
+        break;
+
+        case 'Tue':
+            $hari_ini = "Selasa";
+        break;
+
+        case 'Wed':
+            $hari_ini = "Rabu";
+        break;
+
+        case 'Thu':
+            $hari_ini = "Kamis";
+        break;
+
+        case 'Fri':
+            $hari_ini = "Jumat";
+        break;
+
+        case 'Sat':
+            $hari_ini = "Sabtu";
+        break;
+
+        default:
+            $hari_ini = "Tidak di ketahui";
+        break;
+    }
+
+    return "$hari_ini";
+
+}
+?>
 <head>
   <style type="text/css">
   /* Style the Image Used to Trigger the Modal */
@@ -45,13 +85,13 @@
   }
 
   /* Add Animation - Zoom in the Modal */
-  .modal-content, #caption { 
+  .modal-content, #caption {
       animation-name: zoom;
       animation-duration: 0.6s;
   }
 
   @keyframes zoom {
-      from {transform:scale(0)} 
+      from {transform:scale(0)}
       to {transform:scale(1)}
   }
 
@@ -90,10 +130,10 @@
     <div class="row">
       <div class="col-lg-12">
         <h1>Kegiatan <?php echo $record['name']; ?></h1>
-        <ol class="breadcrumb">
-          <li class="active"><i class="fa fa-bar-chart-o"></i> UMKM</li>
-        </ol>
-        <?php 
+        <?php
+          echo anchor('activity', 'Kembali', ['class' => 'btn btn-warning']) . '<br /><br />';
+        ?>
+        <?php
         // in case you need a message
         if ($message!='') {
             echo '<div class="alert alert-success alert-dismissable">
@@ -115,10 +155,23 @@
               </div>
             </td>
             <td width="70%" align="left">
-              <b>Tanggal:</b> <?php echo date_format(date_create($record['date']), 'l, d-m-Y') ?>
+              <b>Tanggal:</b>
+              <?php
+                echo hari_ini(date_format(date_create($record['date']), 'D'));
+                echo ", ";
+                echo date_format(date_create($record['date']), 'd-m-Y');
+              ?>
               <br /><br />
               <b>Keterangan:</b><br />
               abstergo
+            </td>
+          </tr>
+          <tr>
+            <td>
+                <?php echo anchor('activity/edit/'.$this->uri->segment(3), 'EDIT', ['class'=>'btn btn-info']); ?>
+            </td>
+            <td>
+                <?php echo anchor('activity/delete/'.$this->uri->segment(3), 'HAPUS', ['class'=>'btn btn-danger']); ?>
             </td>
           </tr>
         </table>
@@ -127,24 +180,24 @@
   </div><!-- /#page-wrapper -->
 </div><!-- /#wrapper -->
 <script type="text/javascript">
-// Get the modal
-var modal = document.getElementById('myModal');
+  // Get the modal
+  var modal = document.getElementById('myModal');
 
-// Get the image and insert it inside the modal - use its "alt" text as a caption
-var img = document.getElementById('myImg');
-var modalImg = document.getElementById("img01");
-var captionText = document.getElementById("caption");
-img.onclick = function(){
-    modal.style.display = "block";
-    modalImg.src = this.src;
-    captionText.innerHTML = this.alt;
-}
+  // Get the image and insert it inside the modal - use its "alt" text as a caption
+  var img = document.getElementById('myImg');
+  var modalImg = document.getElementById("img01");
+  var captionText = document.getElementById("caption");
+  img.onclick = function(){
+      modal.style.display = "block";
+      modalImg.src = this.src;
+      captionText.innerHTML = this.alt;
+  }
 
-// Get the <span> element that closes the modal
-var span = document.getElementsByClassName("close")[0];
+  // Get the <span> element that closes the modal
+  var span = document.getElementsByClassName("close")[0];
 
-// When the user clicks on <span> (x), close the modal
-span.onclick = function() { 
-  modal.style.display = "none";
-}
+  // When the user clicks on <span> (x), close the modal
+  span.onclick = function() {
+    modal.style.display = "none";
+  }
 </script>

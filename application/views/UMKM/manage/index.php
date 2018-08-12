@@ -7,10 +7,7 @@
     <div class="row">
       <div class="col-lg-12">
         <h1>Daftar UMKM Anda</h1>
-        <ol class="breadcrumb">
-          <li class="active"><i class="fa fa-bar-chart-o"></i> UMKM</li>
-        </ol>
-        <?php 
+        <?php
             if ($message!='') {
                 echo '<div class="alert alert-success alert-dismissable">
                     <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>

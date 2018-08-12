@@ -10,7 +10,7 @@ class Auth extends CI_Controller
      * var data;
      * var result;
      */
-    protected $data;    
+    protected $data;
     protected $result;
 
     public function __construct()
@@ -33,7 +33,7 @@ class Auth extends CI_Controller
                 // End session
 
                 $user_roles = $this->db->get_where('users_roles', ['user_id' => $this->session->userdata('user_id')]);
-                $role_count = $user_roles->num_rows();                
+                $role_count = $user_roles->num_rows();
                 if ($this->session->userdata('username')=='admin') {
                     redirect('admin');
                 } else {
@@ -52,6 +52,12 @@ class Auth extends CI_Controller
     }
 
     public function destroy()
+    {
+        $this->session->sess_destroy();
+        redirect('auth');
+    }
+
+    public function logout()
     {
         $this->session->sess_destroy();
         redirect('auth');
