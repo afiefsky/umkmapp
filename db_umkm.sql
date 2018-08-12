@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 11, 2018 at 10:51 PM
+-- Generation Time: Aug 12, 2018 at 01:52 PM
 -- Server version: 10.1.19-MariaDB
 -- PHP Version: 7.0.13
 
@@ -42,13 +42,15 @@ CREATE TABLE `activities` (
 --
 
 INSERT INTO `activities` (`id`, `name`, `date`, `file_name`, `company_id`, `description`, `created_at`, `updated_at`) VALUES
-(1, 'Jabberwocky', '2018-08-10', 'whatsapp5.png', 3, '', '2018-08-11 13:49:39', '0000-00-00 00:00:00'),
-(2, '12', '2018-08-06', '1-palm3.jpg', 3, '', '2018-08-11 13:58:16', '0000-00-00 00:00:00'),
 (3, '222', '2018-08-01', '1-plywood2.jpg', 3, '', '2018-08-11 13:58:30', '0000-00-00 00:00:00'),
 (4, '3333', '2018-06-07', 'trade-1.jpg', 3, '', '2018-08-11 13:58:50', '0000-00-00 00:00:00'),
 (5, 'hore', '2018-08-08', 'blue_color.png', 3, '', '2018-08-11 14:07:49', '0000-00-00 00:00:00'),
 (6, 'hooglap', '2018-08-05', 'IQEXPO.jpg', 3, '', '2018-08-11 14:08:11', '0000-00-00 00:00:00'),
-(7, 'Market', '2018-08-05', 'cv-background-design-1.jpg', 3, '', '2018-08-11 14:08:36', '0000-00-00 00:00:00');
+(8, 'Singkat Bro', '2018-08-02', '800px_COLOURBOX169211151.jpg', 3, 'Ini adalah keterangan singkat untuk kegiatan ini\r\n                ', '2018-08-11 15:52:29', '0000-00-00 00:00:00'),
+(9, 'hooglap', '2018-08-05', '1-prove4.png', 3, 'abeok', '2018-08-12 02:57:19', '0000-00-00 00:00:00'),
+(10, '222', '2018-08-01', '592e2639fdee94b3240a1127b3df95a8-2-open-wavy-wings-by-vexels3.png', 3, '* Mohon isikan keterangan singkat', '2018-08-12 03:00:36', '0000-00-00 00:00:00'),
+(11, '222', '2018-08-01', 'ERROR.jpeg', 3, '* Mohon isikan keterangan singkat', '2018-08-12 03:00:59', '0000-00-00 00:00:00'),
+(12, '222', '2018-08-01', '1-prove5.png', 3, '* Mohon isikan keterangan singkat', '2018-08-12 02:58:27', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -75,7 +77,7 @@ INSERT INTO `companies` (`id`, `name`, `image_url`, `is_confirmed`, `created_at`
 (3, 'Demento', 'phone2.png', '1', '2018-08-02 21:38:03', '2018-08-02 21:38:03'),
 (4, 'Perfecto', 'perfect.jpg', '1', '2018-08-09 13:33:36', '2018-08-09 13:33:36'),
 (5, 'Abstergo', 'whatsapp3.png', '1', '2018-08-10 17:29:25', '2018-08-10 17:29:25'),
-(6, 'Halola', '1-prove.png', '0', '2018-08-10 17:30:21', '2018-08-10 17:30:21');
+(6, 'Halola', '1-prove.png', '1', '2018-08-10 17:30:21', '2018-08-10 17:30:21');
 
 -- --------------------------------------------------------
 
@@ -252,7 +254,7 @@ ALTER TABLE `users_roles`
 -- AUTO_INCREMENT for table `activities`
 --
 ALTER TABLE `activities`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 --
 -- AUTO_INCREMENT for table `companies`
 --
@@ -262,7 +264,7 @@ ALTER TABLE `companies`
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 --
 -- AUTO_INCREMENT for table `roles`
 --
