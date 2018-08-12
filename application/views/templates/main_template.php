@@ -37,7 +37,7 @@
                   <div class="fa fa-bars tooltips" data-placement="right" data-original-title="Toggle Navigation"></div>
               </div>
             <!--logo start-->
-            <a href="<?php echo base_url(); ?>index.html" class="logo"><b>UMKM APP</b></a>
+            <a href="javascript:;" class="logo"><b>UMKM APP</b></a>
             <!--logo end-->
             <div class="nav notify-row" id="top_menu">
                 <!--  notification start -->
@@ -196,7 +196,8 @@
               <!-- sidebar menu start-->
               <ul class="sidebar-menu" id="nav-accordion">
 
-                  <p class="centered"><a href="<?php echo base_url(); ?>profile.html"><img src="<?php echo base_url(); ?>assets/img/ui-sam.jpg" class="img-circle" width="60"></a></p>
+                  <!-- <p class="centered"><a href="<?php echo base_url(); ?>profile.html"><img src="<?php echo base_url(); ?>assets/img/ui-sam.jpg" class="img-circle" width="60"></a></p> -->
+                  <p class="centered"><img src="<?php echo base_url(); ?>assets/img/ui-sam.jpg" class="img-circle" width="60"></p>
                   <h5 class="centered"><?php echo $this->session->userdata('username'); ?></h5>
 
                   <li class="mt">
@@ -206,25 +207,17 @@
                         <span>Beranda</span>
                       </a>
                   </li>
-                  <li class="sub-menu">
-                      <!-- <a class="active" href="<?php echo base_url(); ?>index.html"> -->
-                      <a href="<?php echo base_url(); ?>index.php/umkm/manage">
-                        <i class="fa fa-desktop"></i>
-                        <span>UMKM</span>
-                      </a>
-                  </li>
                   <!-- below is example with submenu -->
-                  <!-- <li class="sub-menu">
-                      <a href="<?php echo base_url(); ?>index.php/umkm" >
+                  <li class="sub-menu">
+                      <a href="javascript:;" >
                           <i class="fa fa-desktop"></i>
                           <span>UMKM</span>
                       </a>
                       <ul class="sub">
-                          <li><a  href="<?php echo base_url(); ?>general.html">General</a></li>
-                          <li><a  href="<?php echo base_url(); ?>buttons.html">Buttons</a></li>
-                          <li><a  href="<?php echo base_url(); ?>panels.html">Panels</a></li>
+                          <li><a href="<?php echo base_url(); ?>index.php/umkm/manage">Index</a></li>
+                          <li><a href="<?php echo base_url(); ?>index.php/umkm/register">Tambah</a></li>
                       </ul>
-                  </li> -->
+                  </li>
                   <!-- end sub menu -->
               </ul>
               <!-- sidebar menu end-->

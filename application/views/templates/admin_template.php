@@ -195,7 +195,8 @@
               <!-- sidebar menu start-->
               <ul class="sidebar-menu" id="nav-accordion">
 
-                  <p class="centered"><a href="<?php echo base_url(); ?>profile.html"><img src="<?php echo base_url(); ?>assets/img/ui-sam.jpg" class="img-circle" width="60"></a></p>
+                  <!-- <p class="centered"><a href="<?php echo base_url(); ?>profile.html"><img src="<?php echo base_url(); ?>assets/img/ui-sam.jpg" class="img-circle" width="60"></a></p> -->
+                  <p class="centered"><img src="<?php echo base_url(); ?>assets/img/ui-sam.jpg" class="img-circle" width="60"></p>
                   <h5 class="centered"><?php echo $this->session->userdata('username'); ?></h5>
 
                   <li class="mt">

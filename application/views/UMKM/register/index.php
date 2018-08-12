@@ -4,14 +4,19 @@
         <div class="row">
           <div class="col-lg-12">
             <h1>Dashboard</h1>
-            <ol class="breadcrumb">
-              <li class="active"><i class="fa fa-dashboard"></i> Dashboard</li>
-            </ol>
+            <?php echo anchor('dashboard', 'Beranda', ['class' => 'btn btn-primary']) ?><br/><br/>
             <?php echo form_open_multipart('UMKM/register'); ?>
             <table class="table table-bordered">
               <tr>
                 <td>Nama UMKM</td>
                 <td><input type="text" name="name" class="form-control" placeholder="Masukkan nama UMKM" required></td>
+              </tr>
+              <tr>
+                <td>Lokasi</td>
+                <td>
+                  <textarea name="location" class="form-control" required></textarea><br>
+                  <b>* MOHON ISI LOKASI UMKM ANDA DENGAN SEBENAR-BENARNYA!!</b>
+                </td>
               </tr>
               <tr>
                 <td>Foto</td>

@@ -30,7 +30,7 @@
             if ($r->is_confirmed=='0') {
               $button = 'MOHON TUNGGU KONFIRMASI ADMIN';
             } else {
-              $button = anchor('UMKM/manage/list/'.$r->company_id, 'Enter', ['class' => 'btn btn-default']);
+              $button = anchor('UMKM/manage/list/'.$r->company_id, 'Enter', ['class' => 'btn btn-primary']);
             }
               echo "
                   <tr>
@@ -40,8 +40,8 @@
                     <td>".$button."</td>
                   </tr>
               ";
+              $no++;
           }
-          $no++;
           ?>
         </table>
       </div>

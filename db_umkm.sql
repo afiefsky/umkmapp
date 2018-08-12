@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 12, 2018 at 01:52 PM
+-- Generation Time: Aug 12, 2018 at 07:27 PM
 -- Server version: 10.1.19-MariaDB
 -- PHP Version: 7.0.13
 
@@ -42,15 +42,16 @@ CREATE TABLE `activities` (
 --
 
 INSERT INTO `activities` (`id`, `name`, `date`, `file_name`, `company_id`, `description`, `created_at`, `updated_at`) VALUES
-(3, '222', '2018-08-01', '1-plywood2.jpg', 3, '', '2018-08-11 13:58:30', '0000-00-00 00:00:00'),
-(4, '3333', '2018-06-07', 'trade-1.jpg', 3, '', '2018-08-11 13:58:50', '0000-00-00 00:00:00'),
-(5, 'hore', '2018-08-08', 'blue_color.png', 3, '', '2018-08-11 14:07:49', '0000-00-00 00:00:00'),
+(3, '222', '2018-08-01', '1-plywood2.jpg', 4, '', '2018-08-12 12:21:56', '0000-00-00 00:00:00'),
+(4, '3333', '2018-06-07', 'trade-1.jpg', 4, '', '2018-08-12 12:22:01', '0000-00-00 00:00:00'),
+(5, 'hore', '2018-08-08', 'blue_color.png', 4, '', '2018-08-12 12:22:06', '0000-00-00 00:00:00'),
 (6, 'hooglap', '2018-08-05', 'IQEXPO.jpg', 3, '', '2018-08-11 14:08:11', '0000-00-00 00:00:00'),
 (8, 'Singkat Bro', '2018-08-02', '800px_COLOURBOX169211151.jpg', 3, 'Ini adalah keterangan singkat untuk kegiatan ini\r\n                ', '2018-08-11 15:52:29', '0000-00-00 00:00:00'),
 (9, 'hooglap', '2018-08-05', '1-prove4.png', 3, 'abeok', '2018-08-12 02:57:19', '0000-00-00 00:00:00'),
 (10, '222', '2018-08-01', '592e2639fdee94b3240a1127b3df95a8-2-open-wavy-wings-by-vexels3.png', 3, '* Mohon isikan keterangan singkat', '2018-08-12 03:00:36', '0000-00-00 00:00:00'),
 (11, '222', '2018-08-01', 'ERROR.jpeg', 3, '* Mohon isikan keterangan singkat', '2018-08-12 03:00:59', '0000-00-00 00:00:00'),
-(12, '222', '2018-08-01', '1-prove5.png', 3, '* Mohon isikan keterangan singkat', '2018-08-12 02:58:27', '0000-00-00 00:00:00');
+(12, '222', '2018-08-01', '1-prove5.png', 3, '* Mohon isikan keterangan singkat', '2018-08-12 02:58:27', '0000-00-00 00:00:00'),
+(13, 'Agricult', '2018-08-07', '592e2639fdee94b3240a1127b3df95a8-2-open-wavy-wings-by-vexels.png', 7, 'keterangan singkat              ', '2018-08-12 12:12:24', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -62,6 +63,7 @@ CREATE TABLE `companies` (
   `id` int(11) NOT NULL,
   `name` text NOT NULL,
   `image_url` text NOT NULL,
+  `location` text NOT NULL,
   `is_confirmed` enum('0','1') NOT NULL DEFAULT '0',
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
@@ -71,13 +73,14 @@ CREATE TABLE `companies` (
 -- Dumping data for table `companies`
 --
 
-INSERT INTO `companies` (`id`, `name`, `image_url`, `is_confirmed`, `created_at`, `updated_at`) VALUES
-(1, 'Mikro Coy', 'market6.jpg', '1', '2018-07-29 13:52:07', '2018-07-29 13:52:07'),
-(2, 'Gisele Alain', 'market6.jpg', '0', '2018-08-02 21:33:29', '2018-08-02 21:33:29'),
-(3, 'Demento', 'phone2.png', '1', '2018-08-02 21:38:03', '2018-08-02 21:38:03'),
-(4, 'Perfecto', 'perfect.jpg', '1', '2018-08-09 13:33:36', '2018-08-09 13:33:36'),
-(5, 'Abstergo', 'whatsapp3.png', '1', '2018-08-10 17:29:25', '2018-08-10 17:29:25'),
-(6, 'Halola', '1-prove.png', '1', '2018-08-10 17:30:21', '2018-08-10 17:30:21');
+INSERT INTO `companies` (`id`, `name`, `image_url`, `location`, `is_confirmed`, `created_at`, `updated_at`) VALUES
+(1, 'Mikro Coy', 'market6.jpg', '', '1', '2018-07-29 13:52:07', '2018-07-29 13:52:07'),
+(2, 'Gisele Alain', 'market6.jpg', '', '0', '2018-08-02 21:33:29', '2018-08-02 21:33:29'),
+(3, 'Demento', 'phone2.png', '', '1', '2018-08-02 21:38:03', '2018-08-02 21:38:03'),
+(4, 'Perfecto', 'perfect.jpg', '', '1', '2018-08-09 13:33:36', '2018-08-09 13:33:36'),
+(5, 'Abstergo', 'whatsapp3.png', '', '1', '2018-08-10 17:29:25', '2018-08-10 17:29:25'),
+(6, 'Halola', '1-prove.png', '', '1', '2018-08-10 17:30:21', '2018-08-10 17:30:21'),
+(7, 'ABSTERGO', '1-prove.png', '', '1', '2018-08-12 11:50:38', '2018-08-12 11:50:38');
 
 -- --------------------------------------------------------
 
@@ -178,7 +181,8 @@ INSERT INTO `users_companies` (`id`, `user_id`, `company_id`) VALUES
 (3, 2, 3),
 (4, 3, 4),
 (5, 4, 5),
-(6, 4, 6);
+(6, 4, 6),
+(7, 2, 7);
 
 -- --------------------------------------------------------
 
@@ -254,17 +258,17 @@ ALTER TABLE `users_roles`
 -- AUTO_INCREMENT for table `activities`
 --
 ALTER TABLE `activities`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 --
 -- AUTO_INCREMENT for table `companies`
 --
 ALTER TABLE `companies`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 --
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 --
 -- AUTO_INCREMENT for table `roles`
 --
@@ -279,12 +283,12 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `users_companies`
 --
 ALTER TABLE `users_companies`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 --
 -- AUTO_INCREMENT for table `users_roles`
 --
 ALTER TABLE `users_roles`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
