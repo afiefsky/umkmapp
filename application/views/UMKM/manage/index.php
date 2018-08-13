@@ -7,6 +7,7 @@
     <div class="row">
       <div class="col-lg-12">
         <h1>Daftar UMKM Anda</h1>
+        <?php echo anchor('dashboard', 'Kembali', ['class' => 'btn btn-warning']) ?><br/><br/>
         <?php
             if ($message!='') {
                 echo '<div class="alert alert-success alert-dismissable">
@@ -17,6 +18,17 @@
 
             }
         ?>
+        <?php
+        echo form_open('umkm/manage/index');
+        ?>
+        <b>* Pencarian berdasarkan nama UMKM
+        <table class="table table-bordered">
+          <tr>
+            <td><input type="text" name="company_name" class="form-control"></td>
+            <td><input type="submit" name="submit_search" value="Cari" class="btn btn-primary"></td>
+          </tr>
+        </table>
+        <br/>
         <table class="table table-bordered">
           <tr>
             <th>No</th>
@@ -25,7 +37,7 @@
             <th>Opsi</th>
           </tr>
           <?php
-          $no = 1;
+          $no=1 + $this->uri->segment(4);
           foreach ($record as $r) {
             if ($r->is_confirmed=='0') {
               $button = 'MOHON TUNGGU KONFIRMASI ADMIN';
@@ -48,3 +60,7 @@
     </div><!-- /.row -->
   </div><!-- /#page-wrapper -->
 </div><!-- /#wrapper -->
+
+<?php
+echo $paging;
+?>

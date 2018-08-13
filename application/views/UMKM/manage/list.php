@@ -1,6 +1,46 @@
 <?php
     $message = $this->session->flashdata('message');
 ?>
+<?php
+function hari_ini($hari){
+    switch($hari){
+        case 'Sun':
+            $hari_ini = "Minggu";
+        break;
+
+        case 'Mon':
+            $hari_ini = "Senin";
+        break;
+
+        case 'Tue':
+            $hari_ini = "Selasa";
+        break;
+
+        case 'Wed':
+            $hari_ini = "Rabu";
+        break;
+
+        case 'Thu':
+            $hari_ini = "Kamis";
+        break;
+
+        case 'Fri':
+            $hari_ini = "Jumat";
+        break;
+
+        case 'Sat':
+            $hari_ini = "Sabtu";
+        break;
+
+        default:
+            $hari_ini = "Tidak di ketahui";
+        break;
+    }
+
+    return "$hari_ini";
+
+}
+?>
 <div id="wrapper">
   <div id="page-wrapper">
     <div class="row">
@@ -17,25 +57,43 @@
 
             }
         ?>
-        <?php echo anchor('admin/umkm', 'Kembali', ['class' => 'btn btn-danger']); ?><br><br>
+        <?php
+        if ($this->session->userdata('username')=='admin' || $this->session->userdata('username')=='superadmin') {
+            echo anchor('admin/umkm', 'Kembali', ['class' => 'btn btn-danger']);
+        } else {
+            echo anchor('umkm/manage', 'Kembali', ['class' => 'btn btn-danger']);
+        }
+        ?><br><br>
         <!-- CONTENTS BELOW -->
         <table class="table table-bordered">
           <tr>
             <td colspan="2"><img src="<?php echo base_url() . 'uploads/' . $record['image_url']; ?>" width="250" /></td>
           </tr>
           <tr>
-            <td><b><?php echo $record['name']; ?></b></td>
-            <td>
-            <?php
-            if ($this->session->userdata('username') == 'admin') {
-                echo anchor('admin/check_umkm_product', 'Cek Produk', ['class' => 'btn btn-info']);
-            } else {
-                echo anchor('umkm/manage/product', 'Kelola Produk', ['class' => 'btn btn-info']);
-                echo " ";
-                echo anchor('activity', 'Kelola Kegiatan', ['class' => 'btn btn-success']);
-            }
-            ?>
-            </td>
+            <td><b>Nama:</td>
+            <td><?php echo $record['name']; ?></td>
+          </tr>
+          <tr>
+            <td><b>Lokasi:</td>
+            <td><?php echo $record['location']; ?></td>
+          </tr>
+          <tr>
+            <td><b>Tanggal Dibuat:</td>
+            <td><?php echo date_format(date_create($record['created_at']), 'D'); ?></td>
+          </tr>
+          <tr>
+              <td><b>Opsi:</td>
+              <td>
+                <?php
+                if ($this->session->userdata('username') == 'admin') {
+                    echo anchor('admin/check_umkm_product', 'Cek Produk', ['class' => 'btn btn-info']);
+                } else {
+                    echo anchor('umkm/manage/product', 'Kelola Produk', ['class' => 'btn btn-info']);
+                    echo " ";
+                    echo anchor('activity', 'Kelola Kegiatan', ['class' => 'btn btn-success']);
+                }
+                ?>
+             </td>
           </tr>
         </table>
       </div>

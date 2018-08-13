@@ -18,7 +18,24 @@
         }
         ?>
         <?php echo form_close(); ?>
-        <?php echo anchor('admin/check_umkm/'.$this->session->userdata('company_id'), 'Kembali', ['class' => 'btn btn-danger']); ?><br><br>
+        <?php
+        if ($this->session->userdata('username')=='admin' || $this->session->userdata('username')=='superadmin') {
+            echo anchor('admin/check_umkm/'.$this->session->userdata('company_id'), 'Kembali', ['class' => 'btn btn-danger']);
+        } else {
+            echo anchor('umkm/manage/list/'.$this->session->userdata('company_id'), 'Kembali', ['class' => 'btn btn-danger']);
+        }
+        ?><br><br>
+        <?php echo form_open('umkm/manage/product'); ?>
+        <table class="table table-bordered">
+          <tr>
+            <td><input type="text" name="keyword" class="form-control" placeholder="Masukkan nama produk"></td>
+            <td><input type="submit" name="submit_search" class="btn btn-primary" value="Cari"></td>
+          </tr>
+          <tr>
+            <td><b>* Pencarian berdasarkan nama produk</td>
+          </tr>
+        </table>
+        <?php echo form_close(); ?>
         <table class="table table-bordered">
           <tr>
             <td>No</td>
@@ -28,7 +45,7 @@
             <td>Opsi</td>
           </tr>
           <?php
-          $no = 1;
+          $no = 1 + $this->uri->segment(4);
           foreach ($record as $r) {
               if ($this->session->userdata['username']=='admin') {
                   $edit_button = '';
@@ -69,3 +86,5 @@ function confirm_delete() {
   return confirm('APAKAH ANDA YAKIN? PERINTAH TIDAK DAPAT DIBATALKAN!!');
 }
 </script>
+
+<?php echo $paging; ?>

@@ -86,7 +86,7 @@ function hari_ini($hari){
               } else {
                 echo "
                 <td align='center' width='33.5%'>
-                  <u>$r->file_name</u><br>
+                  <u>$r->name</u><br>
                   ".hari_ini($day).", ".date_format($date, 'd-m-Y')."
                   <center>
                   ".anchor('activity/detail/'.$r->id, '<img id="myImg" src='.base_url().'uploads/'.$r->file_name.' width="100" height="100" />')."

@@ -30,7 +30,7 @@
         </tr>
         <tr>
             <td>Qty</td>
-            <td><input type="number" name="qty" class="form-control" requried></td>
+            <td><input type="number" name="qty" class="form-control" required></td>
         </tr>
         <tr>
             <td>Gambar</td>

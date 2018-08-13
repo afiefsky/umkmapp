@@ -214,7 +214,7 @@
                           <span>UMKM</span>
                       </a>
                       <ul class="sub">
-                          <li><a href="<?php echo base_url(); ?>index.php/umkm/manage">Index</a></li>
+                          <li><a href="<?php echo base_url(); ?>index.php/umkm/manage">Daftar UMKM</a></li>
                           <li><a href="<?php echo base_url(); ?>index.php/umkm/register">Tambah</a></li>
                       </ul>
                   </li>
