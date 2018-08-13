@@ -48,6 +48,7 @@ class Activity extends CI_Controller
     public function detail()
     {
         $id = $this->uri->segment(3);
+        $this->session->set_userdata('active_page', $this->uri->segment(1).'/'.$this->uri->segment(2).'/'.$this->uri->segment(3));
         $data['record'] = $this->db->get_where('activities', ['id' => $id])->row_array();
         $this->session->set_userdata('company_id', $data['record']['company_id']);
         $this->session->set_userdata('company_name', $data['record']['name']);

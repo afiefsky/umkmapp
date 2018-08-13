@@ -7,7 +7,7 @@
     <div class="row">
       <div class="col-lg-12">
         <h1>Form Tambah Aktivitas</h1>
-        <?php echo anchor('activity', 'Kembali', ['class' => 'btn btn-warning']); ?><br /><br />
+        <?php echo anchor($this->session->userdata('active_page'), 'Kembali', ['class' => 'btn btn-warning']); ?><br /><br />
         <?php echo form_open_multipart('activity/edit/'.$this->uri->segment(3)); ?>
         <table class="table table-bordered">
           <tr>
