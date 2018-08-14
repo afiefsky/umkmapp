@@ -1,4 +1,3 @@
-
 <?php echo form_open('auth'); ?>
 <!-- <input type="submit" name="back" class="btn btn-default" value="Kembali" /> -->
 <?php echo form_close(); ?>
@@ -33,6 +32,10 @@
             <td><input type="number" name="qty" class="form-control" required></td>
         </tr>
         <tr>
+            <td>Harga</td>
+            <td><input type="text" name="price" id="price" class="form-control" required></td>
+        </tr>
+        <tr>
             <td>Gambar</td>
             <td><input type="file" name="gambar" required></td>
         </tr>
@@ -47,3 +50,28 @@
     </div><!-- /.row -->
   </div><!-- /#page-wrapper -->
 </div><!-- /#wrapper -->
+<script type="text/javascript">
+    var price = document.getElementById('price');
+
+    price.addEventListener('keyup', function(e) {
+        price.value = formatRupiah(this.value, 'Rp. ');
+    });
+
+    /* Fungsi */
+    function formatRupiah(number, prefix)
+    {
+    var number_string = number.replace(/[^,\d]/g, '').toString(),
+    split    = number_string.split(','),
+    sisa     = split[0].length % 3,
+    rupiah     = split[0].substr(0, sisa),
+    ribuan     = split[0].substr(sisa).match(/\d{3}/gi);
+
+    if (ribuan) {
+    separator = sisa ? '.' : '';
+    rupiah += separator + ribuan.join('.');
+    }
+
+    rupiah = split[1] != undefined ? rupiah + ',' + split[1] : rupiah;
+    return prefix == undefined ? rupiah : (rupiah ? 'Rp. ' + rupiah : '');
+    }
+</script>

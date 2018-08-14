@@ -88,11 +88,14 @@ class Manage extends CI_Controller
 
             $name = $this->input->post('name');
             $qty = $this->input->post('qty');
+            $price = $this->input->post('price');
+            $price = str_replace(['Rp', '.', ' '], '', $price);
             $data = [
                 'name' => $name,
                 'qty' => $qty,
                 'company_id' => $this->session->userdata('company_id'),
-                'file_name' => $image['file_name']
+                'file_name' => $image['file_name'],
+                'price' => $price
             ];
 
             $this->db->insert('products', $data);

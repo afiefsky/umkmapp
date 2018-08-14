@@ -1,5 +1,9 @@
 <?php
     $message = $this->session->flashdata('message');
+    function rupiah($angka){
+        $hasil_rupiah = "Rp. " . number_format($angka,0,',','.');
+        return $hasil_rupiah;
+    }
 ?>
 <div id="wrapper">
   <div id="page-wrapper">
@@ -41,6 +45,7 @@
             <td>No</td>
             <td>Nama</td>
             <td>Qty</td>
+            <td>Harga</td>
             <td>Gambar</td>
             <td>Opsi</td>
           </tr>
@@ -65,6 +70,7 @@
                 <td>$no</td>
                 <td>$r->name</td>
                 <td>$r->qty</td>
+                <td>".rupiah($r->price)."</td>
                 <td><a href='".base_url()."uploads/$r->file_name' target='_BLANK'><img src='".base_url()."uploads/$r->file_name' width='75' /></a></td>
                 <td>".
                     $edit_button." ".

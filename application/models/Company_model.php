@@ -104,7 +104,7 @@ class Company_model extends CI_Model
                     FROM
                     products
                     WHERE
-                    company_id = $company_id";
+                    company_id = $company_id ORDER BY id DESC";
         return $this->db->query($query);
     }
 
@@ -114,7 +114,7 @@ class Company_model extends CI_Model
                     FROM
                     products
                     WHERE
-                    company_id = $company_id LIMIT $page, $limiter";
+                    company_id = $company_id ORDER BY id DESC LIMIT $page, $limiter";
         return $this->db->query($query);
     }
 
