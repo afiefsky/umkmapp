@@ -166,14 +166,6 @@ function hari_ini($hari){
               <?php echo $record['description']; ?>
             </td>
           </tr>
-          <tr>
-            <td>
-                <?php echo anchor('activity/edit/'.$this->uri->segment(3), 'EDIT', ['class'=>'btn btn-info']); ?>
-            </td>
-            <td>
-                <?php echo anchor('activity/delete/'.$this->uri->segment(3), 'HAPUS', ['class'=>'btn btn-danger', 'onclick' => 'return confirm_delete()']); ?>
-            </td>
-          </tr>
         </table>
         </div>
     </div><!-- /.row -->

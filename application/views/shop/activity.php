@@ -1,4 +1,5 @@
 <?php
+$this->session->set_userdata('active_url', $this->uri->segment(1).'/'.$this->uri->segment(2));
 function hari_ini($hari){
     switch($hari){
         case 'Sun':
@@ -142,7 +143,7 @@ function hari_ini($hari){
             }
         ?>
         <?php
-            echo anchor($this->session->userdata('active_url'), 'Kembali', ['class' => 'btn btn-warning']);
+            echo anchor('shop/umkm/'.$this->session->userdata('company_id'), 'Kembali', ['class' => 'btn btn-warning']);
         ?><br><br>
         <table class="table table-bordered">
           <tr>
@@ -159,7 +160,7 @@ function hari_ini($hari){
                   <u>$r->name</u><br>
                   ".hari_ini($day).", ".date_format($date, 'd-m-Y')."
                   <center>
-                  ".anchor('activity/detail/'.$r->id, '<img id="myImg" src='.base_url().'uploads/'.$r->file_name.' width="100" height="100" />')."
+                  ".anchor('shop/detail_activity/'.$r->id, '<img id="myImg" src='.base_url().'uploads/'.$r->file_name.' width="220" height="220" />')."
                 </td></tr><tr>
                 ";
                 $counter = $counter + 3;
@@ -169,7 +170,7 @@ function hari_ini($hari){
                   <u>$r->name</u><br>
                   ".hari_ini($day).", ".date_format($date, 'd-m-Y')."
                   <center>
-                  ".anchor('activity/detail/'.$r->id, '<img id="myImg" src='.base_url().'uploads/'.$r->file_name.' width="100" height="100" />')."
+                  ".anchor('shop/detail_activity/'.$r->id, '<img id="myImg" src='.base_url().'uploads/'.$r->file_name.' width="220" height="220" />')."
                 </td>
                 ";
               }

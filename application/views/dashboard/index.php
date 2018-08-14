@@ -79,7 +79,7 @@ function hari_ini($hari){
                   <u>$r->name</u><br>
                   ".hari_ini($day).", ".date_format($date, 'd-m-Y')."
                   <center>
-                  ".anchor('activity/detail/'.$r->id, '<img id="myImg" src='.base_url().'uploads/'.$r->file_name.' width="100" height="100" />')."
+                  ".anchor('activity/detail/'.$r->id, '<img id="myImg" src='.base_url().'uploads/'.$r->file_name.' width="220" height="220" />')."
                 </td></tr><tr>
                 ";
                 $counter = $counter + 3;
@@ -89,7 +89,7 @@ function hari_ini($hari){
                   <u>$r->name</u><br>
                   ".hari_ini($day).", ".date_format($date, 'd-m-Y')."
                   <center>
-                  ".anchor('activity/detail/'.$r->id, '<img id="myImg" src='.base_url().'uploads/'.$r->file_name.' width="100" height="100" />')."
+                  ".anchor('activity/detail/'.$r->id, '<img id="myImg" src='.base_url().'uploads/'.$r->file_name.' width="220" height="220" />')."
                 </td>
                 ";
               }

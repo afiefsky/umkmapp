@@ -9,6 +9,7 @@ class Activity extends CI_Controller
 
     public function index()
     {
+        $this->session->set_userdata('active_url', $this->uri->segment(1));
         $company_id = $this->session->userdata('company_id');
         $data['record'] = $this->db->get_where('activities', ['company_id' => $company_id]);
         $this->template->load('templates/main_template', 'activity/index', $data);

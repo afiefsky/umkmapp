@@ -143,7 +143,7 @@ function hari_ini($hari){
         ?>
         <?php echo anchor('activity/add', 'Tambah Kegiatan', ['class' => 'btn btn-success']); ?><br /><br />
         <?php
-            echo anchor($this->session->userdata('active_url'), 'Kembali', ['class' => 'btn btn-warning']);
+            echo anchor($this->session->userdata('prev_page'), 'Kembali', ['class' => 'btn btn-warning']);
         ?><br><br>
         <table class="table table-bordered">
           <tr>

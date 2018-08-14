@@ -11,6 +11,7 @@ class Dashboard extends CI_Controller
 
     public function index()
     {
+        $this->session->set_userdata('active_url', $this->uri->segment(1));
         // check if user is confirmed or not
         $user_data = $this->db->get_where('users', ['id' => $this->session->userdata('user_id')])->row_array();
 

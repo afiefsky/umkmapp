@@ -57,12 +57,11 @@ class Manage extends CI_Controller
 
     public function list()
     {
-        $data['active_page'] = 'umkm/manage';
         $company_id = $this->uri->segment(4);
         // Adding company id to the session
         $this->session->set_userdata('company_id', $company_id);
 
-        $this->session->set_userdata('active_url', $this->uri->segment(1).'/'.$this->uri->segment(2).'/'.$this->uri->segment(3).'/'.$this->uri->segment(4));
+        $this->session->set_userdata('prev_page', $this->uri->segment(1).'/'.$this->uri->segment(2).'/'.$this->uri->segment(3).'/'.$this->uri->segment(4));
 
         $data['record'] = $this->company->detail($company_id)->row_array();
         $this->template->load('templates/main_template', 'umkm/manage/list', $data);
