@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 12, 2018 at 07:27 PM
+-- Generation Time: Aug 14, 2018 at 09:37 AM
 -- Server version: 10.1.19-MariaDB
 -- PHP Version: 7.0.13
 
@@ -45,13 +45,12 @@ INSERT INTO `activities` (`id`, `name`, `date`, `file_name`, `company_id`, `desc
 (3, '222', '2018-08-01', '1-plywood2.jpg', 4, '', '2018-08-12 12:21:56', '0000-00-00 00:00:00'),
 (4, '3333', '2018-06-07', 'trade-1.jpg', 4, '', '2018-08-12 12:22:01', '0000-00-00 00:00:00'),
 (5, 'hore', '2018-08-08', 'blue_color.png', 4, '', '2018-08-12 12:22:06', '0000-00-00 00:00:00'),
-(6, 'hooglap', '2018-08-05', 'IQEXPO.jpg', 3, '', '2018-08-11 14:08:11', '0000-00-00 00:00:00'),
-(8, 'Singkat Bro', '2018-08-02', '800px_COLOURBOX169211151.jpg', 3, 'Ini adalah keterangan singkat untuk kegiatan ini\r\n                ', '2018-08-11 15:52:29', '0000-00-00 00:00:00'),
+(6, 'hooglap', '2018-08-05', '1-plywood.jpg', 0, '* Mohon isikan keterangan singkat', '2018-08-12 13:07:14', '0000-00-00 00:00:00'),
 (9, 'hooglap', '2018-08-05', '1-prove4.png', 3, 'abeok', '2018-08-12 02:57:19', '0000-00-00 00:00:00'),
 (10, '222', '2018-08-01', '592e2639fdee94b3240a1127b3df95a8-2-open-wavy-wings-by-vexels3.png', 3, '* Mohon isikan keterangan singkat', '2018-08-12 03:00:36', '0000-00-00 00:00:00'),
 (11, '222', '2018-08-01', 'ERROR.jpeg', 3, '* Mohon isikan keterangan singkat', '2018-08-12 03:00:59', '0000-00-00 00:00:00'),
 (12, '222', '2018-08-01', '1-prove5.png', 3, '* Mohon isikan keterangan singkat', '2018-08-12 02:58:27', '0000-00-00 00:00:00'),
-(13, 'Agricult', '2018-08-07', '592e2639fdee94b3240a1127b3df95a8-2-open-wavy-wings-by-vexels.png', 7, 'keterangan singkat              ', '2018-08-12 12:12:24', '0000-00-00 00:00:00');
+(14, 'hooglap', '2018-08-01', '1-palm1.jpg', 3, 'nothing', '2018-08-12 13:05:11', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -74,13 +73,21 @@ CREATE TABLE `companies` (
 --
 
 INSERT INTO `companies` (`id`, `name`, `image_url`, `location`, `is_confirmed`, `created_at`, `updated_at`) VALUES
-(1, 'Mikro Coy', 'market6.jpg', '', '1', '2018-07-29 13:52:07', '2018-07-29 13:52:07'),
-(2, 'Gisele Alain', 'market6.jpg', '', '0', '2018-08-02 21:33:29', '2018-08-02 21:33:29'),
-(3, 'Demento', 'phone2.png', '', '1', '2018-08-02 21:38:03', '2018-08-02 21:38:03'),
-(4, 'Perfecto', 'perfect.jpg', '', '1', '2018-08-09 13:33:36', '2018-08-09 13:33:36'),
-(5, 'Abstergo', 'whatsapp3.png', '', '1', '2018-08-10 17:29:25', '2018-08-10 17:29:25'),
-(6, 'Halola', '1-prove.png', '', '1', '2018-08-10 17:30:21', '2018-08-10 17:30:21'),
-(7, 'ABSTERGO', '1-prove.png', '', '1', '2018-08-12 11:50:38', '2018-08-12 11:50:38');
+(1, 'Mikro Coy', 'market6.jpg', 'Bandung A', '1', '2018-07-29 13:52:07', '2018-07-29 13:52:07'),
+(2, 'Gisele Alain', 'market6.jpg', 'Cirebon B', '0', '2018-08-02 21:33:29', '2018-08-02 21:33:29'),
+(3, 'Demento', 'phone2.png', 'Jakarta Z', '1', '2018-08-02 21:38:03', '2018-08-02 21:38:03'),
+(4, 'Perfecto', 'perfect.jpg', 'Medan T', '1', '2018-08-09 13:33:36', '2018-08-09 13:33:36'),
+(5, 'Abstergo', 'whatsapp3.png', 'Q-Tre Sulawesi', '1', '2018-08-10 17:29:25', '2018-08-10 17:29:25'),
+(6, 'Halola', '1-prove.png', 'Acc-lair Kalimantan', '1', '2018-08-10 17:30:21', '2018-08-10 17:30:21'),
+(7, 'ABSTERGO', '1-prove.png', 'Habl-Bekasi', '1', '2018-08-12 11:50:38', '2018-08-12 11:50:38'),
+(8, 'UMKM A', '1-palm1.jpg', '', '0', '2018-08-13 15:19:57', '2018-08-13 15:19:57'),
+(9, 'UMKM B', '1-palm2.jpg', '', '0', '2018-08-13 15:20:40', '2018-08-13 15:20:40'),
+(10, 'UMKM C', '1-palm3.jpg', '', '0', '2018-08-13 15:21:08', '2018-08-13 15:21:08'),
+(11, 'UMKM D', '1-palm4.jpg', '', '0', '2018-08-13 15:21:19', '2018-08-13 15:21:19'),
+(12, 'UMKM E', '1-palm5.jpg', '', '0', '2018-08-13 15:21:32', '2018-08-13 15:21:32'),
+(13, 'UMKM F', '1-palm6.jpg', '', '0', '2018-08-13 15:21:44', '2018-08-13 15:21:44'),
+(14, 'UMKM G', '1-palm7.jpg', '', '0', '2018-08-13 15:21:55', '2018-08-13 15:21:55'),
+(15, 'UMKM H', '1-plywood.jpg', '', '0', '2018-08-13 15:23:42', '2018-08-13 15:23:42');
 
 -- --------------------------------------------------------
 
@@ -94,6 +101,7 @@ CREATE TABLE `products` (
   `file_name` text,
   `qty` int(11) DEFAULT NULL,
   `company_id` int(11) NOT NULL,
+  `price` bigint(11) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -102,11 +110,20 @@ CREATE TABLE `products` (
 -- Dumping data for table `products`
 --
 
-INSERT INTO `products` (`id`, `name`, `file_name`, `qty`, `company_id`, `created_at`, `updated_at`) VALUES
-(3, 'Decision', '1-palm1.jpg', 90, 4, '2018-08-09 22:19:04', '2018-08-09 22:19:04'),
-(4, 'Market', 'market12.jpg', 90, 2, '2018-08-10 15:40:17', '2018-08-10 15:40:17'),
-(6, 'Halal B', '1-palm2.jpg', 10, 2, '2018-08-10 16:23:33', '2018-08-10 16:23:33'),
-(7, 'Pocari Sweat', 'pocari.jpeg', 100, 3, '2018-08-11 12:29:07', '2018-08-11 12:29:07');
+INSERT INTO `products` (`id`, `name`, `file_name`, `qty`, `company_id`, `price`, `created_at`, `updated_at`) VALUES
+(3, 'Decision', '1-palm1.jpg', 90, 4, 0, '2018-08-09 22:19:04', '2018-08-09 22:19:04'),
+(4, 'Market', 'market12.jpg', 90, 2, 0, '2018-08-10 15:40:17', '2018-08-10 15:40:17'),
+(6, 'Halal B', '1-palm2.jpg', 10, 2, 0, '2018-08-10 16:23:33', '2018-08-10 16:23:33'),
+(7, 'Pocari Sweat', 'pocari.jpeg', 100, 3, 0, '2018-08-11 12:29:07', '2018-08-11 12:29:07'),
+(8, 'Coklat Panas Pocari', '1-palm.jpg', 7, 3, 0, '2018-08-13 14:42:44', '2018-08-13 14:42:44'),
+(9, 'Produk A', '1-plywood1.jpg', 0, 3, 0, '2018-08-13 15:51:49', '2018-08-13 15:51:49'),
+(10, 'Produk B', '1-palm8.jpg', 10, 3, 0, '2018-08-13 15:52:26', '2018-08-13 15:52:26'),
+(11, 'Produk C', '1-plywood2.jpg', 12, 3, 0, '2018-08-13 15:52:41', '2018-08-13 15:52:41'),
+(12, 'Produk D', '1-prove.png', 14, 3, 0, '2018-08-13 15:52:54', '2018-08-13 15:52:54'),
+(13, 'Produk E', '1-prove1.png', 14, 3, 0, '2018-08-13 15:53:08', '2018-08-13 15:53:08'),
+(14, 'Produk F', '592e2639fdee94b3240a1127b3df95a8-2-open-wavy-wings-by-vexels.png', 16, 3, 0, '2018-08-13 15:53:57', '2018-08-13 15:53:57'),
+(15, 'Barang Renton', 'doha-2366127_1920.jpg', 100, 3, 100000000, '2018-08-14 02:20:02', '2018-08-14 02:20:02'),
+(16, 'Beng-Beng', '1-A2.jpg', 60, 3, 8000, '2018-08-14 02:32:09', '2018-08-14 02:32:09');
 
 -- --------------------------------------------------------
 
@@ -182,7 +199,15 @@ INSERT INTO `users_companies` (`id`, `user_id`, `company_id`) VALUES
 (4, 3, 4),
 (5, 4, 5),
 (6, 4, 6),
-(7, 2, 7);
+(7, 2, 7),
+(8, 2, 8),
+(9, 2, 9),
+(10, 2, 10),
+(11, 2, 11),
+(12, 2, 12),
+(13, 2, 13),
+(14, 2, 14),
+(15, 2, 15);
 
 -- --------------------------------------------------------
 
@@ -258,17 +283,17 @@ ALTER TABLE `users_roles`
 -- AUTO_INCREMENT for table `activities`
 --
 ALTER TABLE `activities`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 --
 -- AUTO_INCREMENT for table `companies`
 --
 ALTER TABLE `companies`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 --
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 --
 -- AUTO_INCREMENT for table `roles`
 --
@@ -283,7 +308,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `users_companies`
 --
 ALTER TABLE `users_companies`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 --
 -- AUTO_INCREMENT for table `users_roles`
 --
