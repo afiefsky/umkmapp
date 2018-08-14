@@ -12,6 +12,7 @@ class Shop extends CI_Controller
 
     public function index()
     {
+        $this->session->sess_destroy();
         $data['record'] = $this->company->all();
         $this->template->load('templates/shop_template', 'shop/index', $data);
     }
@@ -104,5 +105,18 @@ class Shop extends CI_Controller
         $this->db->where('id', $detail_id);
         $this->db->update('carts_details', ['is_cancelled' => '1']);
         redirect('shop/cart/'.$this->session->userdata('cart_id'));
+    }
+
+    public function logout()
+    {
+        $this->session->sess_destroy();
+        redirect('shop');
+    }
+
+    public function activity()
+    {
+        $company_id = $this->session->userdata('company_id');
+        $data['record'] = $this->db->get_where('activities', ['company_id' => $company_id]);
+        $this->template->load('templates/shop_template', 'shop/activity', $data);
     }
 }

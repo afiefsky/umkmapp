@@ -47,7 +47,12 @@ function hari_ini($hari){
 ?>
 <h2>Selamat datang di Halaman Produk UMKM <?php echo $this->session->userdata('company_name'); ?></h2>
 <b>Silahkan pilih produk sesuai dengan kebutuhan anda</b><br><br>
-<?php echo anchor('shop/cart/'.$this->session->userdata('cart_id'), 'Cek Keranjang', ['class' => 'btn btn-primary']); ?><br/><br/>
+<?php echo anchor('shop/cart/'.$this->session->userdata('cart_id'), 'Cek Keranjang', ['class' => 'btn btn-primary']); ?>
+<table width="100%">
+  <tr>
+    <td align="right"><?php echo anchor('shop/logout', 'KELUAR', ['class' => 'btn btn-danger']); ?></td>
+  </tr>
+</table><br>
 <table class="table table-bordered">
   <tr>
   <?php

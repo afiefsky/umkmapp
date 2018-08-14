@@ -141,7 +141,6 @@ function hari_ini($hari){
 
             }
         ?>
-        <?php echo anchor('activity/add', 'Tambah Kegiatan', ['class' => 'btn btn-success']); ?><br /><br />
         <?php
             echo anchor($this->session->userdata('active_url'), 'Kembali', ['class' => 'btn btn-warning']);
         ?><br><br>
@@ -160,7 +159,7 @@ function hari_ini($hari){
                   <u>$r->name</u><br>
                   ".hari_ini($day).", ".date_format($date, 'd-m-Y')."
                   <center>
-                  ".anchor('activity/detail/'.$r->id, '<img id="myImg" src='.base_url().'uploads/'.$r->file_name.' width="200" height="200" />')."
+                  ".anchor('activity/detail/'.$r->id, '<img id="myImg" src='.base_url().'uploads/'.$r->file_name.' width="100" height="100" />')."
                 </td></tr><tr>
                 ";
                 $counter = $counter + 3;
@@ -170,7 +169,7 @@ function hari_ini($hari){
                   <u>$r->name</u><br>
                   ".hari_ini($day).", ".date_format($date, 'd-m-Y')."
                   <center>
-                  ".anchor('activity/detail/'.$r->id, '<img id="myImg" src='.base_url().'uploads/'.$r->file_name.' width="200" height="200" />')."
+                  ".anchor('activity/detail/'.$r->id, '<img id="myImg" src='.base_url().'uploads/'.$r->file_name.' width="100" height="100" />')."
                 </td>
                 ";
               }

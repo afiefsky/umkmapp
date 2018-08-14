@@ -12,10 +12,14 @@
         <!-- CONTENTS -->
         <h2>Daftar Produk UMKM <?php echo $this->session->userdata['company_name']; ?></h2>
         <?php
-        echo form_open('umkm/manage/product');
+        if ($this->session->userdata('username')=='admin' || $this->session->userdata('username')=='superadmin') {
+            echo form_open('admin/check_umkm_product');
+        } else {
+            echo form_open('umkm/manage/product');
+        }
         ?>
         <?php
-        if ($this->session->userdata['username'] == 'admin') {
+        if ($this->session->userdata('username') == 'admin') {
             echo "";
         } else {
             echo '<input type="submit" name="form_page" value="Tambah Produk" class="btn btn-success"><br /><br />';
@@ -29,7 +33,13 @@
             echo anchor('umkm/manage/list/'.$this->session->userdata('company_id'), 'Kembali', ['class' => 'btn btn-danger']);
         }
         ?><br><br>
-        <?php echo form_open('umkm/manage/product'); ?>
+        <?php
+        if ($this->session->userdata('username')=='admin' || $this->session->userdata('username')=='superadmin') {
+            echo form_open('admin/check_umkm_product');
+        } else {
+            echo form_open('umkm/manage/product');
+        }
+        ?>
         <table class="table table-bordered">
           <tr>
             <td><input type="text" name="keyword" class="form-control" placeholder="Masukkan nama produk"></td>

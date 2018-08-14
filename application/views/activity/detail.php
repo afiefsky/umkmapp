@@ -147,7 +147,7 @@ function hari_ini($hari){
         <table class="table table-bordered">
           <tr>
             <td width="30%" align="center">
-              <img id="myImg" src="<?php echo base_url().'uploads/'.$record['file_name'];?>" width="150">
+              <img id="myImg" src="<?php echo base_url().'uploads/'.$record['file_name'];?>" width="300" height="300">
               <div id="myModal" class="modal">
                 <span class="close">&times;</span>
                 <img class="modal-content" id="img01">
@@ -163,7 +163,7 @@ function hari_ini($hari){
               ?>
               <br /><br />
               <b>Keterangan:</b><br />
-              abstergo
+              <?php echo $record['description']; ?>
             </td>
           </tr>
           <tr>

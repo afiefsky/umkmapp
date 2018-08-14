@@ -34,7 +34,7 @@
           <tr>
             <td>Keterangan Singkat</td>
             <td>
-                <textarea rows="4" cols="50" name="description" required>* Mohon isikan keterangan singkat</textarea><br><b>
+                <textarea rows="4" cols="50" name="description" required><?php echo $record['description']; ?></textarea><br><b>
             </td>
           </tr>
           <tr>
@@ -42,7 +42,7 @@
 
             </td>
             <td>
-              <input type="submit" name="submit" class="btn btn-success">
+              <input type="submit" name="submit" value="Submit" class="btn btn-success">
             </td>
           </tr>
         </table>

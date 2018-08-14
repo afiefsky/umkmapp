@@ -77,7 +77,7 @@ function hari_ini($hari){
           </tr>
           <tr>
             <td><b>Tanggal Dibuat:</td>
-            <td><?php echo hari_ini(date_format(date_create($record['created_at']), 'D')).', '.date('d-m-Y'); ?></td>
+            <td><?php echo hari_ini(date_format(date_create($record['created_at']), 'D')).', '.date_format(date_create($record['created_at']), 'd-m-Y'); ?></td>
           </tr>
           <tr>
               <td><b>Opsi:</td>
