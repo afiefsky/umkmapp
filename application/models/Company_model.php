@@ -142,4 +142,9 @@ class Company_model extends CI_Model
                     LIMIT $page, $limiter";
         return $this->db->query($query);
     }
+
+    public function all()
+    {
+        return $this->db->get('companies');
+    }
 }

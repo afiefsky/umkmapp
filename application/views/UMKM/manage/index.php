@@ -48,7 +48,7 @@
                   <tr>
                     <td>$no</td>
                     <td>$r->name</td>
-                    <td><img src='".base_url()."uploads/$r->image_url' width='50'></td>
+                    <td><img src='".base_url()."uploads/$r->image_url' width='100'></td>
                     <td>".$button."</td>
                   </tr>
               ";

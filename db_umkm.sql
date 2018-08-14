@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 14, 2018 at 09:37 AM
+-- Generation Time: Aug 14, 2018 at 11:50 PM
 -- Server version: 10.1.19-MariaDB
 -- PHP Version: 7.0.13
 
@@ -42,15 +42,51 @@ CREATE TABLE `activities` (
 --
 
 INSERT INTO `activities` (`id`, `name`, `date`, `file_name`, `company_id`, `description`, `created_at`, `updated_at`) VALUES
-(3, '222', '2018-08-01', '1-plywood2.jpg', 4, '', '2018-08-12 12:21:56', '0000-00-00 00:00:00'),
-(4, '3333', '2018-06-07', 'trade-1.jpg', 4, '', '2018-08-12 12:22:01', '0000-00-00 00:00:00'),
-(5, 'hore', '2018-08-08', 'blue_color.png', 4, '', '2018-08-12 12:22:06', '0000-00-00 00:00:00'),
-(6, 'hooglap', '2018-08-05', '1-plywood.jpg', 0, '* Mohon isikan keterangan singkat', '2018-08-12 13:07:14', '0000-00-00 00:00:00'),
-(9, 'hooglap', '2018-08-05', '1-prove4.png', 3, 'abeok', '2018-08-12 02:57:19', '0000-00-00 00:00:00'),
-(10, '222', '2018-08-01', '592e2639fdee94b3240a1127b3df95a8-2-open-wavy-wings-by-vexels3.png', 3, '* Mohon isikan keterangan singkat', '2018-08-12 03:00:36', '0000-00-00 00:00:00'),
-(11, '222', '2018-08-01', 'ERROR.jpeg', 3, '* Mohon isikan keterangan singkat', '2018-08-12 03:00:59', '0000-00-00 00:00:00'),
-(12, '222', '2018-08-01', '1-prove5.png', 3, '* Mohon isikan keterangan singkat', '2018-08-12 02:58:27', '0000-00-00 00:00:00'),
-(14, 'hooglap', '2018-08-01', '1-palm1.jpg', 3, 'nothing', '2018-08-12 13:05:11', '0000-00-00 00:00:00');
+(15, 'Kegiatan Buka Bersama Poltek Coy', '2018-03-08', 'bukabersama.jpeg', 16, 'Buka bersama MCD dengan badut dan tata rias lengkap', '2018-08-14 14:04:57', '0000-00-00 00:00:00');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `carts`
+--
+
+CREATE TABLE `carts` (
+  `id` int(11) NOT NULL,
+  `description` text,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `carts`
+--
+
+INSERT INTO `carts` (`id`, `description`, `created_at`, `updated_at`) VALUES
+(21, '21', '2018-08-14 16:01:50', '2018-08-14 16:01:50');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `carts_details`
+--
+
+CREATE TABLE `carts_details` (
+  `id` int(11) NOT NULL,
+  `cart_id` int(11) NOT NULL,
+  `product_id` int(11) NOT NULL,
+  `qty` int(11) DEFAULT NULL,
+  `description` text,
+  `is_cancelled` enum('0','1') NOT NULL DEFAULT '0',
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `carts_details`
+--
+
+INSERT INTO `carts_details` (`id`, `cart_id`, `product_id`, `qty`, `description`, `is_cancelled`, `created_at`, `updated_at`) VALUES
+(18, 21, 17, 5, 'Cart = 21, Product = 17', '1', '2018-08-14 16:33:39', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -63,6 +99,7 @@ CREATE TABLE `companies` (
   `name` text NOT NULL,
   `image_url` text NOT NULL,
   `location` text NOT NULL,
+  `location_full` text,
   `is_confirmed` enum('0','1') NOT NULL DEFAULT '0',
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
@@ -72,22 +109,9 @@ CREATE TABLE `companies` (
 -- Dumping data for table `companies`
 --
 
-INSERT INTO `companies` (`id`, `name`, `image_url`, `location`, `is_confirmed`, `created_at`, `updated_at`) VALUES
-(1, 'Mikro Coy', 'market6.jpg', 'Bandung A', '1', '2018-07-29 13:52:07', '2018-07-29 13:52:07'),
-(2, 'Gisele Alain', 'market6.jpg', 'Cirebon B', '0', '2018-08-02 21:33:29', '2018-08-02 21:33:29'),
-(3, 'Demento', 'phone2.png', 'Jakarta Z', '1', '2018-08-02 21:38:03', '2018-08-02 21:38:03'),
-(4, 'Perfecto', 'perfect.jpg', 'Medan T', '1', '2018-08-09 13:33:36', '2018-08-09 13:33:36'),
-(5, 'Abstergo', 'whatsapp3.png', 'Q-Tre Sulawesi', '1', '2018-08-10 17:29:25', '2018-08-10 17:29:25'),
-(6, 'Halola', '1-prove.png', 'Acc-lair Kalimantan', '1', '2018-08-10 17:30:21', '2018-08-10 17:30:21'),
-(7, 'ABSTERGO', '1-prove.png', 'Habl-Bekasi', '1', '2018-08-12 11:50:38', '2018-08-12 11:50:38'),
-(8, 'UMKM A', '1-palm1.jpg', '', '0', '2018-08-13 15:19:57', '2018-08-13 15:19:57'),
-(9, 'UMKM B', '1-palm2.jpg', '', '0', '2018-08-13 15:20:40', '2018-08-13 15:20:40'),
-(10, 'UMKM C', '1-palm3.jpg', '', '0', '2018-08-13 15:21:08', '2018-08-13 15:21:08'),
-(11, 'UMKM D', '1-palm4.jpg', '', '0', '2018-08-13 15:21:19', '2018-08-13 15:21:19'),
-(12, 'UMKM E', '1-palm5.jpg', '', '0', '2018-08-13 15:21:32', '2018-08-13 15:21:32'),
-(13, 'UMKM F', '1-palm6.jpg', '', '0', '2018-08-13 15:21:44', '2018-08-13 15:21:44'),
-(14, 'UMKM G', '1-palm7.jpg', '', '0', '2018-08-13 15:21:55', '2018-08-13 15:21:55'),
-(15, 'UMKM H', '1-plywood.jpg', '', '0', '2018-08-13 15:23:42', '2018-08-13 15:23:42');
+INSERT INTO `companies` (`id`, `name`, `image_url`, `location`, `location_full`, `is_confirmed`, `created_at`, `updated_at`) VALUES
+(16, 'Bandung Kopi Poltek Coy', 'QPI.png', 'Bandung', 'Jalan Sariasih No.54, Sarijadi, Sukasari, Kota Bandung, Jawa Barat 40151', '1', '2018-08-14 12:42:14', '2018-08-14 12:42:14'),
+(17, 'Kedai Burger Krusty Pos', 'burger.png', 'Bandung', 'Jalan Sariasih No.54, Sarijadi, Sukasari, Kota Bandung, Jawa Barat 40151', '1', '2018-08-14 12:47:07', '2018-08-14 12:47:07');
 
 -- --------------------------------------------------------
 
@@ -111,19 +135,9 @@ CREATE TABLE `products` (
 --
 
 INSERT INTO `products` (`id`, `name`, `file_name`, `qty`, `company_id`, `price`, `created_at`, `updated_at`) VALUES
-(3, 'Decision', '1-palm1.jpg', 90, 4, 0, '2018-08-09 22:19:04', '2018-08-09 22:19:04'),
-(4, 'Market', 'market12.jpg', 90, 2, 0, '2018-08-10 15:40:17', '2018-08-10 15:40:17'),
-(6, 'Halal B', '1-palm2.jpg', 10, 2, 0, '2018-08-10 16:23:33', '2018-08-10 16:23:33'),
-(7, 'Pocari Sweat', 'pocari.jpeg', 100, 3, 0, '2018-08-11 12:29:07', '2018-08-11 12:29:07'),
-(8, 'Coklat Panas Pocari', '1-palm.jpg', 7, 3, 0, '2018-08-13 14:42:44', '2018-08-13 14:42:44'),
-(9, 'Produk A', '1-plywood1.jpg', 0, 3, 0, '2018-08-13 15:51:49', '2018-08-13 15:51:49'),
-(10, 'Produk B', '1-palm8.jpg', 10, 3, 0, '2018-08-13 15:52:26', '2018-08-13 15:52:26'),
-(11, 'Produk C', '1-plywood2.jpg', 12, 3, 0, '2018-08-13 15:52:41', '2018-08-13 15:52:41'),
-(12, 'Produk D', '1-prove.png', 14, 3, 0, '2018-08-13 15:52:54', '2018-08-13 15:52:54'),
-(13, 'Produk E', '1-prove1.png', 14, 3, 0, '2018-08-13 15:53:08', '2018-08-13 15:53:08'),
-(14, 'Produk F', '592e2639fdee94b3240a1127b3df95a8-2-open-wavy-wings-by-vexels.png', 16, 3, 0, '2018-08-13 15:53:57', '2018-08-13 15:53:57'),
-(15, 'Barang Renton', 'doha-2366127_1920.jpg', 100, 3, 100000000, '2018-08-14 02:20:02', '2018-08-14 02:20:02'),
-(16, 'Beng-Beng', '1-A2.jpg', 60, 3, 8000, '2018-08-14 02:32:09', '2018-08-14 02:32:09');
+(17, 'Kopi Nescafe', 'nescafe_exclusive.png', 100, 16, 10000, '2018-08-14 12:44:49', '2018-08-14 12:44:49'),
+(18, 'Exclusive Burger Size XXL', 'superbigburger.jpg', 100, 17, 50000, '2018-08-14 12:50:01', '2018-08-14 12:50:01'),
+(19, 'Kopi Si Hitam Pekat', 'blackcoffee.png', 150, 16, 15000, '2018-08-14 14:21:32', '2018-08-14 14:21:32');
 
 -- --------------------------------------------------------
 
@@ -207,7 +221,9 @@ INSERT INTO `users_companies` (`id`, `user_id`, `company_id`) VALUES
 (12, 2, 12),
 (13, 2, 13),
 (14, 2, 14),
-(15, 2, 15);
+(15, 2, 15),
+(16, 2, 16),
+(17, 2, 17);
 
 -- --------------------------------------------------------
 
@@ -236,6 +252,18 @@ INSERT INTO `users_roles` (`id`, `user_id`, `role_id`) VALUES
 -- Indexes for table `activities`
 --
 ALTER TABLE `activities`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `carts`
+--
+ALTER TABLE `carts`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `carts_details`
+--
+ALTER TABLE `carts_details`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -283,17 +311,27 @@ ALTER TABLE `users_roles`
 -- AUTO_INCREMENT for table `activities`
 --
 ALTER TABLE `activities`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+--
+-- AUTO_INCREMENT for table `carts`
+--
+ALTER TABLE `carts`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+--
+-- AUTO_INCREMENT for table `carts_details`
+--
+ALTER TABLE `carts_details`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 --
 -- AUTO_INCREMENT for table `companies`
 --
 ALTER TABLE `companies`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 --
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 --
 -- AUTO_INCREMENT for table `roles`
 --
@@ -308,7 +346,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `users_companies`
 --
 ALTER TABLE `users_companies`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 --
 -- AUTO_INCREMENT for table `users_roles`
 --

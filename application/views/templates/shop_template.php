@@ -59,7 +59,7 @@ function current_date($hari){
     <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/lineicons/style.css">
 
     <!-- Custom styles for this template -->
-    <link href="<?php echo base_url(); ?>assets/css/style.css" rel="stylesheet">
+    <link href="<?php echo base_url(); ?>assets/css/shop-style.css" rel="stylesheet">
     <link href="<?php echo base_url(); ?>assets/css/style-responsive.css" rel="stylesheet">
 
     <script src="<?php echo base_url(); ?>assets/js/chart-master/Chart.js"></script>
@@ -73,11 +73,11 @@ function current_date($hari){
       *********************************************************************************************************************************************************** -->
       <!--header start-->
       <header class="header black-bg">
-              <div class="sidebar-toggle-box">
+              <!-- <div class="sidebar-toggle-box">
                   <div class="fa fa-bars tooltips" data-placement="right" data-original-title="Toggle Navigation"></div>
-              </div>
+              </div> -->
             <!--logo start-->
-            <a href="javascript:;" class="logo"><b>UMKM APP</b></a>
+            <?php echo anchor('shop', '<b>UMKM APP</b>', ['class' => 'logo']); ?>
             <!--logo end-->
             <div class="nav notify-row" id="top_menu">
                 <!--  notification start -->
@@ -229,7 +229,7 @@ function current_date($hari){
             </div>
             <div class="top-menu">
                 <ul class="nav pull-right top-menu">
-                    <li><?php echo anchor('auth/logout', 'Logout', ['class' => 'logout']); ?></li>
+                    <!-- <li><?php echo anchor('auth/logout', 'Logout', ['class' => 'logout']); ?></li> -->
                 </ul>
             </div>
         </header>
@@ -239,38 +239,7 @@ function current_date($hari){
       MAIN SIDEBAR MENU
       *********************************************************************************************************************************************************** -->
       <!--sidebar start-->
-      <aside>
-          <div id="sidebar"  class="nav-collapse ">
-              <!-- sidebar menu start-->
-              <ul class="sidebar-menu" id="nav-accordion">
 
-                  <!-- <p class="centered"><a href="<?php echo base_url(); ?>profile.html"><img src="<?php echo base_url(); ?>assets/img/ui-sam.jpg" class="img-circle" width="60"></a></p> -->
-                  <p class="centered"><img src="<?php echo base_url(); ?>assets/img/ui-sam.jpg" class="img-circle" width="60"></p>
-                  <h5 class="centered"><?php echo $this->session->userdata('username'); ?></h5>
-
-                  <li class="mt">
-                      <!-- <a class="active" href="<?php echo base_url(); ?>index.html"> -->
-                      <a href="<?php echo base_url(); ?>index.php/dashboard">
-                        <i class="fa fa-dashboard"></i>
-                        <span>Beranda</span>
-                      </a>
-                  </li>
-                  <!-- below is example with submenu -->
-                  <li class="sub-menu">
-                      <a href="javascript:;" >
-                          <i class="fa fa-desktop"></i>
-                          <span>UMKM</span>
-                      </a>
-                      <ul class="sub">
-                          <li><a href="<?php echo base_url(); ?>index.php/umkm/manage">Daftar UMKM</a></li>
-                          <li><a href="<?php echo base_url(); ?>index.php/umkm/register">Tambah</a></li>
-                      </ul>
-                  </li>
-                  <!-- end sub menu -->
-              </ul>
-              <!-- sidebar menu end-->
-          </div>
-      </aside>
       <!--sidebar end-->
 
       <!-- **********************************************************************************************************************************************************

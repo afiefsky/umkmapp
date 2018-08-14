@@ -20,7 +20,7 @@ class Dashboard extends CI_Controller
         $this->session->set_userdata([
         	'num_rows_companies' => $num_rows_companies
         ]);
-        $data['active_page'] = 'dashboard';
+
         $data['record'] = $this->activity->list($user_id);
         $this->template->load('templates/main_template', 'dashboard/index', $data);
     }

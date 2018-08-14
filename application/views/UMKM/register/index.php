@@ -12,10 +12,17 @@
                 <td><input type="text" name="name" class="form-control" placeholder="Masukkan nama UMKM" required></td>
               </tr>
               <tr>
-                <td>Lokasi</td>
+                <td>Kota</td>
                 <td>
                   <textarea name="location" class="form-control" required></textarea><br>
-                  <b>* MOHON ISI LOKASI UMKM ANDA DENGAN SEBENAR-BENARNYA!!</b>
+                  <b>* MOHON KETIKKAN NAMA KOTA DENGAN BENAR!!</b>
+                </td>
+              </tr>
+              <tr>
+                <td>Alamat Lengkap</td>
+                <td>
+                  <textarea name="location_full" class="form-control" required></textarea><br>
+                  <b>* MOHON KETIKKAN ALAMAT LENGKAP DENGAN SEBENAR-BENARNYA!!</b>
                 </td>
               </tr>
               <tr>

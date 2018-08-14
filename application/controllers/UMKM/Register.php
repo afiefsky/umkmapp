@@ -21,6 +21,8 @@ class Register extends CI_Controller
 
             $data = [
                 'name' => $this->input->post('name'),
+                'location' => $this->input->post('location'),
+                'location_full' => $this->input->post('location_full'),
                 'image_url' => $data['file_name']
             ];
 
