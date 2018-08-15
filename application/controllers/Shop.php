@@ -166,6 +166,10 @@ class Shop extends CI_Controller
             $transaction_code = $this->input->post('transaction_code');
             $data = $this->db->get_where('carts', ['transaction_code' => $transaction_code]);
             if ($data->num_rows() > 0) {
+                if ($data->row_array()['status']=='2') {
+                    $this->session->set_flashdata('message', 'MAAF, TRANSAKSI TERSEBUT TELAH DIKIRIMKAN SEBELUMNYA!!!');
+                    redirect('shop/check_transfer');
+                }
                 $this->session->set_userdata('transaction_code', $transaction_code);
                 redirect('shop/submit_transfer_proof');
             } else {
@@ -179,8 +183,38 @@ class Shop extends CI_Controller
 
     public function submit_transfer_proof()
     {
-        $transaction_code = $this->session->userdata('transaction_code');
-        $data['record'] = $this->db->get_where('carts', ['transaction_code' => $transaction_code])->row_array();
-        $this->template->load('templates/shop_template', 'shop/submit_transfer_proof', $data);
+        if (isset($_POST['submit'])) {
+            $config['upload_path']          = './uploads/';
+            $config['allowed_types']        = 'gif|jpg|png|jpeg';
+
+            $this->load->library('upload', $config);
+
+            $this->upload->do_upload('file_name');
+
+            $data = $this->upload->data();
+
+            $cart_id = $this->session->userdata('cart_id');
+
+            $data = [
+                'status' => '2',
+                'file_name' => $data['file_name']
+            ];
+
+            $this->db->where('id', $cart_id);
+            $this->db->update('carts', $data);
+
+            $this->session->set_flashdata('message', '<h3>BARANG AKAN SEGERA DIKIRIMKAN OLEH PIHAK UMKM TERKAIT</h3>');
+            $this->session->set_flashdata('above_message', '<h3>BUKTI UNTUK TRANSAKSI DENGAN KODE: ['.$this->session->userdata('transaction_code').'] TELAH BERHASIL DIKIRIMKAN!!</h3>');
+            redirect('shop');
+        } else {
+            $transaction_code = $this->session->userdata('transaction_code');
+            $data['record'] = $this->db->get_where('carts', ['transaction_code' => $transaction_code])->row_array();
+
+            $cart_id = $data['record']['id'];
+            $this->session->set_userdata('cart_id', $cart_id);
+            $data['record_detail'] = $this->cart_detail->get_with_product($cart_id)->result();
+
+            $this->template->load('templates/shop_template', 'shop/submit_transfer_proof', $data);
+        }
     }
 }

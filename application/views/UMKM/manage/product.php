@@ -62,7 +62,7 @@
           <?php
           $no = 1 + $this->uri->segment(4);
           foreach ($record as $r) {
-              if ($this->session->userdata['username']=='admin') {
+              if ($this->session->userdata('username')=='admin') {
                   $edit_button = '';
                   $delete_button = '';
               } else {
