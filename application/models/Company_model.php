@@ -8,7 +8,7 @@ class Company_model extends CI_Model
     	// RETURN THE ID FROM THE NEWEST INSERTED DATA TO COMPANY TABLE
     	$insert_id = $this->db->insert_id();
 
-    	$user_id = $this->session->userdata('id');
+    	$user_id = $this->session->userdata('user_id');
     	$data = [
     		'user_id' => $user_id,
     		'company_id' => $insert_id
@@ -145,6 +145,7 @@ class Company_model extends CI_Model
 
     public function all()
     {
+        $this->db->where('is_confirmed !=', '0');
         return $this->db->get('companies');
     }
 }
