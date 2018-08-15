@@ -63,7 +63,7 @@ class Admin extends CI_Controller
         } elseif (isset($_POST['form_page'])) {
             $data['active_page'] = 'umkm/manage';
             $data['message'] = '';
-            $this->template->load('templates/main_template', 'umkm/manage/add_product', $data);
+            $this->template->load('templates/admin_template', 'umkm/manage/add_product', $data);
         } elseif (isset($_POST['submit_search'])) {
             $keyword = $this->input->post('keyword');
             $company_id = $this->session->userdata('company_id');
@@ -87,7 +87,7 @@ class Admin extends CI_Controller
             // paging logic end
 
             $data['record'] = $record_paging->result();
-            $this->template->load('templates/main_template', 'umkm/manage/product', $data);
+            $this->template->load('templates/admin_template', 'umkm/manage/product', $data);
         } else {
             $company_id = $this->session->userdata('company_id');
             $user_id = $this->session->userdata('user_id');
@@ -107,7 +107,7 @@ class Admin extends CI_Controller
 
             $record_paging = $this->company->product_paging($page, $config['per_page'], $company_id);
             $data['record'] = $record_paging->result();
-            $this->template->load('templates/main_template', 'umkm/manage/product', $data);
+            $this->template->load('templates/admin_template', 'umkm/manage/product', $data);
         }
     }
 

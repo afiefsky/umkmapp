@@ -48,7 +48,14 @@
   <tr>
     <td colspan="5"></td>
     <td align="left">
-      <?php echo anchor('', 'Cek-out dan BAYAR', ['class' => 'btn btn-success']); ?>
+      <?php
+      if (empty($this->session->userdata('cart_id'))) {
+          $out_button = 'SILAHKAN MEMBELI SEBELUM CEKOUT';
+      } else {
+          $out_button = anchor('shop/process', 'Cek-out dan BAYAR', ['class' => 'btn btn-success']);
+      }
+      echo $out_button;
+      ?>
     </td>
   </tr>
 </table>

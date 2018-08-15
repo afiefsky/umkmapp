@@ -129,4 +129,58 @@ class Shop extends CI_Controller
         $this->session->set_userdata('company_name', $data['record']['name']);
         $this->template->load('templates/shop_template', 'shop/detail_activity', $data);
     }
+
+    public function generateRandomString($length = 10) {
+        $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        $charactersLength = strlen($characters);
+        $randomString = '';
+        for ($i = 0; $i < $length; $i++) {
+            $randomString .= $characters[rand(0, $charactersLength - 1)];
+        }
+        return $randomString;
+    }
+
+    public function process()
+    {
+        $transaction_code = strtoupper($this->generateRandomString());
+        $check_code = $this->db->get_where('carts', ['transaction_code'=>$transaction_code])->num_rows();
+        if ($check_code > 0) {
+            $this->process();
+        }
+
+        $cart_id = $this->session->userdata('cart_id');
+        $company_id = $this->session->userdata('company_id');
+        $data = $this->db->get_where('users_companies', ['company_id' => $company_id])->row_array();
+        $data = $this->db->get_where('users', ['id' => $data['user_id']])->row_array();
+
+        $this->db->where('id', $cart_id);
+        $this->db->update('carts', ['status' => '1', 'transaction_code' => $transaction_code]);
+        $this->session->set_flashdata('above_message', '<h3>KODE TRANSAKSI (KAPITAL): <br><b>'.$transaction_code.'</b></h3>');
+        $this->session->set_flashdata('message', '<h3>KIRIM NOMOR ANDA KE REKENING <br><b>('.$data['bank_name'].') -- '.$data['bank_account_number'].' -- A/N: '.$data['bank_account_owner'].'</b></h3>');
+        redirect('shop');
+    }
+
+    public function check_transfer()
+    {
+        if (isset($_POST['submit'])) {
+            $transaction_code = $this->input->post('transaction_code');
+            $data = $this->db->get_where('carts', ['transaction_code' => $transaction_code]);
+            if ($data->num_rows() > 0) {
+                $this->session->set_userdata('transaction_code', $transaction_code);
+                redirect('shop/submit_transfer_proof');
+            } else {
+                $this->session->set_flashdata('message', 'MAAF KODE TRANSAKSI TIDAK DITEMUKAN!');
+                redirect('shop/check_transfer');
+            }
+        } else {
+            $this->template->load('templates/shop_template', 'shop/check_transfer');
+        }
+    }
+
+    public function submit_transfer_proof()
+    {
+        $transaction_code = $this->session->userdata('transaction_code');
+        $data['record'] = $this->db->get_where('carts', ['transaction_code' => $transaction_code])->row_array();
+        $this->template->load('templates/shop_template', 'shop/submit_transfer_proof', $data);
+    }
 }

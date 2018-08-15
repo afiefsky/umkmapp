@@ -38,8 +38,21 @@ function hari_ini($hari){
 
 }
 ?>
+<table width="100%">
+  <tr>
+    <td><?php echo $this->session->flashdata('above_message'); ?></td>
+  </tr>
+  <tr>
+    <td><?php echo $this->session->flashdata('message'); ?></td>
+  </tr>
+</table>
 <h2>Selamat datang di UMKM APP</h2>
 <b>Silahkan pilih UMKM sesuai dengan kebutuhan anda</b><br><br>
+<table width="100%">
+  <tr>
+    <td align="right"><h4>Atau ajukan bukti transfer atas pembelian anda di <?php echo anchor('shop/check_transfer', 'SINI', ['class' => 'btn btn-success']); ?></h4></td>
+  </tr>
+</table>
 <table class="table table-bordered">
   <tr>
   <?php
