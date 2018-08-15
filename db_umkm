@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 15, 2018 at 12:51 PM
+-- Generation Time: Aug 15, 2018 at 02:49 PM
 -- Server version: 10.1.19-MariaDB
 -- PHP Version: 7.0.13
 
@@ -42,7 +42,8 @@ CREATE TABLE `activities` (
 --
 
 INSERT INTO `activities` (`id`, `name`, `date`, `file_name`, `company_id`, `description`, `created_at`, `updated_at`) VALUES
-(15, 'Kegiatan Buka Bersama Poltek Coy', '2018-03-08', 'kopi_bersama.jpeg', 16, 'Acara meriah diminati oleh banyak anak-anak umur 5-10 tahun', '2018-08-14 17:33:53', '0000-00-00 00:00:00');
+(15, 'Kegiatan Buka Bersama Poltek Coy', '2018-03-08', 'kopi_bersama.jpeg', 16, 'Acara meriah diminati oleh banyak anak-anak umur 5-10 tahun', '2018-08-14 17:33:53', '0000-00-00 00:00:00'),
+(16, 'Kegiatan Kurban', '2018-08-15', 'corned.jpeg', 16, 'Corned beef', '2018-08-15 06:15:24', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -159,7 +160,8 @@ INSERT INTO `companies` (`id`, `name`, `image_url`, `location`, `location_full`,
 (18, 'Halal of the Road', 'wadoel-food-cout-di-jalan-geger-kalong_20170710_183823.jpg', 'Bandung', 'Jl. Gegerkalong KulonGegerkalong, Sukasari, Kota Bandung, Jawa Barat 40153', '0', '2018-08-15 03:53:31', '2018-08-15 03:53:31'),
 (19, 'Rumah Coklat', 'coklat.jpeg', 'Bandung', 'Jl. Permata Kopo Sayati, Margahayu, Bandung, Jawa Barat 40228', '0', '2018-08-15 04:33:58', '2018-08-15 04:33:58'),
 (20, 'Rumah Strawberry', 'strawberry.jpeg', 'Bandung', 'Jl. Permata Kopo Sayati, Margahayu, Bandung, Jawa Barat 40228', '0', '2018-08-15 04:41:31', '2018-08-15 04:41:31'),
-(21, 'Rumah Makan Padang Ke-Ba', 'padangbandung.jpeg', 'Bandung', 'Jalan Cihampelas 160, Cipaganti, Coblong, Cipaganti, Coblong, Kota Bandung, Jawa Barat 40131', '0', '2018-08-15 04:51:18', '2018-08-15 04:51:18');
+(21, 'Rumah Makan Padang Ke-Ba', 'padangbandung.jpeg', 'Bandung', 'Jalan Cihampelas 160, Cipaganti, Coblong, Cipaganti, Coblong, Kota Bandung, Jawa Barat 40131', '0', '2018-08-15 04:51:18', '2018-08-15 04:51:18'),
+(22, 'UMKM A', 'blackcoffee1.png', 'KOTA A', 'ALAMAT LENGKAP A', '0', '2018-08-15 07:47:37', '2018-08-15 07:47:37');
 
 -- --------------------------------------------------------
 
@@ -240,7 +242,8 @@ INSERT INTO `users` (`id`, `username`, `password`, `bank_account_number`, `bank_
 (2, 'silviasky', '3e47b75000b0924b6c9ba5759a7cf15d', '20011000310', 'BNI', 'Silvia Skyden', '1', '2018-08-02 21:32:14', '2018-08-02 21:32:14'),
 (3, 'admin', '21232f297a57a5a743894a0e4a801fc3', NULL, NULL, NULL, '1', '2018-08-09 13:26:58', '2018-08-09 13:26:58'),
 (4, 'potter', '3e47b75000b0924b6c9ba5759a7cf15d', NULL, NULL, NULL, '0', '2018-08-10 14:59:29', '2018-08-10 14:59:29'),
-(5, 'drangleic', '3e47b75000b0924b6c9ba5759a7cf15d', NULL, NULL, NULL, '0', '2018-08-10 15:57:03', '2018-08-10 15:57:03');
+(5, 'drangleic', '3e47b75000b0924b6c9ba5759a7cf15d', NULL, NULL, NULL, '0', '2018-08-10 15:57:03', '2018-08-10 15:57:03'),
+(6, 'devilman', '3e47b75000b0924b6c9ba5759a7cf15d', NULL, NULL, NULL, '0', '2018-08-15 07:42:29', '2018-08-15 07:42:29');
 
 -- --------------------------------------------------------
 
@@ -279,7 +282,8 @@ INSERT INTO `users_companies` (`id`, `user_id`, `company_id`) VALUES
 (18, 2, 18),
 (19, 2, 19),
 (20, 2, 20),
-(21, 2, 21);
+(21, 2, 21),
+(22, 6, 22);
 
 -- --------------------------------------------------------
 
@@ -367,7 +371,7 @@ ALTER TABLE `users_roles`
 -- AUTO_INCREMENT for table `activities`
 --
 ALTER TABLE `activities`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 --
 -- AUTO_INCREMENT for table `carts`
 --
@@ -382,7 +386,7 @@ ALTER TABLE `carts_details`
 -- AUTO_INCREMENT for table `companies`
 --
 ALTER TABLE `companies`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 --
 -- AUTO_INCREMENT for table `products`
 --
@@ -397,12 +401,12 @@ ALTER TABLE `roles`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT for table `users_companies`
 --
 ALTER TABLE `users_companies`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 --
 -- AUTO_INCREMENT for table `users_roles`
 --
