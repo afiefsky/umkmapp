@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 15, 2018 at 12:01 PM
+-- Generation Time: Aug 15, 2018 at 12:51 PM
 -- Server version: 10.1.19-MariaDB
 -- PHP Version: 7.0.13
 
@@ -82,7 +82,8 @@ INSERT INTO `carts` (`id`, `status`, `transaction_code`, `file_name`, `descripti
 (35, '1', 'L1MEACZEUN', NULL, '35', '2018-08-15 02:33:39', '2018-08-15 02:33:39'),
 (36, '1', '18EBVDLVZP', NULL, '36', '2018-08-15 02:46:33', '2018-08-15 02:46:33'),
 (37, '1', 'cd3de5fbd570809fe181fc0d89c1c65f', NULL, '37', '2018-08-15 03:00:53', '2018-08-15 03:00:53'),
-(38, '1', '4NUSOMNQXX', 'buktitransfer6.jpg', '38', '2018-08-02 03:02:04', '2018-08-15 03:02:04');
+(38, '1', '4NUSOMNQXX', 'buktitransfer6.jpg', '38', '2018-08-02 03:02:04', '2018-08-15 03:02:04'),
+(40, '1', 'N4A1T7BUIP', NULL, '40', '2018-08-15 05:50:37', '2018-08-15 05:50:37');
 
 -- --------------------------------------------------------
 
@@ -127,7 +128,9 @@ INSERT INTO `carts_details` (`id`, `cart_id`, `product_id`, `qty`, `description`
 (36, 36, 17, 1, 'Cart = 36, Product = 17', '0', '2018-08-15 02:46:34', '0000-00-00 00:00:00'),
 (37, 37, 18, 1, 'Cart = 37, Product = 18', '0', '2018-08-15 03:00:54', '0000-00-00 00:00:00'),
 (38, 38, 18, 1, 'Cart = 38, Product = 18', '0', '2018-08-15 03:02:04', '0000-00-00 00:00:00'),
-(39, 39, 18, 1, 'Cart = 39, Product = 18', '0', '2018-08-15 03:43:23', '0000-00-00 00:00:00');
+(39, 39, 18, 1, 'Cart = 39, Product = 18', '0', '2018-08-15 03:43:23', '0000-00-00 00:00:00'),
+(40, 38, 17, 1, 'Cart = 38, Product = 17', '0', '2018-08-15 05:50:05', '0000-00-00 00:00:00'),
+(41, 40, 17, 1, 'Cart = 40, Product = 17', '0', '2018-08-15 05:50:37', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -369,12 +372,12 @@ ALTER TABLE `activities`
 -- AUTO_INCREMENT for table `carts`
 --
 ALTER TABLE `carts`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
 --
 -- AUTO_INCREMENT for table `carts_details`
 --
 ALTER TABLE `carts_details`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
 --
 -- AUTO_INCREMENT for table `companies`
 --
