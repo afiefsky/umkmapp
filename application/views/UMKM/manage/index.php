@@ -42,7 +42,8 @@
             if ($r->is_confirmed=='0') {
               $button = 'MOHON TUNGGU KONFIRMASI ADMIN';
             } else {
-              $button = anchor('UMKM/manage/list/'.$r->company_id, 'Enter', ['class' => 'btn btn-primary']);
+              $button = anchor('UMKM/manage/list/'.$r->company_id, 'Enter', ['class' => 'btn btn-primary']) .
+                        '<br><br>'.anchor('umkm/manage/delete/'.$r->company_id, 'Delete', ['class'=>'btn btn-danger', 'onclick'=>'return confirm_delete()']);
             }
               echo "
                   <tr>
@@ -64,3 +65,8 @@
 <?php
 echo $paging;
 ?>
+<script type="text/javascript">
+function confirm_delete() {
+  return confirm('APAKAH ANDA YAKIN? PERINTAH TIDAK DAPAT DIBATALKAN!!');
+}
+</script>

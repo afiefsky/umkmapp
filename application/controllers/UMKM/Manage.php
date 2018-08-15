@@ -150,4 +150,16 @@ class Manage extends CI_Controller
             $this->template->load('templates/main_template', 'umkm/manage/product', $data);
         }
     }
+
+    public function delete()
+    {
+        $company_id = $this->uri->segment(4);
+        $data = $this->db->get_where('companies', ['id'=>$company_id])->row_array();
+        $company_name = $data['name'];
+        $this->db->where('id', $company_id);
+        $this->db->update('companies', ['is_deleted' => '1']);
+
+        $this->session->set_flashdata('message', '<h4>UMKM '.$company_name.' TELAH BERHASIL DI HAPUS!!</h4>');
+        redirect('umkm/manage');
+    }
 }

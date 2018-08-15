@@ -42,6 +42,7 @@ class Company_model extends CI_Model
         $this->db->join('companies AS com', 'com.id = ucm.company_id', 'right');
         $this->db->join('users AS usr', 'usr.id = ucm.user_id', 'left');
         $this->db->where('usr.id', $user_id);
+        $this->db->where('com.is_deleted !=', '1');
         $this->db->order_by('com.id');
         return $this->db->get();
     }
@@ -58,6 +59,7 @@ class Company_model extends CI_Model
         $this->db->join('companies AS com', 'com.id = ucm.company_id', 'right');
         $this->db->join('users AS usr', 'usr.id = ucm.user_id', 'left');
         $this->db->where('usr.id', $user_id);
+        $this->db->where('com.is_deleted !=', '1');
         $this->db->order_by('com.id');
         $this->db->limit($limiter, $page);
         return $this->db->get();
@@ -75,6 +77,7 @@ class Company_model extends CI_Model
         $this->db->join('companies AS com', 'com.id = ucm.company_id', 'right');
         $this->db->join('users AS usr', 'usr.id = ucm.user_id', 'left');
         $this->db->where('usr.id', $user_id);
+        $this->db->where('com.is_deleted !=', '1');
         $this->db->like('com.name', $keyword);
         $this->db->order_by('com.id');
         return $this->db->get();
@@ -92,6 +95,7 @@ class Company_model extends CI_Model
         $this->db->join('companies AS com', 'com.id = ucm.company_id', 'right');
         $this->db->join('users AS usr', 'usr.id = ucm.user_id', 'left');
         $this->db->where('usr.id', $user_id);
+        $this->db->where('com.is_deleted !=', '1');
         $this->db->like('com.name', $keyword);
         $this->db->order_by('com.id');
         $this->db->limit($limiter, $page);
