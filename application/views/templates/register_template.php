@@ -4,9 +4,9 @@
 <head>
   <meta charset="UTF-8">
   <title>UMKM-APP</title>
-  
-  
-  
+
+
+
       <style>
       /* NOTE: The styles were added inline because Prefixfree needs access to your styles and they must be inlined if they are on local disk! */
       @import url(https://fonts.googleapis.com/css?family=Exo:100,200,400);
@@ -30,7 +30,7 @@ body{
 	bottom: -40px;
 	width: auto;
 	height: auto;
-	background-image: url(<?php echo base_url().'assets/images/market.jpg'; ?>);
+	background-image: url(<?php echo base_url().'assets/images/market.jpeg'; ?>);
 	background-size: cover;
 	-webkit-filter: blur(5px);
 	z-index: 0;
@@ -51,7 +51,7 @@ body{
 
 .header{
 	position: absolute;
-	top: calc(50% - 35px);
+	top: calc(50% - 200px);
 	left: calc(50% - 255px);
 	z-index: 2;
 }
@@ -70,7 +70,7 @@ body{
 
 .login{
 	position: absolute;
-	top: calc(50% - 75px);
+	top: calc(50% - 255px);
 	left: calc(50% - 50px);
 	height: 150px;
 	width: 350px;
@@ -79,7 +79,7 @@ body{
 }
 
 .login input[type=text]{
-	width: 250px;
+	width: 400px;
 	height: 30px;
 	background: transparent;
 	border: 1px solid rgba(255,255,255,0.6);
@@ -89,6 +89,18 @@ body{
 	font-size: 16px;
 	font-weight: 400;
 	padding: 4px;
+}
+.login input[type=email]{
+    width: 250px;
+    height: 30px;
+    background: transparent;
+    border: 1px solid rgba(255,255,255,0.6);
+    border-radius: 2px;
+    color: #fff;
+    font-family: 'Exo', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    padding: 4px;
 }
 
 .login input[type=password]{
@@ -132,6 +144,10 @@ body{
 	outline: none;
 	border: 1px solid rgba(255,255,255,0.9);
 }
+.login input[type=email]:focus{
+    outline: none;
+    border: 1px solid rgba(255,255,255,0.9);
+}
 
 .login input[type=password]:focus{
 	outline: none;
@@ -168,7 +184,7 @@ body{
 		</div>
   <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
 
-  
+
 
 </body>
 

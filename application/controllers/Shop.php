@@ -157,6 +157,26 @@ class Shop extends CI_Controller
         $this->db->update('carts', ['status' => '1', 'transaction_code' => $transaction_code]);
         $this->session->set_flashdata('above_message', '<h3>KODE TRANSAKSI (KAPITAL): <br><b>'.$transaction_code.'</b></h3>');
         $this->session->set_flashdata('message', '<h3>KIRIM NOMOR ANDA KE REKENING <br><b>('.$data['bank_name'].') -- '.$data['bank_account_number'].' -- A/N: '.$data['bank_account_owner'].'</b></h3>');
+
+        // email algorithm start
+        $config = Array(
+            'protocol' => 'smtp',
+            'smtp_host' => 'ssl://smtp.gmail.com',
+            'smtp_port' => '465',
+            'smtp_user' => 'arezkyameliap@gmail.com',
+            'smtp_pass' => 'poldamku'
+        );
+        $this->load->library('email', $config);
+        $this->email->set_newline("\r\n");
+
+        $this->email->from('arezkyameliap@gmail.com', 'arezkyameliap');
+        $this->email->to('afiefsky@gmail.com');
+
+        $this->email->subject('NOTIFIKASI UMKMAPP');
+        $this->email->message("Kode Transaksi = ".$transaction_code."\nMohon lakukan pembayaran dengan transfer ke rekening :\r\n\n(".$data['bank_name'].") -- ".$data['bank_account_number']." -- A/N = ".$data['bank_account_owner']);
+        $this->email->send();
+        // email algorithm end
+
         redirect('shop');
     }
 
@@ -205,6 +225,26 @@ class Shop extends CI_Controller
 
             $this->session->set_flashdata('message', '<h3>BARANG AKAN SEGERA DIKIRIMKAN OLEH PIHAK UMKM TERKAIT</h3>');
             $this->session->set_flashdata('above_message', '<h3>BUKTI UNTUK TRANSAKSI DENGAN KODE: ['.$this->session->userdata('transaction_code').'] TELAH BERHASIL DIKIRIMKAN!!</h3>');
+
+            // email algorithm start
+            $config = Array(
+                'protocol' => 'smtp',
+                'smtp_host' => 'ssl://smtp.gmail.com',
+                'smtp_port' => '465',
+                'smtp_user' => 'arezkyameliap@gmail.com',
+                'smtp_pass' => 'poldamku'
+            );
+            $this->load->library('email', $config);
+            $this->email->set_newline("\r\n");
+
+            $this->email->from('arezkyameliap@gmail.com', 'arezkyameliap');
+            $this->email->to('afiefsky@gmail.com');
+
+            $this->email->subject('NOTIFIKASI UMKMAPP');
+            $this->email->message("Kode Transaksi = ".$transaction_code."\nMohon lakukan pembayaran dengan transfer ke rekening :\r\n\n(".$data['bank_name'].") -- ".$data['bank_account_number']." -- A/N = ".$data['bank_account_owner']);
+            $this->email->send();
+            // email algorithm end
+
             redirect('shop');
         } else {
             $transaction_code = $this->session->userdata('transaction_code');
