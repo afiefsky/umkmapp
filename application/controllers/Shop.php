@@ -217,14 +217,18 @@ class Shop extends CI_Controller
 
             $data = [
                 'status' => '2',
-                'file_name' => $data['file_name']
+                'file_name' => $data['file_name'],
+                'name' => $this->input->post('name'),
+                'address' => $this->input->post('address'),
+                'email' => $this->input->post('email'),
+                'phone' => $this->input->post('phone')
             ];
 
             $this->db->where('id', $cart_id);
             $this->db->update('carts', $data);
 
             $this->session->set_flashdata('message', '<h3>BARANG AKAN SEGERA DIKIRIMKAN OLEH PIHAK UMKM TERKAIT</h3>');
-            $this->session->set_flashdata('above_message', '<h3>BUKTI UNTUK TRANSAKSI DENGAN KODE: ['.$this->session->userdata('transaction_code').'] TELAH BERHASIL DIKIRIMKAN!!</h3>');
+            $this->session->set_flashdata('above_message', '<h3>BUKTI UNTUK TRANSAKSI DENGAN KODE: ['.$this->session->userdata('transaction_code').'] TELAH BERHASIL DIKIRIMKAN!!</h3><br><h3>TERIMA KASIH TELAH BERBELANJA MENGGUNAKAN UMKM APP');
 
             // email algorithm start
             $config = Array(
@@ -237,11 +241,11 @@ class Shop extends CI_Controller
             $this->load->library('email', $config);
             $this->email->set_newline("\r\n");
 
-            $this->email->from('arezkyameliap@gmail.com', 'arezkyameliap');
-            $this->email->to('afiefsky@gmail.com');
+            $this->email->from('arezkyameliap@gmail.com', 'UMKM APP');
+            $this->email->to($this->input->post('email'));
 
             $this->email->subject('NOTIFIKASI UMKMAPP');
-            $this->email->message("Kode Transaksi = ".$transaction_code."\nMohon lakukan pembayaran dengan transfer ke rekening :\r\n\n(".$data['bank_name'].") -- ".$data['bank_account_number']." -- A/N = ".$data['bank_account_owner']);
+            $this->email->message("BARANG AKAN SEGERA DIKIRIMKAN OLEH PIHAK UMKM TERKAIT\r\nBUKTI UNTUK TRANSAKSI DENGAN KODE: ".$this->session->userdata('transaction_code')." TELAH BERHASIL DIKIRIMKAN!!\rTERIMA KASIH TELAH BERBELANJA MENGGUNAKAN UMKM APP");
             $this->email->send();
             // email algorithm end
 

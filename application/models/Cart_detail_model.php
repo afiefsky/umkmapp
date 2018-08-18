@@ -11,4 +11,27 @@ class Cart_detail_model extends CI_Model
         $this->db->where('is_cancelled != "1"');
         return $this->db->get();
     }
+
+    /**
+     * var $user_id as parameter
+     * cart_detail AS cad
+     * LEFT JOIN carts AS car
+     * RIGHT JOIN products AS pro
+     */
+    public function get_cart_product($user_id)
+    {
+        $query = "SELECT com.name as com_name, car.transaction_code, pro.file_name, pro.name as pro_name, pro.price, cad.qty, car.status, car.id AS cart_id, cad.created_at
+                    FROM carts_details AS cad
+                    LEFT JOIN carts AS car ON car.id=cad.cart_id
+                    RIGHT JOIN products AS pro ON pro.id=cad.product_id,
+                    users_companies AS uco,
+                    companies AS com
+                    WHERE car.status = '2'
+                    AND pro.company_id = uco.company_id
+                    AND uco.company_id = com.id
+                    AND uco.user_id = '$user_id'
+                    ORDER BY car.id DESC";
+
+        return $this->db->query($query);
+    }
 }

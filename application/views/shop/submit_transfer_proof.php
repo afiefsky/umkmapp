@@ -53,13 +53,35 @@ function hari_ini($hari){
 <?php echo form_open_multipart('shop/submit_transfer_proof'); ?>
 <table class="table table-bordered">
   <tr>
-    <td><h3>Halaman Form Kirim Bukti Transfer</h3></td>
+    <td colspan="2"><h3>Halaman Form Kirim Bukti Transfer</h3></td>
   </tr>
   <tr>
-    <td><input type="file" name="file_name" class="form-control" required><h5><b>* MOHON FOTO DAN PILIH FILE GAMBAR BUKTI TRANSFER</b></h5></td>
+    <td colspan="2"><h4>MOHON ISI DATA BERIKUT DENGAN SEBENAR-BENARNYA</h4></td>
   </tr>
   <tr>
-    <td><input type="submit" name="submit" class="btn btn-success" value="KIRIM"></td>
+    <td width="20%">Nama Penerima</td>
+    <td><input type="text" name="name" class="form-control" placeholder="Atas Nama" required></td>
+  </tr>
+  <tr>
+    <td>Alamat Lengkap Penerima</td>
+    <td><input type="text" name="address" class="form-control" placeholder="Alamat lengkap penerima" required></td>
+  </tr>
+  <tr>
+    <td>E-Mail</td>
+    <td>
+        <input type="email" name="email" class="form-control" placeholder="Email penerima" required>
+        <h5>* STRUK TRANSAKSI AKAN DIKIRIMKAN MELALUI EMAIL</h5>
+    </td>
+  </tr>
+  <tr>
+    <td>Nomor Telpon</td>
+    <td><input type="number" name="phone" class="form-control" placeholder="Nomor telpon penerima (call, sms, whatsapp, dll)" required></td>
+  </tr>
+  <tr>
+    <td colspan="2"><input type="file" name="file_name" class="form-control" required><h5><b>* MOHON FOTO DAN PILIH FILE GAMBAR BUKTI TRANSFER</b></h5></td>
+  </tr>
+  <tr>
+    <td colspan="2"><input type="submit" name="submit" class="btn btn-success" value="KIRIM"></td>
   </tr>
 </table>
 <?php echo form_close(); ?>

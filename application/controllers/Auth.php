@@ -35,7 +35,9 @@ class Auth extends CI_Controller
                 $user_roles = $this->db->get_where('users_roles', ['user_id' => $this->session->userdata('user_id')]);
                 $role_count = $user_roles->num_rows();
                 if ($this->session->userdata('username')=='admin') {
-                    redirect('admin');
+                    $this->session->unset_userdata('username');
+                    $this->session->set_flashdata('error', 'Username dan password salah!!!<br /><br />');
+                    redirect('auth');
                 } else {
                     $data['user_roles'] = $user_roles->result();
                     redirect('dashboard');
@@ -48,6 +50,39 @@ class Auth extends CI_Controller
         } else {
             $data['error'] = $this->session->userdata('error');
             $this->template->load('templates/login_template', 'login/index', $data);
+        }
+    }
+
+    public function admin()
+    {
+        if (isset($_POST['submit'])) {
+            $data['username'] = $this->input->post('username');
+            $data['password'] = $this->input->post('password');
+
+            $result = $this->user->validate($data);
+
+            if ($result == 1) {
+                // Session start
+                $this->session->set_userdata('username', strtolower($data['username']));
+                // End session
+
+                $user_roles = $this->db->get_where('users_roles', ['user_id' => $this->session->userdata('user_id')]);
+                $role_count = $user_roles->num_rows();
+                if ($this->session->userdata('username')=='admin' || $this->session->userdata('username')=='superadmin') {
+                    redirect('admin');
+                } else {
+                    $this->session->unset_userdata('username');
+                    $this->session->set_flashdata('error', 'Username dan password salah!!!<br /><br />');
+                    redirect('auth/admin');
+                }
+            } else {
+                // Error handling using session flashdata, a one time usage session
+                $this->session->set_flashdata('error', 'Username dan password salah!!!<br /><br />');
+                redirect('auth');
+            }
+        } else {
+            $data['error'] = $this->session->userdata('error');
+            $this->template->load('templates/login_admin_template', 'login/admin_index', $data);
         }
     }
 

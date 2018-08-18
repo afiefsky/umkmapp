@@ -266,6 +266,12 @@ function current_date($hari){
                           <li><a href="<?php echo base_url(); ?>index.php/umkm/register">Tambah</a></li>
                       </ul>
                   </li>
+                  <li class="sub-menu">
+                      <a href="<?php echo base_url(); ?>index.php/umkm/manage/transfer_confirmation" >
+                          <i class="fa fa-desktop"></i>
+                          <span>Konfirmasi Transfer</span>
+                      </a>
+                  </li>
                   <!-- end sub menu -->
               </ul>
               <!-- sidebar menu end-->

@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 100119
 File Encoding         : 65001
 
-Date: 2018-08-15 19:59:17
+Date: 2018-08-19 00:29:21
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -44,37 +44,55 @@ INSERT INTO `activities` VALUES ('17', 'KEGIATAN A', '2018-08-01', 'blue_color.p
 DROP TABLE IF EXISTS `carts`;
 CREATE TABLE `carts` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `status` enum('0','1','2') DEFAULT NULL COMMENT '0 = Unsubmitted, 1 = Submitted and pending, 2 = Confirmed by Admin',
+  `status` enum('0','1','2','3') DEFAULT NULL COMMENT '0 = Unsubmitted, 1 = Submitted Order, 2 = Submitted Transfer Proof, 3 = Confirmed by Admin',
   `transaction_code` text,
   `file_name` text,
+  `name` text,
+  `address` text,
+  `email` text,
+  `phone` varchar(150) DEFAULT NULL,
   `description` text,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=41 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=56 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Records of carts
 -- ----------------------------
-INSERT INTO `carts` VALUES ('21', null, null, null, '21', '2018-08-14 23:01:50', '2018-08-14 23:01:50');
-INSERT INTO `carts` VALUES ('22', null, null, null, '22', '2018-08-15 00:00:31', '2018-08-15 00:00:31');
-INSERT INTO `carts` VALUES ('23', '1', 'BU0K3ZRWEK', null, '23', '2018-08-15 08:31:00', '2018-08-15 08:31:00');
-INSERT INTO `carts` VALUES ('24', '1', 'AGVEYDHGW4', null, '24', '2018-08-15 09:19:13', '2018-08-15 09:19:13');
-INSERT INTO `carts` VALUES ('25', '1', 'AJP5KVOWMI', null, '25', '2018-08-15 09:20:14', '2018-08-15 09:20:14');
-INSERT INTO `carts` VALUES ('26', '1', 'ZS8WXC7COM', null, '26', '2018-08-15 09:21:17', '2018-08-15 09:21:17');
-INSERT INTO `carts` VALUES ('27', '1', 'BJ8QUK1GUE', null, '27', '2018-08-15 09:23:28', '2018-08-15 09:23:28');
-INSERT INTO `carts` VALUES ('28', '1', 'AZMAPBHNZJ', null, '28', '2018-08-15 09:25:50', '2018-08-15 09:25:50');
-INSERT INTO `carts` VALUES ('29', '1', 'KQM5Z7K5HY', null, '29', '2018-08-15 09:26:43', '2018-08-15 09:26:43');
-INSERT INTO `carts` VALUES ('30', '1', 'OO7GDCWKZQ', null, '30', '2018-08-15 09:27:20', '2018-08-15 09:27:20');
-INSERT INTO `carts` VALUES ('31', '1', 'VYWYOUEY16', null, '31', '2018-08-15 09:27:48', '2018-08-15 09:27:48');
-INSERT INTO `carts` VALUES ('32', '1', 'WFLIUWVFMU', null, '32', '2018-08-15 09:28:17', '2018-08-15 09:28:17');
-INSERT INTO `carts` VALUES ('33', '1', '4YW39QMBKI', null, '33', '2018-08-15 09:29:02', '2018-08-15 09:29:02');
-INSERT INTO `carts` VALUES ('34', '1', 'Q0OGFDKCE4', null, '34', '2018-08-15 09:32:55', '2018-08-15 09:32:55');
-INSERT INTO `carts` VALUES ('35', '1', 'L1MEACZEUN', null, '35', '2018-08-15 09:33:39', '2018-08-15 09:33:39');
-INSERT INTO `carts` VALUES ('36', '1', '18EBVDLVZP', null, '36', '2018-08-15 09:46:33', '2018-08-15 09:46:33');
-INSERT INTO `carts` VALUES ('37', '1', 'cd3de5fbd570809fe181fc0d89c1c65f', null, '37', '2018-08-15 10:00:53', '2018-08-15 10:00:53');
-INSERT INTO `carts` VALUES ('38', '1', '4NUSOMNQXX', 'buktitransfer6.jpg', '38', '2018-08-02 10:02:04', '2018-08-15 10:02:04');
-INSERT INTO `carts` VALUES ('40', '1', 'N4A1T7BUIP', null, '40', '2018-08-15 12:50:37', '2018-08-15 12:50:37');
+INSERT INTO `carts` VALUES ('21', null, null, null, null, null, null, null, '21', '2018-08-14 23:01:50', '2018-08-14 23:01:50');
+INSERT INTO `carts` VALUES ('22', null, null, null, null, null, null, null, '22', '2018-08-15 00:00:31', '2018-08-15 00:00:31');
+INSERT INTO `carts` VALUES ('23', '1', 'BU0K3ZRWEK', null, null, null, null, null, '23', '2018-08-15 08:31:00', '2018-08-15 08:31:00');
+INSERT INTO `carts` VALUES ('24', '1', 'AGVEYDHGW4', null, null, null, null, null, '24', '2018-08-15 09:19:13', '2018-08-15 09:19:13');
+INSERT INTO `carts` VALUES ('25', '1', 'AJP5KVOWMI', null, null, null, null, null, '25', '2018-08-15 09:20:14', '2018-08-15 09:20:14');
+INSERT INTO `carts` VALUES ('26', '1', 'ZS8WXC7COM', null, null, null, null, null, '26', '2018-08-15 09:21:17', '2018-08-15 09:21:17');
+INSERT INTO `carts` VALUES ('27', '1', 'BJ8QUK1GUE', null, null, null, null, null, '27', '2018-08-15 09:23:28', '2018-08-15 09:23:28');
+INSERT INTO `carts` VALUES ('28', '1', 'AZMAPBHNZJ', null, null, null, null, null, '28', '2018-08-15 09:25:50', '2018-08-15 09:25:50');
+INSERT INTO `carts` VALUES ('29', '1', 'KQM5Z7K5HY', null, null, null, null, null, '29', '2018-08-15 09:26:43', '2018-08-15 09:26:43');
+INSERT INTO `carts` VALUES ('30', '1', 'OO7GDCWKZQ', null, null, null, null, null, '30', '2018-08-15 09:27:20', '2018-08-15 09:27:20');
+INSERT INTO `carts` VALUES ('31', '1', 'VYWYOUEY16', null, null, null, null, null, '31', '2018-08-15 09:27:48', '2018-08-15 09:27:48');
+INSERT INTO `carts` VALUES ('32', '1', 'WFLIUWVFMU', null, null, null, null, null, '32', '2018-08-15 09:28:17', '2018-08-15 09:28:17');
+INSERT INTO `carts` VALUES ('33', '1', '4YW39QMBKI', null, null, null, null, null, '33', '2018-08-15 09:29:02', '2018-08-15 09:29:02');
+INSERT INTO `carts` VALUES ('34', '1', 'Q0OGFDKCE4', null, null, null, null, null, '34', '2018-08-15 09:32:55', '2018-08-15 09:32:55');
+INSERT INTO `carts` VALUES ('35', '1', 'L1MEACZEUN', null, null, null, null, null, '35', '2018-08-15 09:33:39', '2018-08-15 09:33:39');
+INSERT INTO `carts` VALUES ('36', '1', '18EBVDLVZP', null, null, null, null, null, '36', '2018-08-15 09:46:33', '2018-08-15 09:46:33');
+INSERT INTO `carts` VALUES ('37', '1', 'cd3de5fbd570809fe181fc0d89c1c65f', null, null, null, null, null, '37', '2018-08-15 10:00:53', '2018-08-15 10:00:53');
+INSERT INTO `carts` VALUES ('38', '1', '4NUSOMNQXX', 'buktitransfer6.jpg', null, null, null, null, '38', '2018-08-02 10:02:04', '2018-08-15 10:02:04');
+INSERT INTO `carts` VALUES ('40', '1', 'N4A1T7BUIP', null, null, null, null, null, '40', '2018-08-15 12:50:37', '2018-08-15 12:50:37');
+INSERT INTO `carts` VALUES ('41', '1', 'PYYZOZOCVO', null, null, null, null, null, '41', '2018-08-16 20:21:22', '2018-08-16 20:21:22');
+INSERT INTO `carts` VALUES ('42', '1', 'DIBHC5N1DB', null, null, null, null, null, '42', '2018-08-16 20:31:50', '2018-08-16 20:31:50');
+INSERT INTO `carts` VALUES ('43', '1', 'OLO8GPWY6Y', null, null, null, null, null, '43', '2018-08-16 21:00:08', '2018-08-16 21:00:08');
+INSERT INTO `carts` VALUES ('44', '1', 'HQQ0ZYT816', null, null, null, null, null, '44', '2018-08-16 21:01:24', '2018-08-16 21:01:24');
+INSERT INTO `carts` VALUES ('45', '1', 'CQRQGP7F2Q', null, null, null, null, null, '45', '2018-08-16 21:02:46', '2018-08-16 21:02:46');
+INSERT INTO `carts` VALUES ('46', '1', 'EFEFLBPYU3', null, null, null, null, null, '46', '2018-08-16 21:03:41', '2018-08-16 21:03:41');
+INSERT INTO `carts` VALUES ('47', '1', 'S2UOKHPZNA', null, null, null, null, null, '47', '2018-08-16 21:04:29', '2018-08-16 21:04:29');
+INSERT INTO `carts` VALUES ('48', '1', 'GAUDYOHAMR', null, null, null, null, null, '48', '2018-08-16 21:05:12', '2018-08-16 21:05:12');
+INSERT INTO `carts` VALUES ('49', '1', 'CADHUDMOQ8', null, null, null, null, null, '49', '2018-08-16 21:11:05', '2018-08-16 21:11:05');
+INSERT INTO `carts` VALUES ('50', '1', 'YSXRDMWNWT', null, null, null, null, null, '50', '2018-08-16 21:12:24', '2018-08-16 21:12:24');
+INSERT INTO `carts` VALUES ('51', '1', 'YMNXNO8TRB', '1-palm10.jpg', null, null, null, null, '51', '2018-08-16 21:13:15', '2018-08-16 21:13:15');
+INSERT INTO `carts` VALUES ('52', '2', 'YD1EUBV1L8', '1-palm10.jpg', null, null, null, null, '52', '2018-08-16 21:14:20', '2018-08-16 21:14:20');
+INSERT INTO `carts` VALUES ('53', '3', 'CUCKU1EHA5', '1-palm10.jpg', null, null, null, null, '53', '2018-08-16 21:15:25', '2018-08-16 21:15:25');
+INSERT INTO `carts` VALUES ('55', '3', 'PQDIYZHDH6', '1-prove4.png', 'MUHAMMAD AFIEF FARISTA', 'Sarijadi No. 9', 'afiefsky@gmail.com', '089666848126', '55', '2018-08-18 19:36:58', '2018-08-18 19:36:58');
 
 -- ----------------------------
 -- Table structure for carts_details
@@ -90,7 +108,7 @@ CREATE TABLE `carts_details` (
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=42 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=58 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Records of carts_details
@@ -119,6 +137,22 @@ INSERT INTO `carts_details` VALUES ('38', '38', '18', '1', 'Cart = 38, Product =
 INSERT INTO `carts_details` VALUES ('39', '39', '18', '1', 'Cart = 39, Product = 18', '0', '2018-08-15 10:43:23', '0000-00-00 00:00:00');
 INSERT INTO `carts_details` VALUES ('40', '38', '17', '1', 'Cart = 38, Product = 17', '0', '2018-08-15 12:50:05', '0000-00-00 00:00:00');
 INSERT INTO `carts_details` VALUES ('41', '40', '17', '1', 'Cart = 40, Product = 17', '0', '2018-08-15 12:50:37', '0000-00-00 00:00:00');
+INSERT INTO `carts_details` VALUES ('42', '41', '17', '1', 'Cart = 41, Product = 17', '0', '2018-08-16 20:21:22', '0000-00-00 00:00:00');
+INSERT INTO `carts_details` VALUES ('43', '42', '18', '1', 'Cart = 42, Product = 18', '0', '2018-08-16 20:31:50', '0000-00-00 00:00:00');
+INSERT INTO `carts_details` VALUES ('44', '43', '18', '1', 'Cart = 43, Product = 18', '0', '2018-08-16 21:00:08', '0000-00-00 00:00:00');
+INSERT INTO `carts_details` VALUES ('45', '44', '18', '1', 'Cart = 44, Product = 18', '0', '2018-08-16 21:01:24', '0000-00-00 00:00:00');
+INSERT INTO `carts_details` VALUES ('46', '45', '18', '1', 'Cart = 45, Product = 18', '0', '2018-08-16 21:02:46', '0000-00-00 00:00:00');
+INSERT INTO `carts_details` VALUES ('47', '46', '18', '1', 'Cart = 46, Product = 18', '0', '2018-08-16 21:03:41', '0000-00-00 00:00:00');
+INSERT INTO `carts_details` VALUES ('48', '47', '18', '1', 'Cart = 47, Product = 18', '0', '2018-08-16 21:04:29', '0000-00-00 00:00:00');
+INSERT INTO `carts_details` VALUES ('49', '48', '17', '1', 'Cart = 48, Product = 17', '0', '2018-08-16 21:05:12', '0000-00-00 00:00:00');
+INSERT INTO `carts_details` VALUES ('50', '49', '18', '1', 'Cart = 49, Product = 18', '0', '2018-08-16 21:11:05', '0000-00-00 00:00:00');
+INSERT INTO `carts_details` VALUES ('51', '50', '17', '1', 'Cart = 50, Product = 17', '0', '2018-08-16 21:12:24', '0000-00-00 00:00:00');
+INSERT INTO `carts_details` VALUES ('52', '51', '17', '1', 'Cart = 51, Product = 17', '1', '2018-08-18 19:35:31', '0000-00-00 00:00:00');
+INSERT INTO `carts_details` VALUES ('53', '52', '18', '2', 'Cart = 52, Product = 18', '0', '2018-08-17 20:30:54', '0000-00-00 00:00:00');
+INSERT INTO `carts_details` VALUES ('54', '53', '18', '1', 'Cart = 53, Product = 18', '0', '2018-08-16 21:15:25', '0000-00-00 00:00:00');
+INSERT INTO `carts_details` VALUES ('55', '54', '19', '1', 'Cart = 54, Product = 19', '0', '2018-08-18 18:32:50', '0000-00-00 00:00:00');
+INSERT INTO `carts_details` VALUES ('56', '51', '20', '2', 'Cart = 51, Product = 20', '0', '2018-08-18 19:35:23', '0000-00-00 00:00:00');
+INSERT INTO `carts_details` VALUES ('57', '55', '20', '2', 'Cart = 55, Product = 20', '0', '2018-08-18 19:36:58', '0000-00-00 00:00:00');
 
 -- ----------------------------
 -- Table structure for companies

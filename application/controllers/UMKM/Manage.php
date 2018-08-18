@@ -6,6 +6,7 @@ class Manage extends CI_Controller
     {
         parent::__construct();
         $this->load->model('Company_model', 'company');
+        $this->load->model('Cart_detail_model', 'cart_detail');
     }
 
     public function index()
@@ -161,5 +162,63 @@ class Manage extends CI_Controller
 
         $this->session->set_flashdata('message', '<h4>UMKM '.$company_name.' TELAH BERHASIL DI HAPUS!!</h4>');
         redirect('umkm/manage');
+    }
+
+    public function transfer_confirmation()
+    {
+        $user_id = $this->session->userdata('user_id');
+        $data['record'] = $this->cart_detail->get_cart_product($user_id)->result();
+        $this->template->load('templates/main_template', 'umkm/manage/transfer_confirmation', $data);
+    }
+
+    public function transfer_detail()
+    {
+        $cart_id = $this->uri->segment(4);
+        $this->session->set_userdata('cart_id', $cart_id);
+        $data['record'] = $this->cart_detail->get_with_product($cart_id);
+        $data['cart'] = $this->db->get_where('carts', ['id'=>$cart_id])->row_array();
+
+        // 1. Session
+        $this->session->set_flashdata('email', $data['cart']['email']);
+
+        $this->template->load('templates/main_template', 'umkm/manage/transfer_detail', $data);
+    }
+
+    public function admin_confirmation()
+    {
+        $cart_id = $this->uri->segment(4);
+        // 1. Changing status to '3' (Aproved by Admin)
+        // 2. User email from session above
+        $customer_email = $this->session->flashdata('email');
+        $data = [
+            'status' => '3'
+        ];
+
+        $this->db->where('id', $cart_id);
+        $this->db->update('carts', $data);
+
+        $this->session->set_flashdata('message', '<h3>BUKTI TRANSAKSI TELAH DIKONFIRMASI</h3>');
+        $this->session->set_flashdata('above_message', '<h3>RINCIAN KONFIRMASI DAN PEMBELIAN TELAH DIKIRIMKAN KEPADA EMAIL '.$customer_email);
+
+        // email algorithm start
+        $config = Array(
+            'protocol' => 'smtp',
+            'smtp_host' => 'ssl://smtp.gmail.com',
+            'smtp_port' => '465',
+            'smtp_user' => 'arezkyameliap@gmail.com',
+            'smtp_pass' => 'poldamku'
+        );
+        $this->load->library('email', $config);
+        $this->email->set_newline("\r\n");
+
+        $this->email->from('arezkyameliap@gmail.com', 'UMKM APP');
+        $this->email->to($customer_email);
+
+        $this->email->subject('NOTIFIKASI UMKMAPP');
+        $this->email->message("TRANSFER ANDA TELAH DIKONFIRMASI, SAAT INI BARANG ANDA SEDANG DIKIRIMKAN KE LOKASI ANDA");
+        $this->email->send();
+        // email algorithm end
+
+        redirect('umkm/manage/transfer_confirmation');
     }
 }

@@ -229,7 +229,7 @@ function current_date($hari){
             </div>
             <div class="top-menu">
                 <ul class="nav pull-right top-menu">
-                    <!-- <li><?php echo anchor('auth/logout', 'Logout', ['class' => 'logout']); ?></li> -->
+                    <li><?php if ($this->uri->segment(2)=='') echo anchor('auth', 'Login UMKM', ['class' => 'logout']); ?></li>
                 </ul>
             </div>
         </header>
