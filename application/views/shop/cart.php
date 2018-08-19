@@ -12,6 +12,18 @@
 ?>
 <h3>Keranjang Anda</h3>
 <?php echo anchor('shop/product', 'Kembali', ['class' => 'btn btn-warning']); ?><br><br>
+<?php echo form_open('shop/process'); ?>
+<table class="table table-bordered">
+  <tr>
+    <td>Email</td>
+    <td><input type="email" name="email" class="form-control" placeholder="Masukkan email anda" required></td>
+  </tr>
+  <tr>
+    <td colspan="2">
+      <h4>MOHON ISI ALAMAT EMAIL YANG VALID!!! AKAN DIGUNAKAN UNTUK NOTIFIKASI PEMBERITAHUAN!!!</h4>
+    </td>
+  </tr>
+</table>
 <table class="table table-bordered">
   <tr>
     <th>No</th>
@@ -52,10 +64,12 @@
       if (empty($this->session->userdata('cart_id'))) {
           $out_button = 'SILAHKAN MEMBELI SEBELUM CEKOUT';
       } else {
-          $out_button = anchor('shop/process', 'Cek-out dan BAYAR', ['class' => 'btn btn-success']);
+          // $out_button = anchor('shop/process', 'Cek-out dan BAYAR', ['class' => 'btn btn-success']);
+          $out_button = "<input type='submit' name='submit' value='Submit' class='btn btn-primary'>";
       }
       echo $out_button;
       ?>
     </td>
   </tr>
 </table>
+<?php echo form_close(); ?>

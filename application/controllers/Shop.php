@@ -142,6 +142,7 @@ class Shop extends CI_Controller
 
     public function process()
     {
+        $email = $this->input->post('email');
         $transaction_code = strtoupper($this->generateRandomString());
         $check_code = $this->db->get_where('carts', ['transaction_code'=>$transaction_code])->num_rows();
         if ($check_code > 0) {
@@ -170,7 +171,7 @@ class Shop extends CI_Controller
         $this->email->set_newline("\r\n");
 
         $this->email->from('arezkyameliap@gmail.com', 'arezkyameliap');
-        $this->email->to('afiefsky@gmail.com');
+        $this->email->to($email);
 
         $this->email->subject('NOTIFIKASI UMKMAPP');
         $this->email->message("Kode Transaksi = ".$transaction_code."\nMohon lakukan pembayaran dengan transfer ke rekening :\r\n\n(".$data['bank_name'].") -- ".$data['bank_account_number']." -- A/N = ".$data['bank_account_owner']);
