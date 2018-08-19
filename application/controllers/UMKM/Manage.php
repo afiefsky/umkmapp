@@ -221,4 +221,24 @@ class Manage extends CI_Controller
 
         redirect('umkm/manage/transfer_confirmation');
     }
+
+    public function transfer_history()
+    {
+        $user_id = $this->session->userdata('user_id');
+        $data['record'] = $this->cart_detail->get_cart_by_user_id($user_id)->result();
+        $this->template->load('templates/main_template', 'umkm/manage/transfer_history', $data);
+    }
+
+    public function history_detail()
+    {
+        $cart_id = $this->uri->segment(4);
+        $this->session->set_userdata('cart_id', $cart_id);
+        $data['record'] = $this->cart_detail->get_with_product($cart_id);
+        $data['cart'] = $this->db->get_where('carts', ['id'=>$cart_id])->row_array();
+
+        // 1. Session
+        $this->session->set_flashdata('email', $data['cart']['email']);
+
+        $this->template->load('templates/main_template', 'umkm/manage/history_detail', $data);
+    }
 }

@@ -272,6 +272,12 @@ function current_date($hari){
                           <span>Konfirmasi Transfer</span>
                       </a>
                   </li>
+                  <li class="sub-menu">
+                      <a href="<?php echo base_url(); ?>index.php/umkm/manage/transfer_history" >
+                          <i class="fa fa-desktop"></i>
+                          <span>Histori Transfer</span>
+                      </a>
+                  </li>
                   <!-- end sub menu -->
               </ul>
               <!-- sidebar menu end-->
