@@ -8,6 +8,7 @@ class Dashboard extends CI_Controller
         $this->load->model('User_model', 'user');
         $this->load->model('Activity_model', 'activity');
         $this->load->model('Cart_detail_model', 'cart_detail');
+        check_session_umkm();
     }
 
     public function index()

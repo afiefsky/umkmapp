@@ -50,6 +50,7 @@ class Auth extends CI_Controller
         } else {
             $data['error'] = $this->session->userdata('error');
             $this->template->load('templates/login_template', 'login/index', $data);
+            $this->session->sess_destroy();
         }
     }
 
@@ -83,6 +84,7 @@ class Auth extends CI_Controller
         } else {
             $data['error'] = $this->session->userdata('error');
             $this->template->load('templates/login_admin_template', 'login/admin_index', $data);
+            $this->session->sess_destroy();
         }
     }
 
