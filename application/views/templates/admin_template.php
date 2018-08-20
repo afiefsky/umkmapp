@@ -38,6 +38,22 @@
             <!--logo start-->
             <a href="<?php echo base_url(); ?>index.html" class="logo"><b>UMKM APP - ADMIN</b></a>
             <!--logo end-->
+            <div class="nav notify-row" id="top_menu">
+                <!--  notification start -->
+                <ul class="nav top-menu">
+                    <!-- inbox dropdown start-->
+                    <li id="header_inbox_bar" class="dropdown">
+                        <table>
+                            <tr>
+                                <td><h4><?php echo current_date(date("D")).', '.date("d-m-Y") . '&nbsp&nbsp&nbsp'; ?></h4></td>
+                                <td><h4><div id='txt'></div></h4></td>
+                            </tr>
+                        </table>
+                    </li>
+                    <!-- inbox dropdown end -->
+                </ul>
+                <!--  notification end -->
+            </div>
             <div class="top-menu">
                 <ul class="nav pull-right top-menu">
                     <li><?php echo anchor('auth/logout', 'Logout', ['class' => 'logout']); ?></li>

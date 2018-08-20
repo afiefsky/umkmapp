@@ -76,7 +76,6 @@ function current_date($hari){
               <!-- <div class="sidebar-toggle-box">
                   <div class="fa fa-bars tooltips" data-placement="right" data-original-title="Toggle Navigation"></div>
               </div> -->
-            <!--logo start-->
             <?php echo anchor('shop', '<b>UMKM APP</b>', ['class' => 'logo']); ?>
             <div class="top-menu">
                 <ul class="nav pull-right top-menu">
