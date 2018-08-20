@@ -1,5 +1,6 @@
 <?php
     $message = $this->session->flashdata('message');
+    $dashboard_message = $this->session->flashdata('dashboard_message');
     $num_rows_companies = $this->session->userdata('num_rows_companies');
 ?>
 <?php
@@ -52,6 +53,15 @@ function hari_ini($hari){
                 echo '<div class="alert alert-success alert-dismissable">
                     <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
                     '.$message.'
+                </div>';
+            } else {
+
+            }
+
+            if ($dashboard_message!='') {
+                echo '<div class="alert alert-success alert-dismissable">
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                    '.$dashboard_message.'
                 </div>';
             } else {
 

@@ -225,7 +225,20 @@ class Manage extends CI_Controller
     public function transfer_history()
     {
         $user_id = $this->session->userdata('user_id');
-        $data['record'] = $this->cart_detail->get_cart_by_user_id($user_id)->result();
+
+        if (isset($_POST['submit_search'])) { // if submit_search
+            // Post
+            $date_start = $this->input->post('date_start');
+            $date_end = $this->input->post('date_end');
+
+            // Record
+            $data['record'] = $this->cart_detail->get_cart_by_user_id_and_date_between($user_id, $date_start, $date_end)->result();
+        } elseif (isset($_POST['submit_print'])) { // if submit_print
+            echo 2;
+        } else { // default
+            $data['record'] = $this->cart_detail->get_cart_by_user_id($user_id)->result();
+        }
+
         $this->template->load('templates/main_template', 'umkm/manage/transfer_history', $data);
     }
 
@@ -242,3 +255,4 @@ class Manage extends CI_Controller
         $this->template->load('templates/main_template', 'umkm/manage/history_detail', $data);
     }
 }
+

@@ -27,7 +27,7 @@ class Dashboard extends CI_Controller
         // Status checking wether umkm management have request of transfer proof to confirm or not
         $check = $this->db->get_where('carts', ['status' => '2'])->num_rows();
         if ($check>0) {
-            $this->session->set_flashdata('message', 'ANDA MENDAPATKAN REQUEST KONFIRMASI BUKTI TRANSFER, MOHON SEGERA KONFIRMASI DI HALAMAN KONFIRMASI!!!');
+            $this->session->set_flashdata('dashboard_message', 'ANDA MENDAPATKAN REQUEST KONFIRMASI BUKTI TRANSFER, MOHON SEGERA KONFIRMASI DI HALAMAN KONFIRMASI!!!');
         }
 
         $data['record'] = $this->activity->list($user_id);

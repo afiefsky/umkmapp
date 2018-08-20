@@ -41,6 +41,26 @@ function hari_ini($hari){
 <h3>Halaman Konfirmasi Transfer Pelanggan</h3>
 <h4><?php echo $this->session->flashdata('above_message'); ?></h4>
 <h4><?php echo $this->session->flashdata('message'); ?></h4>
+
+<?php echo form_open('umkm/manage/transfer_history'); ?>
+<!-- Search section start -->
+<table class="table table-bordered">
+  <tr>
+    <td>Tanggal Mulai</td>
+    <td>Tanggal Selesai</td>
+    <td>Opsi</td>
+  </tr>
+  <tr>
+    <td><input type="date" name="date_start" class="form-control" placeholder="Tanggal Mulai" value="<?php echo date('Y-m-d'); ?>" required /></td>
+    <td><input type="date" name="date_end" class="form-control" placeholder="Tanggal Selesai" value="<?php echo date('Y-m-d'); ?>" required /></td>
+    <td>
+      <input type="submit" name="submit_search" value="Cari" class="btn btn-primary" />
+      <input type="submit" name="submit_print" value="Print" class="btn btn-warning" />
+    </td>
+  </tr>
+</table>
+<!-- Search section end -->
+<?php echo form_close(); ?>
 <table class="table table-bordered">
   <tr>
     <td><b>No</td>
