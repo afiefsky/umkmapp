@@ -4,9 +4,9 @@
 <head>
   <meta charset="UTF-8">
   <title>UMKM-APP</title>
-  
-  
-  
+
+
+
       <style>
       /* NOTE: The styles were added inline because Prefixfree needs access to your styles and they must be inlined if they are on local disk! */
       @import url(https://fonts.googleapis.com/css?family=Exo:100,200,400);
@@ -30,7 +30,7 @@ body{
 	bottom: -40px;
 	width: auto;
 	height: auto;
-	background-image: url(<?php echo base_url().'assets/images/market.jpg'; ?>);
+	background-image: url(<?php echo base_url().'assets/images/umkm.jpeg'; ?>);
 	background-size: cover;
 	-webkit-filter: blur(5px);
 	z-index: 0;
@@ -168,7 +168,7 @@ body{
 		</div>
   <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
 
-  
+
 
 </body>
 

@@ -30,7 +30,7 @@ body{
     bottom: -40px;
     width: auto;
     height: auto;
-    background-image: url(<?php echo base_url().'assets/images/administrator.jpeg'; ?>);
+    background-image: url(<?php echo base_url().'assets/images/admin.jpeg'; ?>);
     background-size: cover;
     -webkit-filter: blur(5px);
     z-index: 0;
