@@ -64,7 +64,16 @@ function current_date($hari){
 
     <script src="<?php echo base_url(); ?>assets/js/chart-master/Chart.js"></script>
   </head>
-
+  <style type="text/css">
+      body {
+    color: #000000;
+    background-image: url(<?php echo base_url()?>assets/images/umkm.png);
+    font-family: 'Ruda', sans-serif;
+    padding: 0px !important;
+    margin: 0px !important;
+    font-size:13px;
+}
+  </style>
   <body onload="startTime()">
 
   <section id="container" >
