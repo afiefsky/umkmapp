@@ -52,12 +52,12 @@
         <?php echo form_close(); ?>
         <table class="table table-bordered">
           <tr>
-            <td>No</td>
-            <td>Nama</td>
-            <td>Qty</td>
-            <td>Harga</td>
-            <td>Gambar</td>
-            <td>Opsi</td>
+            <td><b>No</td>
+            <td><b>Nama</td>
+            <td><b>Stok</td>
+            <td><b>Harga</td>
+            <td><b>Gambar</td>
+            <td><b>Opsi</td>
           </tr>
           <?php
           $no = 1 + $this->uri->segment(4);

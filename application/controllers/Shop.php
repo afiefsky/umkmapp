@@ -228,6 +228,17 @@ class Shop extends CI_Controller
             $this->db->where('id', $cart_id);
             $this->db->update('carts', $data);
 
+            // Decreasing the product qty
+            $data = '';
+            $cart_detail = $this->db->get_where('carts_details', ['cart_id'=>$cart_id])->result();
+            foreach ($cart_detail as $c) {
+                $product_id = $c->product_id;
+                $qty = $c->qty;
+
+                $query = "UPDATE products SET qty = qty - $qty WHERE id = $product_id";
+                $this->db->query($query);
+            }
+
             $this->session->set_flashdata('message', '<h3>BARANG AKAN SEGERA DIKIRIMKAN OLEH PIHAK UMKM TERKAIT</h3>');
             $this->session->set_flashdata('above_message', '<h3>BUKTI UNTUK TRANSAKSI DENGAN KODE: ['.$this->session->userdata('transaction_code').'] TELAH BERHASIL DIKIRIMKAN!!</h3><br><h3>TERIMA KASIH TELAH BERBELANJA MENGGUNAKAN UMKM APP');
 
