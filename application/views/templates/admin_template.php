@@ -1,3 +1,43 @@
+<?php
+function current_date($hari){
+    switch($hari){
+        case 'Sun':
+            $hari_ini = "Minggu";
+        break;
+
+        case 'Mon':
+            $hari_ini = "Senin";
+        break;
+
+        case 'Tue':
+            $hari_ini = "Selasa";
+        break;
+
+        case 'Wed':
+            $hari_ini = "Rabu";
+        break;
+
+        case 'Thu':
+            $hari_ini = "Kamis";
+        break;
+
+        case 'Fri':
+            $hari_ini = "Jumat";
+        break;
+
+        case 'Sat':
+            $hari_ini = "Sabtu";
+        break;
+
+        default:
+            $hari_ini = "Tidak di ketahui";
+        break;
+    }
+
+    return "<b>" . $hari_ini . "</b>";
+
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -24,7 +64,7 @@
     <script src="<?php echo base_url(); ?>assets/js/chart-master/Chart.js"></script>
   </head>
 
-  <body>
+  <body onload="startTime()">
 
   <section id="container" >
       <!-- **********************************************************************************************************************************************************
@@ -177,7 +217,23 @@
             console.log('nav ' + nav + ' to: ' + to.month + '/' + to.year);
         }
     </script>
-
+    <script>
+    function startTime() {
+        var today = new Date();
+        var h = today.getHours();
+        var m = today.getMinutes();
+        var s = today.getSeconds();
+        m = checkTime(m);
+        s = checkTime(s);
+        document.getElementById('txt').innerHTML =
+        h + ":" + m + ":" + s;
+        var t = setTimeout(startTime, 500);
+    }
+    function checkTime(i) {
+        if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10
+        return i;
+    }
+    </script>
 
   </body>
 </html>
