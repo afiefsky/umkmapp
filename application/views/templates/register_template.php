@@ -30,7 +30,7 @@ body{
 	bottom: -40px;
 	width: auto;
 	height: auto;
-	background-image: url(<?php echo base_url().'assets/images/market.jpeg'; ?>);
+	background-image: url(<?php echo base_url().'assets/images/umkm.jpeg'; ?>);
 	background-size: cover;
 	-webkit-filter: blur(5px);
 	z-index: 0;
@@ -90,6 +90,18 @@ body{
 	font-weight: 400;
 	padding: 4px;
 }
+.login input[type=number]{
+    width: 400px;
+    height: 30px;
+    background: transparent;
+    border: 1px solid rgba(255,255,255,0.6);
+    border-radius: 2px;
+    color: #fff;
+    font-family: 'Exo', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    padding: 4px;
+}
 .login input[type=email]{
     width: 250px;
     height: 30px;
@@ -143,6 +155,10 @@ body{
 .login input[type=text]:focus{
 	outline: none;
 	border: 1px solid rgba(255,255,255,0.9);
+}
+login input[type=number]:focus{
+    outline: none;
+    border: 1px solid rgba(255,255,255,0.9);
 }
 .login input[type=email]:focus{
     outline: none;

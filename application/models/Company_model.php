@@ -23,9 +23,11 @@ class Company_model extends CI_Model
      */
     public function detail($id)
     {
-        $this->db->select('*');
-        $this->db->from('companies');
-        $this->db->where('id', $id);
+        $this->db->select('com.*, usr.phone');
+        $this->db->from('users_companies AS usc');
+        $this->db->join('companies AS com', 'com.id = usc.company_id');
+        $this->db->join('users AS usr', 'usr.id = usc.user_id');
+        $this->db->where('company_id', $id);
         $this->db->order_by('id', 'ASC');
         return $this->db->get();
     }

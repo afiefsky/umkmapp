@@ -8,6 +8,7 @@ class Shop extends CI_Controller
         $this->load->model('Company_model', 'company');
         $this->load->model('Product_model', 'product');
         $this->load->model('Cart_detail_model', 'cart_detail');
+        $this->load->model('Cart_model', 'cart');
     }
 
     public function index()
@@ -54,6 +55,14 @@ class Shop extends CI_Controller
     public function add_to_cart()
     {
         $product_id = $this->uri->segment(3);
+        $qty = $this->input->post('qty');
+
+        $product = $this->db->get_where('products', ['id' => $product_id])->row_array();
+        if ($qty > $product['qty']) {
+            $this->session->set_flashdata('message', 'MAAF, ANDA MELEBIHI STOK YANG KAMI SEDIAKAN UNTUK PRODUK TERSEBUT YAITU = '.$product['qty']);
+            redirect('shop/qty_selection/'.$product_id);
+        }
+
         $cart_session = $this->session->userdata('cart_id');
 
         // start
@@ -82,7 +91,7 @@ class Shop extends CI_Controller
         $data = [
             'cart_id' => $cart_id,
             'product_id' => $product_id,
-            'qty' => $this->input->post('qty'),
+            'qty' => $qty,
             'description' => $description,
             'is_cancelled' => '0'
         ];
@@ -156,8 +165,13 @@ class Shop extends CI_Controller
 
         $this->db->where('id', $cart_id);
         $this->db->update('carts', ['status' => '1', 'transaction_code' => $transaction_code]);
+
+        $scheduled_day = $this->cart->get_scheduled_day($cart_id)->row_array();
+
         $this->session->set_flashdata('above_message', '<h3>KODE TRANSAKSI (KAPITAL): <br><b>'.$transaction_code.'</b></h3>');
-        $this->session->set_flashdata('message', '<h3>KIRIM NOMOR ANDA KE REKENING <br><b>('.$data['bank_name'].') -- '.$data['bank_account_number'].' -- A/N: '.$data['bank_account_owner'].'</b></h3>');
+        $this->session->set_flashdata('message', '<h3>TRANSFER KE REKENING <br><b>('.$data['bank_name'].') -- '.$data['bank_account_number'].' -- A/N: '.$data['bank_account_owner'].'</b></h3>
+                                      <br/>
+                                      <h3>MOHON LUNASI PEMBAYARAN ANDA SEBELUM '.$scheduled_day['scheduled_day']);
 
         // email algorithm start
         $config = Array(
@@ -186,9 +200,15 @@ class Shop extends CI_Controller
         if (isset($_POST['submit'])) {
             $transaction_code = $this->input->post('transaction_code');
             $data = $this->db->get_where('carts', ['transaction_code' => $transaction_code]);
+            $cart_id = $data->row_array()['id'];
+            $scheduled_day = $this->cart->get_scheduled_day($cart_id)->row_array();
+
             if ($data->num_rows() > 0) {
                 if ($data->row_array()['status']=='2') {
                     $this->session->set_flashdata('message', 'MAAF, TRANSAKSI TERSEBUT TELAH DIKIRIMKAN SEBELUMNYA!!!');
+                    redirect('shop/check_transfer');
+                } elseif (date('Y-m-d H:i:s') > $scheduled_day['scheduled_day']) {
+                    $this->session->set_flashdata('message', 'MAAF, ANDA TELAH MELEWATI WAKTU YANG SUDAH DITENTUKAN!! SILAHKAN TRANSAKSI KEMBALI!!');
                     redirect('shop/check_transfer');
                 }
                 $this->session->set_userdata('transaction_code', $transaction_code);

@@ -4,6 +4,7 @@
         $hasil_rupiah = "Rp. " . number_format($angka,0,',','.');
         return $hasil_rupiah;
     }
+    $username = $this->session->userdata('username');
 ?>
 <?php
 function hari_ini($hari){
@@ -47,10 +48,25 @@ function hari_ini($hari){
 ?>
 <h2>Selamat datang di Halaman Produk UMKM <?php echo $this->session->userdata('company_name'); ?></h2>
 <b>Silahkan pilih produk sesuai dengan kebutuhan anda</b><br><br>
-<?php echo anchor('shop/cart/'.$this->session->userdata('cart_id'), 'Cek Keranjang', ['class' => 'btn btn-primary']); ?>
+<?php
+if ($username=='admin' || $username=='superadmin') {
+    echo anchor('shop/cart/'.$this->session->userdata('cart_id'), 'Cek Keranjang', ['class' => 'btn btn-primary', 'disabled'=>'true']);
+} else {
+    echo anchor('shop/cart/'.$this->session->userdata('cart_id'), 'Cek Keranjang', ['class' => 'btn btn-primary']);
+}
+?>
 <table width="100%">
   <tr>
-    <td align="right"><?php echo anchor('shop/logout', 'KELUAR', ['class' => 'btn btn-danger']); ?></td>
+    <td align="right">
+    <?php
+        if ($username=='admin'||$username=='superadmin') {
+            echo anchor('umkm/manage/product', 'KEMBALI', ['class' => 'btn btn-warning']).' ';
+            echo anchor('shop/logout', 'KELUAR', ['class' => 'btn btn-danger', 'disabled'=>'true']);
+        } else {
+            echo anchor('shop/logout', 'KELUAR', ['class' => 'btn btn-danger']);
+        }
+    ?>
+    </td>
   </tr>
 </table><br>
 <table class="table table-bordered">
@@ -61,13 +77,21 @@ function hari_ini($hari){
   foreach ($record->result() as $r) {
     $date = date_create($r->created_at);
     $day = date_format($date, 'D');
+
+    if ($r->qty == 0 || $r->qty <= 0) {
+        $button_add = anchor('shop/qty_selection/'.$r->id, 'Stok Kosong', ['class' => 'btn btn-danger', 'disabled' => 'true']);
+    } else {
+        if ($username=='admin'||$username=='superadmin') {
+            $button_add = anchor('shop/qty_selection/'.$r->id, 'Tambah ke Keranjang', ['class' => 'btn btn-primary', 'disabled'=>'true']);
+        }
+    }
     $content_piece = "
         <td align='center' width='33.5%'>
           <u><h4>$r->name</h4></u>
           <center>
-          ".anchor('shop/umkm/'.$r->id, '<img id="myImg" src='.base_url().'uploads/'.$r->file_name.' width="150" height="150" />')."
+          ".'<img id="myImg" src='.base_url().'uploads/'.$r->file_name.' width="150" height="150" target="_blank" />'."
           <h4>".rupiah($r->price)."</h4>
-          ".anchor('shop/qty_selection/'.$r->id, 'Tambah ke Keranjang', ['class' => 'btn btn-primary'])."
+          ".$button_add."
         </td>
         ";
     // echo $no;

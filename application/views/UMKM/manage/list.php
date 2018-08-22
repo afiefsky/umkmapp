@@ -82,6 +82,10 @@ function hari_ini($hari){
             <td><?php echo $record['location_full']; ?></td>
           </tr>
           <tr>
+            <td><b>No. HP:</td>
+            <td><?php echo $record['phone']; ?></td>
+          </tr>
+          <tr>
             <td><b>Tanggal Dibuat:</td>
             <td><?php echo '<b>'.hari_ini(date_format(date_create($record['created_at']), 'D')).', '.date_format(date_create($record['created_at']), 'd-m-Y').'</b>'; ?></td>
           </tr>

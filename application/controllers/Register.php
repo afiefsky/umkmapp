@@ -12,15 +12,26 @@ class Register extends CI_Controller
     {
     	if (isset($_POST['submit'])) {
     		$username = $this->input->post('username');
+
     		$password = $this->input->post('password');
     		$re_password = $this->input->post('re_password');
+
+            $back_account_number = $this->input->post('bank_account_number');
+            $back_name = $this->input->post('bank_name');
+            $bank_account_owner = $this->input->post('bank_account_owner');
+            $phone = $this->input->post('phone');
+
     		if ($password != $re_password) {
     			$this->session->set_flashdata('error', 'PASSWORD DAN KETIK ULANG PASSWORD TIDAK COCOK, SILAHKAN ISI KEMBALI!!!');
     			redirect('register');
     		} else {
     			$data = [
     				'username' => $username,
-    				'password' => md5($password)
+    				'password' => md5($password),
+                    'phone' => $phone,
+                    'bank_account_number' => $bank_account_number,
+                    'bank_name' => $bank_name,
+                    'bank_account_owner' => $bank_account_owner
     			];
 				$this->user->register($data);
 				$this->session->set_flashdata('error', 'Akun dengan username '. $username . ' telah berhasil terdaftar!!!<br />Silahkan login untuk menggunakan Aplikasi UMKM!!!');

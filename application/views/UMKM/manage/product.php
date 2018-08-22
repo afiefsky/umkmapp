@@ -65,6 +65,7 @@
               if ($this->session->userdata('username')=='admin') {
                   $edit_button = '';
                   $delete_button = '';
+                  $see_button = anchor('shop/product', 'Lihat Produk', ['class' => 'btn btn-primary']);
               } else {
                   $edit_button = anchor('product/edit/'.$r->id, 'Edit', ['class' => 'btn btn-info']);
 
@@ -75,6 +76,7 @@
                           'onclick' => 'return confirm_delete()'
                       ]
                   );
+                  $see_button = '';
               }
               echo "<tr>
                 <td>$no</td>
@@ -84,8 +86,7 @@
                 <td><a href='".base_url()."uploads/$r->file_name' target='_BLANK'><img src='".base_url()."uploads/$r->file_name' width='75' /></a></td>
                 <td>".
                     $edit_button." ".
-                    $delete_button
-                ."</td>
+                    $delete_button ." ".$see_button."</td>
               </tr>";
           $no++;
           }

@@ -16,6 +16,9 @@ class Product_model extends CI_Model
 
     public function all_by_company_id($company_id)
     {
-        return $this->db->get_where('products', ['company_id' => $company_id]);
+        $this->db->select('*');
+        $this->db->from('products');
+        $this->db->where('company_id', $company_id);
+        return $this->db->get();
     }
 }

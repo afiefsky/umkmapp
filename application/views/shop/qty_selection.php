@@ -6,6 +6,7 @@
     }
 ?>
 <h3>Tambah Produk Ke Keranjang</h3>
+<h4><?php echo $message; ?></h4>
 <h5>* MOHON INPUTKAN KUANTITAS PRODUK YANG ANDA BELI</h5>
 <?php echo anchor('shop/product', 'Kembali', ['class' => 'btn btn-warning']); ?><br><br>
 <?php echo form_open('shop/add_to_cart/'.$this->uri->segment(3)); ?>
