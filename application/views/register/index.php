@@ -3,9 +3,9 @@
     echo '<h3>' . $error . '</h3>'; // this error display the flash session set on the controller
 ?>
 <h2>Masukkan e-mail, data akun bank anda, password, dan ketik ulang password</h2>
-
-<input type="email" class="form-control" name="username" placeholder="nama@gmail.com" size="30" required/><br><br>
-<input type="number" class="form-control" name="phone" placeholder="087888612546" size="30" required/><br><br>
+<h4>Email:</h4>
+<input type="email" class="form-control" name="username" placeholder="nama@gmail.com" size="30" required/>
+<h4>Nomor HP: </h4><input type="number" class="form-control" name="phone" placeholder="087888612546" size="30" required/>
 <h4>*MOHON ISIKAN DATA DENGAN SEBENAR-BENARNYA!</h4>
 <input type="text" class="form-control" name="bank_account_number" placeholder="Nomor Rekening Bank Anda" size="70" required/>
 <input type="text" class="form-control" name="bank_name" placeholder="Nama Bank dari Nomor Rekening Tersebut" size="70" required/>

@@ -17,7 +17,7 @@ body{
 	padding: 0;
 	background: #fff;
 
-	color: #fff;
+	color: #000;
 	font-family: Arial;
 	font-size: 12px;
 }
@@ -38,7 +38,7 @@ body{
 
 .grad{
 	position: absolute;
-	top: -20px;
+	top: -10000px;
 	left: -20px;
 	right: -40px;
 	bottom: -40px;
@@ -70,7 +70,7 @@ body{
 
 .login{
 	position: absolute;
-	top: calc(50% - 255px);
+	top: calc(50% - 315px);
 	left: calc(50% - 50px);
 	height: 150px;
 	width: 350px;
