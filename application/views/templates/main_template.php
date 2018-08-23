@@ -139,6 +139,12 @@ function current_date($hari){
                   </li>
                   <!-- below is example with submenu -->
                   <li class="sub-menu">
+                      <a href="<?php echo base_url(); ?>index.php/profile" >
+                          <i class="fa fa-desktop"></i>
+                          <span>Profil</span>
+                      </a>
+                  </li>
+                  <li class="sub-menu">
                       <a href="javascript:;" >
                           <i class="fa fa-desktop"></i>
                           <span>UMKM</span>
