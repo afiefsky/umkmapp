@@ -83,6 +83,8 @@ if ($username=='admin' || $username=='superadmin') {
     } else {
         if ($username=='admin'||$username=='superadmin') {
             $button_add = anchor('shop/qty_selection/'.$r->id, 'Tambah ke Keranjang', ['class' => 'btn btn-primary', 'disabled'=>'true']);
+        } else {
+            $button_add = anchor('shop/qty_selection/'.$r->id, 'Tambah ke Keranjang', ['class' => 'btn btn-primary']);
         }
     }
     $content_piece = "
