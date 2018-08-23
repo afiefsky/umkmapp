@@ -21,6 +21,7 @@ class Auth extends CI_Controller
 
     public function index()
     {
+        $this->session->unset_userdata('company_name');
         if (isset($_POST['submit'])) {
             $data['username'] = $this->input->post('username');
             $data['password'] = $this->input->post('password');
@@ -56,6 +57,7 @@ class Auth extends CI_Controller
 
     public function admin()
     {
+        $this->session->unset_userdata('company_name');
         if (isset($_POST['submit'])) {
             $data['username'] = $this->input->post('username');
             $data['password'] = $this->input->post('password');

@@ -131,7 +131,11 @@ function hari_ini($hari){
       <div class="col-lg-12">
         <h1>Kegiatan <?php echo $record['name']; ?></h1>
         <?php
-          echo anchor($this->session->userdata('active_url'), 'Kembali', ['class' => 'btn btn-warning']) . '<br /><br />';
+        if ($this->session->userdata('username')=='admin' || $this->session->userdata('username')=='superadmin') {
+            echo anchor('admin/check_umkm_activity', 'Kembali', ['class' => 'btn btn-warning']) . '<br /><br />';
+        } else {
+            echo anchor($this->session->userdata('active_url'), 'Kembali', ['class' => 'btn btn-warning']) . '<br /><br />';
+        }
         ?>
         <?php
         // in case you need a message
@@ -168,10 +172,22 @@ function hari_ini($hari){
           </tr>
           <tr>
             <td>
-                <?php echo anchor('activity/edit/'.$this->uri->segment(3), 'EDIT', ['class'=>'btn btn-info']); ?>
+                <?php
+                if ($this->session->userdata('username')=='admin' || $this->session->userdata('username')=='superadmin') {
+                    echo anchor('activity/edit/'.$this->uri->segment(3), 'EDIT', ['class'=>'btn btn-info', 'disabled'=>'true']);
+                } else {
+                    echo anchor('activity/edit/'.$this->uri->segment(3), 'EDIT', ['class'=>'btn btn-info']);
+                }
+                ?>
             </td>
             <td>
-                <?php echo anchor('activity/delete/'.$this->uri->segment(3), 'HAPUS', ['class'=>'btn btn-danger', 'onclick' => 'return confirm_delete()']); ?>
+                <?php
+                if ($this->session->userdata('username')=='admin' || $this->session->userdata('username')=='superadmin') {
+                    echo anchor('activity/delete/'.$this->uri->segment(3), 'HAPUS', ['class'=>'btn btn-danger', 'onclick' => 'return confirm_delete()', 'disabled'=>'true']);
+                } else {
+                    echo anchor('activity/delete/'.$this->uri->segment(3), 'HAPUS', ['class'=>'btn btn-danger', 'onclick' => 'return confirm_delete()']);
+                }
+                ?>
             </td>
           </tr>
         </table>

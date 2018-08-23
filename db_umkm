@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 100119
 File Encoding         : 65001
 
-Date: 2018-08-19 00:29:21
+Date: 2018-08-23 10:15:23
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -34,9 +34,6 @@ CREATE TABLE `activities` (
 -- ----------------------------
 -- Records of activities
 -- ----------------------------
-INSERT INTO `activities` VALUES ('15', 'Kegiatan Buka Bersama Poltek Coy', '2018-03-08', 'kopi_bersama.jpeg', '16', 'Acara meriah diminati oleh banyak anak-anak umur 5-10 tahun', '2018-08-15 00:33:53', '0000-00-00 00:00:00');
-INSERT INTO `activities` VALUES ('16', 'Kegiatan Kurban', '2018-08-15', 'corned.jpeg', '16', 'Corned beef', '2018-08-15 13:15:24', '0000-00-00 00:00:00');
-INSERT INTO `activities` VALUES ('17', 'KEGIATAN A', '2018-08-01', 'blue_color.png', '22', 'KETERANGAN SINGKAT KEGIATAN A              ', '2018-08-15 14:50:48', '0000-00-00 00:00:00');
 
 -- ----------------------------
 -- Table structure for carts
@@ -55,44 +52,11 @@ CREATE TABLE `carts` (
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=56 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=62 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Records of carts
 -- ----------------------------
-INSERT INTO `carts` VALUES ('21', null, null, null, null, null, null, null, '21', '2018-08-14 23:01:50', '2018-08-14 23:01:50');
-INSERT INTO `carts` VALUES ('22', null, null, null, null, null, null, null, '22', '2018-08-15 00:00:31', '2018-08-15 00:00:31');
-INSERT INTO `carts` VALUES ('23', '1', 'BU0K3ZRWEK', null, null, null, null, null, '23', '2018-08-15 08:31:00', '2018-08-15 08:31:00');
-INSERT INTO `carts` VALUES ('24', '1', 'AGVEYDHGW4', null, null, null, null, null, '24', '2018-08-15 09:19:13', '2018-08-15 09:19:13');
-INSERT INTO `carts` VALUES ('25', '1', 'AJP5KVOWMI', null, null, null, null, null, '25', '2018-08-15 09:20:14', '2018-08-15 09:20:14');
-INSERT INTO `carts` VALUES ('26', '1', 'ZS8WXC7COM', null, null, null, null, null, '26', '2018-08-15 09:21:17', '2018-08-15 09:21:17');
-INSERT INTO `carts` VALUES ('27', '1', 'BJ8QUK1GUE', null, null, null, null, null, '27', '2018-08-15 09:23:28', '2018-08-15 09:23:28');
-INSERT INTO `carts` VALUES ('28', '1', 'AZMAPBHNZJ', null, null, null, null, null, '28', '2018-08-15 09:25:50', '2018-08-15 09:25:50');
-INSERT INTO `carts` VALUES ('29', '1', 'KQM5Z7K5HY', null, null, null, null, null, '29', '2018-08-15 09:26:43', '2018-08-15 09:26:43');
-INSERT INTO `carts` VALUES ('30', '1', 'OO7GDCWKZQ', null, null, null, null, null, '30', '2018-08-15 09:27:20', '2018-08-15 09:27:20');
-INSERT INTO `carts` VALUES ('31', '1', 'VYWYOUEY16', null, null, null, null, null, '31', '2018-08-15 09:27:48', '2018-08-15 09:27:48');
-INSERT INTO `carts` VALUES ('32', '1', 'WFLIUWVFMU', null, null, null, null, null, '32', '2018-08-15 09:28:17', '2018-08-15 09:28:17');
-INSERT INTO `carts` VALUES ('33', '1', '4YW39QMBKI', null, null, null, null, null, '33', '2018-08-15 09:29:02', '2018-08-15 09:29:02');
-INSERT INTO `carts` VALUES ('34', '1', 'Q0OGFDKCE4', null, null, null, null, null, '34', '2018-08-15 09:32:55', '2018-08-15 09:32:55');
-INSERT INTO `carts` VALUES ('35', '1', 'L1MEACZEUN', null, null, null, null, null, '35', '2018-08-15 09:33:39', '2018-08-15 09:33:39');
-INSERT INTO `carts` VALUES ('36', '1', '18EBVDLVZP', null, null, null, null, null, '36', '2018-08-15 09:46:33', '2018-08-15 09:46:33');
-INSERT INTO `carts` VALUES ('37', '1', 'cd3de5fbd570809fe181fc0d89c1c65f', null, null, null, null, null, '37', '2018-08-15 10:00:53', '2018-08-15 10:00:53');
-INSERT INTO `carts` VALUES ('38', '1', '4NUSOMNQXX', 'buktitransfer6.jpg', null, null, null, null, '38', '2018-08-02 10:02:04', '2018-08-15 10:02:04');
-INSERT INTO `carts` VALUES ('40', '1', 'N4A1T7BUIP', null, null, null, null, null, '40', '2018-08-15 12:50:37', '2018-08-15 12:50:37');
-INSERT INTO `carts` VALUES ('41', '1', 'PYYZOZOCVO', null, null, null, null, null, '41', '2018-08-16 20:21:22', '2018-08-16 20:21:22');
-INSERT INTO `carts` VALUES ('42', '1', 'DIBHC5N1DB', null, null, null, null, null, '42', '2018-08-16 20:31:50', '2018-08-16 20:31:50');
-INSERT INTO `carts` VALUES ('43', '1', 'OLO8GPWY6Y', null, null, null, null, null, '43', '2018-08-16 21:00:08', '2018-08-16 21:00:08');
-INSERT INTO `carts` VALUES ('44', '1', 'HQQ0ZYT816', null, null, null, null, null, '44', '2018-08-16 21:01:24', '2018-08-16 21:01:24');
-INSERT INTO `carts` VALUES ('45', '1', 'CQRQGP7F2Q', null, null, null, null, null, '45', '2018-08-16 21:02:46', '2018-08-16 21:02:46');
-INSERT INTO `carts` VALUES ('46', '1', 'EFEFLBPYU3', null, null, null, null, null, '46', '2018-08-16 21:03:41', '2018-08-16 21:03:41');
-INSERT INTO `carts` VALUES ('47', '1', 'S2UOKHPZNA', null, null, null, null, null, '47', '2018-08-16 21:04:29', '2018-08-16 21:04:29');
-INSERT INTO `carts` VALUES ('48', '1', 'GAUDYOHAMR', null, null, null, null, null, '48', '2018-08-16 21:05:12', '2018-08-16 21:05:12');
-INSERT INTO `carts` VALUES ('49', '1', 'CADHUDMOQ8', null, null, null, null, null, '49', '2018-08-16 21:11:05', '2018-08-16 21:11:05');
-INSERT INTO `carts` VALUES ('50', '1', 'YSXRDMWNWT', null, null, null, null, null, '50', '2018-08-16 21:12:24', '2018-08-16 21:12:24');
-INSERT INTO `carts` VALUES ('51', '1', 'YMNXNO8TRB', '1-palm10.jpg', null, null, null, null, '51', '2018-08-16 21:13:15', '2018-08-16 21:13:15');
-INSERT INTO `carts` VALUES ('52', '2', 'YD1EUBV1L8', '1-palm10.jpg', null, null, null, null, '52', '2018-08-16 21:14:20', '2018-08-16 21:14:20');
-INSERT INTO `carts` VALUES ('53', '3', 'CUCKU1EHA5', '1-palm10.jpg', null, null, null, null, '53', '2018-08-16 21:15:25', '2018-08-16 21:15:25');
-INSERT INTO `carts` VALUES ('55', '3', 'PQDIYZHDH6', '1-prove4.png', 'MUHAMMAD AFIEF FARISTA', 'Sarijadi No. 9', 'afiefsky@gmail.com', '089666848126', '55', '2018-08-18 19:36:58', '2018-08-18 19:36:58');
 
 -- ----------------------------
 -- Table structure for carts_details
@@ -108,51 +72,11 @@ CREATE TABLE `carts_details` (
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=58 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=64 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Records of carts_details
 -- ----------------------------
-INSERT INTO `carts_details` VALUES ('18', '21', '17', '5', 'Cart = 21, Product = 17', '1', '2018-08-14 23:33:39', '0000-00-00 00:00:00');
-INSERT INTO `carts_details` VALUES ('19', '21', '19', '1', 'Cart = 21, Product = 19', '0', '2018-08-14 23:53:37', '0000-00-00 00:00:00');
-INSERT INTO `carts_details` VALUES ('20', '21', '19', '1', 'Cart = 21, Product = 19', '0', '2018-08-14 23:53:59', '0000-00-00 00:00:00');
-INSERT INTO `carts_details` VALUES ('21', '22', '18', '1', 'Cart = 22, Product = 18', '1', '2018-08-15 00:02:59', '0000-00-00 00:00:00');
-INSERT INTO `carts_details` VALUES ('22', '23', '17', '1', 'Cart = 23, Product = 17', '0', '2018-08-15 08:31:01', '0000-00-00 00:00:00');
-INSERT INTO `carts_details` VALUES ('23', '24', '17', '1', 'Cart = 24, Product = 17', '0', '2018-08-15 09:19:13', '0000-00-00 00:00:00');
-INSERT INTO `carts_details` VALUES ('24', '25', '17', '1', 'Cart = 25, Product = 17', '0', '2018-08-15 09:20:15', '0000-00-00 00:00:00');
-INSERT INTO `carts_details` VALUES ('25', '26', '17', '1', 'Cart = 26, Product = 17', '0', '2018-08-15 09:21:17', '0000-00-00 00:00:00');
-INSERT INTO `carts_details` VALUES ('26', '27', '17', '1', 'Cart = 27, Product = 17', '0', '2018-08-15 09:23:29', '0000-00-00 00:00:00');
-INSERT INTO `carts_details` VALUES ('27', '28', '17', '1', 'Cart = 28, Product = 17', '0', '2018-08-15 09:25:51', '0000-00-00 00:00:00');
-INSERT INTO `carts_details` VALUES ('28', '29', '17', '1', 'Cart = 29, Product = 17', '0', '2018-08-15 09:26:43', '0000-00-00 00:00:00');
-INSERT INTO `carts_details` VALUES ('29', '29', '17', '1', 'Cart = 29, Product = 17', '0', '2018-08-15 09:26:47', '0000-00-00 00:00:00');
-INSERT INTO `carts_details` VALUES ('30', '30', '18', '1', 'Cart = 30, Product = 18', '0', '2018-08-15 09:27:20', '0000-00-00 00:00:00');
-INSERT INTO `carts_details` VALUES ('31', '31', '18', '1', 'Cart = 31, Product = 18', '0', '2018-08-15 09:27:48', '0000-00-00 00:00:00');
-INSERT INTO `carts_details` VALUES ('32', '32', '18', '1', 'Cart = 32, Product = 18', '0', '2018-08-15 09:28:17', '0000-00-00 00:00:00');
-INSERT INTO `carts_details` VALUES ('33', '33', '18', '1', 'Cart = 33, Product = 18', '0', '2018-08-15 09:29:02', '0000-00-00 00:00:00');
-INSERT INTO `carts_details` VALUES ('34', '34', '18', '1', 'Cart = 34, Product = 18', '0', '2018-08-15 09:32:55', '0000-00-00 00:00:00');
-INSERT INTO `carts_details` VALUES ('35', '35', '18', '1', 'Cart = 35, Product = 18', '0', '2018-08-15 09:33:39', '0000-00-00 00:00:00');
-INSERT INTO `carts_details` VALUES ('36', '36', '17', '1', 'Cart = 36, Product = 17', '0', '2018-08-15 09:46:34', '0000-00-00 00:00:00');
-INSERT INTO `carts_details` VALUES ('37', '37', '18', '1', 'Cart = 37, Product = 18', '0', '2018-08-15 10:00:54', '0000-00-00 00:00:00');
-INSERT INTO `carts_details` VALUES ('38', '38', '18', '1', 'Cart = 38, Product = 18', '0', '2018-08-15 10:02:04', '0000-00-00 00:00:00');
-INSERT INTO `carts_details` VALUES ('39', '39', '18', '1', 'Cart = 39, Product = 18', '0', '2018-08-15 10:43:23', '0000-00-00 00:00:00');
-INSERT INTO `carts_details` VALUES ('40', '38', '17', '1', 'Cart = 38, Product = 17', '0', '2018-08-15 12:50:05', '0000-00-00 00:00:00');
-INSERT INTO `carts_details` VALUES ('41', '40', '17', '1', 'Cart = 40, Product = 17', '0', '2018-08-15 12:50:37', '0000-00-00 00:00:00');
-INSERT INTO `carts_details` VALUES ('42', '41', '17', '1', 'Cart = 41, Product = 17', '0', '2018-08-16 20:21:22', '0000-00-00 00:00:00');
-INSERT INTO `carts_details` VALUES ('43', '42', '18', '1', 'Cart = 42, Product = 18', '0', '2018-08-16 20:31:50', '0000-00-00 00:00:00');
-INSERT INTO `carts_details` VALUES ('44', '43', '18', '1', 'Cart = 43, Product = 18', '0', '2018-08-16 21:00:08', '0000-00-00 00:00:00');
-INSERT INTO `carts_details` VALUES ('45', '44', '18', '1', 'Cart = 44, Product = 18', '0', '2018-08-16 21:01:24', '0000-00-00 00:00:00');
-INSERT INTO `carts_details` VALUES ('46', '45', '18', '1', 'Cart = 45, Product = 18', '0', '2018-08-16 21:02:46', '0000-00-00 00:00:00');
-INSERT INTO `carts_details` VALUES ('47', '46', '18', '1', 'Cart = 46, Product = 18', '0', '2018-08-16 21:03:41', '0000-00-00 00:00:00');
-INSERT INTO `carts_details` VALUES ('48', '47', '18', '1', 'Cart = 47, Product = 18', '0', '2018-08-16 21:04:29', '0000-00-00 00:00:00');
-INSERT INTO `carts_details` VALUES ('49', '48', '17', '1', 'Cart = 48, Product = 17', '0', '2018-08-16 21:05:12', '0000-00-00 00:00:00');
-INSERT INTO `carts_details` VALUES ('50', '49', '18', '1', 'Cart = 49, Product = 18', '0', '2018-08-16 21:11:05', '0000-00-00 00:00:00');
-INSERT INTO `carts_details` VALUES ('51', '50', '17', '1', 'Cart = 50, Product = 17', '0', '2018-08-16 21:12:24', '0000-00-00 00:00:00');
-INSERT INTO `carts_details` VALUES ('52', '51', '17', '1', 'Cart = 51, Product = 17', '1', '2018-08-18 19:35:31', '0000-00-00 00:00:00');
-INSERT INTO `carts_details` VALUES ('53', '52', '18', '2', 'Cart = 52, Product = 18', '0', '2018-08-17 20:30:54', '0000-00-00 00:00:00');
-INSERT INTO `carts_details` VALUES ('54', '53', '18', '1', 'Cart = 53, Product = 18', '0', '2018-08-16 21:15:25', '0000-00-00 00:00:00');
-INSERT INTO `carts_details` VALUES ('55', '54', '19', '1', 'Cart = 54, Product = 19', '0', '2018-08-18 18:32:50', '0000-00-00 00:00:00');
-INSERT INTO `carts_details` VALUES ('56', '51', '20', '2', 'Cart = 51, Product = 20', '0', '2018-08-18 19:35:23', '0000-00-00 00:00:00');
-INSERT INTO `carts_details` VALUES ('57', '55', '20', '2', 'Cart = 55, Product = 20', '0', '2018-08-18 19:36:58', '0000-00-00 00:00:00');
 
 -- ----------------------------
 -- Table structure for companies
@@ -175,13 +99,6 @@ CREATE TABLE `companies` (
 -- ----------------------------
 -- Records of companies
 -- ----------------------------
-INSERT INTO `companies` VALUES ('16', 'Bandung Kopi Poltek Coy', 'QPI.png', 'Bandung', 'Jalan Sariasih No.54, Sarijadi, Sukasari, Kota Bandung, Jawa Barat 40151', '1', '1', '2018-02-07 19:42:14', '2018-08-14 19:42:14', '2018-08-15 19:58:08');
-INSERT INTO `companies` VALUES ('17', 'Kedai Burger Krusty Pos', 'burger.png', 'Bandung', 'Jalan Sariasih No.54, Sarijadi, Sukasari, Kota Bandung, Jawa Barat 40151', '1', '1', '2018-05-01 19:47:07', '2018-08-14 19:47:07', '2018-08-15 19:52:49');
-INSERT INTO `companies` VALUES ('18', 'Halal of the Road', 'wadoel-food-cout-di-jalan-geger-kalong_20170710_183823.jpg', 'Bandung', 'Jl. Gegerkalong KulonGegerkalong, Sukasari, Kota Bandung, Jawa Barat 40153', '0', '0', '2018-08-15 10:53:31', '2018-08-15 10:53:31', '2018-08-15 19:55:50');
-INSERT INTO `companies` VALUES ('19', 'Rumah Coklat', 'coklat.jpeg', 'Bandung', 'Jl. Permata Kopo Sayati, Margahayu, Bandung, Jawa Barat 40228', '0', '0', '2018-08-15 11:33:58', '2018-08-15 11:33:58', '2018-08-15 19:55:51');
-INSERT INTO `companies` VALUES ('20', 'Rumah Strawberry', 'strawberry.jpeg', 'Bandung', 'Jl. Permata Kopo Sayati, Margahayu, Bandung, Jawa Barat 40228', '0', '0', '2018-08-15 11:41:31', '2018-08-15 11:41:31', '2018-08-15 19:55:52');
-INSERT INTO `companies` VALUES ('21', 'Rumah Makan Padang Ke-Ba', 'padangbandung.jpeg', 'Bandung', 'Jalan Cihampelas 160, Cipaganti, Coblong, Cipaganti, Coblong, Kota Bandung, Jawa Barat 40131', '0', '0', '2018-08-15 11:51:18', '2018-08-15 11:51:18', '2018-08-15 19:55:53');
-INSERT INTO `companies` VALUES ('22', 'UMKM A', 'blackcoffee1.png', 'KOTA A', 'ALAMAT LENGKAP A', '1', '0', '2018-08-15 14:47:37', '2018-08-15 14:47:37', '2018-08-15 19:55:54');
 
 -- ----------------------------
 -- Table structure for products
@@ -202,10 +119,6 @@ CREATE TABLE `products` (
 -- ----------------------------
 -- Records of products
 -- ----------------------------
-INSERT INTO `products` VALUES ('17', 'Kopi Nescafe', 'nescafe_exclusive.png', '100', '16', '10000', '2018-08-14 19:44:49', '2018-08-14 19:44:49');
-INSERT INTO `products` VALUES ('18', 'Exclusive Burger Size XXL', 'superbigburger.jpg', '100', '17', '50000', '2018-08-14 19:50:01', '2018-08-14 19:50:01');
-INSERT INTO `products` VALUES ('19', 'Kopi Si Hitam Pekat', 'blackcoffee.png', '150', '16', '15000', '2018-08-14 21:21:32', '2018-08-14 21:21:32');
-INSERT INTO `products` VALUES ('20', 'Kopi Super Man', 'hot_coffee.jpeg', '50', '16', '90000', '2018-08-15 11:21:47', '2018-08-15 11:21:47');
 
 -- ----------------------------
 -- Table structure for roles
@@ -237,6 +150,7 @@ CREATE TABLE `users` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `username` varchar(100) NOT NULL,
   `password` text NOT NULL,
+  `phone` varchar(20) DEFAULT NULL,
   `bank_account_number` text,
   `bank_name` text,
   `bank_account_owner` text COMMENT 'Atas nama',
@@ -250,12 +164,9 @@ CREATE TABLE `users` (
 -- ----------------------------
 -- Records of users
 -- ----------------------------
-INSERT INTO `users` VALUES ('1', 'superadmin', '17c4520f6cfd1ab53d8745e84681eb49', null, null, null, '1', '2018-05-20 20:28:34', '2018-05-20 20:28:34');
-INSERT INTO `users` VALUES ('2', 'silviasky', '3e47b75000b0924b6c9ba5759a7cf15d', '20011000310', 'BNI', 'Silvia Skyden', '1', '2018-08-03 04:32:14', '2018-08-03 04:32:14');
-INSERT INTO `users` VALUES ('3', 'admin', '21232f297a57a5a743894a0e4a801fc3', null, null, null, '1', '2018-08-09 20:26:58', '2018-08-09 20:26:58');
-INSERT INTO `users` VALUES ('4', 'potter', '3e47b75000b0924b6c9ba5759a7cf15d', null, null, null, '0', '2018-08-10 21:59:29', '2018-08-10 21:59:29');
-INSERT INTO `users` VALUES ('5', 'drangleic', '3e47b75000b0924b6c9ba5759a7cf15d', null, null, null, '0', '2018-08-10 22:57:03', '2018-08-10 22:57:03');
-INSERT INTO `users` VALUES ('6', 'devilman', '3e47b75000b0924b6c9ba5759a7cf15d', null, null, null, '0', '2018-08-15 14:42:29', '2018-08-15 14:42:29');
+INSERT INTO `users` VALUES ('1', 'superadmin', '17c4520f6cfd1ab53d8745e84681eb49', null, null, null, null, '1', '2018-05-20 20:28:34', '2018-05-20 20:28:34');
+INSERT INTO `users` VALUES ('2', 'silviasky', '3e47b75000b0924b6c9ba5759a7cf15d', '087812334511', '20011000310', 'BNI', 'Silvia Skyden', '1', '2018-08-03 04:32:14', '2018-08-03 04:32:14');
+INSERT INTO `users` VALUES ('3', 'admin', '21232f297a57a5a743894a0e4a801fc3', null, null, null, null, '1', '2018-08-09 20:26:58', '2018-08-09 20:26:58');
 
 -- ----------------------------
 -- Table structure for users_companies
@@ -271,28 +182,6 @@ CREATE TABLE `users_companies` (
 -- ----------------------------
 -- Records of users_companies
 -- ----------------------------
-INSERT INTO `users_companies` VALUES ('1', '1', '1');
-INSERT INTO `users_companies` VALUES ('2', '2', '2');
-INSERT INTO `users_companies` VALUES ('3', '2', '3');
-INSERT INTO `users_companies` VALUES ('4', '3', '4');
-INSERT INTO `users_companies` VALUES ('5', '4', '5');
-INSERT INTO `users_companies` VALUES ('6', '4', '6');
-INSERT INTO `users_companies` VALUES ('7', '2', '7');
-INSERT INTO `users_companies` VALUES ('8', '2', '8');
-INSERT INTO `users_companies` VALUES ('9', '2', '9');
-INSERT INTO `users_companies` VALUES ('10', '2', '10');
-INSERT INTO `users_companies` VALUES ('11', '2', '11');
-INSERT INTO `users_companies` VALUES ('12', '2', '12');
-INSERT INTO `users_companies` VALUES ('13', '2', '13');
-INSERT INTO `users_companies` VALUES ('14', '2', '14');
-INSERT INTO `users_companies` VALUES ('15', '2', '15');
-INSERT INTO `users_companies` VALUES ('16', '2', '16');
-INSERT INTO `users_companies` VALUES ('17', '2', '17');
-INSERT INTO `users_companies` VALUES ('18', '2', '18');
-INSERT INTO `users_companies` VALUES ('19', '2', '19');
-INSERT INTO `users_companies` VALUES ('20', '2', '20');
-INSERT INTO `users_companies` VALUES ('21', '2', '21');
-INSERT INTO `users_companies` VALUES ('22', '6', '22');
 
 -- ----------------------------
 -- Table structure for users_roles
@@ -308,4 +197,3 @@ CREATE TABLE `users_roles` (
 -- ----------------------------
 -- Records of users_roles
 -- ----------------------------
-INSERT INTO `users_roles` VALUES ('1', '1', '1');

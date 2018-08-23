@@ -95,6 +95,8 @@ function hari_ini($hari){
                 <?php
                 if ($this->session->userdata('username') == 'admin') {
                     echo anchor('admin/check_umkm_product', 'Cek Produk', ['class' => 'btn btn-info']);
+                    echo " ";
+                    echo anchor('admin/check_umkm_activity', 'Cek Kegiatan', ['class' => 'btn btn-success']);
                 } else {
                     echo anchor('umkm/manage/product', 'Kelola Produk', ['class' => 'btn btn-info']);
                     echo " ";

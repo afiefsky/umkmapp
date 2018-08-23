@@ -141,9 +141,19 @@ function hari_ini($hari){
 
             }
         ?>
-        <?php echo anchor('activity/add', 'Tambah Kegiatan', ['class' => 'btn btn-success']); ?><br /><br />
         <?php
-            echo anchor($this->session->userdata('prev_page'), 'Kembali', ['class' => 'btn btn-warning']);
+            if ($this->session->userdata('username')=='admin'||$this->session->userdata('username')=='superadmin') {
+                echo anchor('activity/add', 'Tambah Kegiatan', ['class' => 'btn btn-success', 'disabled'=>'true']);
+            } else {
+                echo anchor('activity/add', 'Tambah Kegiatan', ['class' => 'btn btn-success']);
+            }
+        ?><br /><br />
+        <?php
+            if ($this->session->userdata('username')=='admin'||$this->session->userdata('username')=='superadmin') {
+                echo anchor('admin/check_umkm/'.$this->session->userdata('company_id'), 'Kembali', ['class' => 'btn btn-warning']);
+            } else {
+                echo anchor($this->session->userdata('prev_page'), 'Kembali', ['class' => 'btn btn-warning']);
+            }
         ?><br><br>
         <table class="table table-bordered">
           <tr>
@@ -154,7 +164,29 @@ function hari_ini($hari){
             $date = date_create($r->date);
             $day = date_format($date, 'D');
             // echo $no;
-              if ($no==$counter) {
+            if ($this->session->userdata('username')=='admin' || $this->session->userdata('username')=='superadmin') {
+                if ($no==$counter) {
+                echo "
+                <td align='center' width='33.5%'>
+                  <u>$r->name</u><br>
+                  ".hari_ini($day).", ".date_format($date, 'd-m-Y')."
+                  <center>
+                  ".anchor('admin/umkm_activity_detail/'.$r->id, '<img id="myImg" src='.base_url().'uploads/'.$r->file_name.' width="200" height="200" />')."
+                </td></tr><tr>
+                ";
+                $counter = $counter + 3;
+              } else {
+                echo "
+                <td align='center' width='33.5%'>
+                  <u>$r->name</u><br>
+                  ".hari_ini($day).", ".date_format($date, 'd-m-Y')."
+                  <center>
+                  ".anchor('admin/umkm_activity_detail/'.$r->id, '<img id="myImg" src='.base_url().'uploads/'.$r->file_name.' width="200" height="200" />')."
+                </td>
+                ";
+              }
+            } else {
+                if ($no==$counter) {
                 echo "
                 <td align='center' width='33.5%'>
                   <u>$r->name</u><br>
@@ -174,6 +206,7 @@ function hari_ini($hari){
                 </td>
                 ";
               }
+            }
               echo '
               ';
               $no++;

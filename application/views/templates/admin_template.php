@@ -60,7 +60,19 @@ function current_date($hari){
     <!-- Custom styles for this template -->
     <link href="<?php echo base_url(); ?>assets/css/style.css" rel="stylesheet">
     <link href="<?php echo base_url(); ?>assets/css/style-responsive.css" rel="stylesheet">
-
+    <style type="text/css">
+        body {
+            color: #000000;
+            background-image: url(<?php echo base_url() ?>assets/images/simple_background.jpeg);
+            font-family: 'Ruda', sans-serif;
+            background-size: cover;
+            background-position-y: -60px;
+            background-position-x: 190px;
+            padding: 0px !important;
+            margin: 0px !important;
+            font-size: 13px;
+        }
+    </style>
     <script src="<?php echo base_url(); ?>assets/js/chart-master/Chart.js"></script>
   </head>
 
@@ -76,7 +88,7 @@ function current_date($hari){
                   <div class="fa fa-bars tooltips" data-placement="right" data-original-title="Toggle Navigation"></div>
               </div>
             <!--logo start-->
-            <a href="<?php echo base_url(); ?>index.html" class="logo"><b>UMKM APP - ADMIN</b></a>
+            <a href="<?php echo base_url(); ?>index.php/admin" class="logo"><b>UMKM ADMIN - <?php echo $this->session->userdata('company_name'); ?></b></a>
             <!--logo end-->
             <div class="nav notify-row" id="top_menu">
                 <!--  notification start -->

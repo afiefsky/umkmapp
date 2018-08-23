@@ -63,6 +63,20 @@ function current_date($hari){
     <link href="<?php echo base_url(); ?>assets/css/style-responsive.css" rel="stylesheet">
 
     <script src="<?php echo base_url(); ?>assets/js/chart-master/Chart.js"></script>
+
+    <style type="text/css">
+        body {
+            color: #000000;
+            background-image: url(<?php echo base_url() ?>assets/images/simple_background.jpeg);
+            font-family: 'Ruda', sans-serif;
+            background-size: cover;
+            background-position-y: -60px;
+            background-position-x: 190px;
+            padding: 0px !important;
+            margin: 0px !important;
+            font-size: 13px;
+        }
+    </style>
   </head>
 
   <body onload="startTime()">
@@ -77,7 +91,7 @@ function current_date($hari){
                   <div class="fa fa-bars tooltips" data-placement="right" data-original-title="Toggle Navigation"></div>
               </div>
             <!--logo start-->
-            <a href="javascript:;" class="logo"><b>UMKM APP</b></a>
+            <a href="javascript:;" class="logo"><b><?php echo 'UMKM MEMBER - ' . $this->session->userdata('company_name'); ?></b></a>
             <!--logo end-->
             <div class="nav notify-row" id="top_menu">
                 <!--  notification start -->

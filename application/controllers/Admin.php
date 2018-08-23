@@ -11,12 +11,14 @@ class Admin extends CI_Controller
 
 	public function index()
 	{
+        $this->session->set_userdata('company_name', 'Beranda Admin');
 		$data['active_page'] = '';
 		$this->template->load('templates/admin_template', 'admin/index', $data);
 	}
 
 	public function umkm()
 	{
+        $this->session->set_userdata('company_name', 'Daftar UMKM');
 		$data['active_page'] = '';
 		$data['record'] = $this->db->get('companies')->result();
 		$this->template->load('templates/admin_template', 'admin/umkm', $data);
@@ -110,6 +112,25 @@ class Admin extends CI_Controller
             $data['record'] = $record_paging->result();
             $this->template->load('templates/admin_template', 'umkm/manage/product', $data);
         }
+    }
+
+    public function check_umkm_activity()
+    {
+        // $this->session->set_userdata('company_name', $this->session->userdata('company_name'));
+        $this->session->set_userdata('active_url', $this->uri->segment(1));
+        $company_id = $this->session->userdata('company_id');
+        $data['record'] = $this->db->get_where('activities', ['company_id' => $company_id]);
+        $this->template->load('templates/admin_template', 'activity/index', $data);
+    }
+
+    public function umkm_activity_detail()
+    {
+        $id = $this->uri->segment(3);
+        $this->session->set_userdata('active_page', $this->uri->segment(1).'/'.$this->uri->segment(2).'/'.$this->uri->segment(3));
+        $data['record'] = $this->db->get_where('activities', ['id' => $id])->row_array();
+        $this->session->set_userdata('company_id', $data['record']['company_id']);
+        $this->session->set_userdata('company_name', $this->session->userdata('company_name'));
+        $this->template->load('templates/admin_template', 'activity/detail', $data);
     }
 
 	public function activate_umkm()

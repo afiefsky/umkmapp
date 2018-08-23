@@ -10,6 +10,7 @@ class Register extends CI_Controller
 
     public function index()
     {
+        $this->session->set_userdata('company_name', 'Form Tambah UMKM');
     	if (isset($_POST['submit'])) {
             $config['upload_path']          = './uploads/';
 			$config['allowed_types']        = 'gif|jpg|png';

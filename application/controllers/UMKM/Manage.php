@@ -11,6 +11,7 @@ class Manage extends CI_Controller
 
     public function index()
     {
+        $this->session->set_userdata('company_name', 'Daftar UMKM');
         if (isset($_POST['submit_search'])) {
             $keyword = $this->input->post('company_name');
             $data['active_page'] = 'umkm/manage';
@@ -58,6 +59,7 @@ class Manage extends CI_Controller
 
     public function list()
     {
+        $this->session->unset_userdata('company_name');
         $company_id = $this->uri->segment(4);
         // Adding company id to the session
         $this->session->set_userdata('company_id', $company_id);
@@ -65,6 +67,7 @@ class Manage extends CI_Controller
         $this->session->set_userdata('prev_page', $this->uri->segment(1).'/'.$this->uri->segment(2).'/'.$this->uri->segment(3).'/'.$this->uri->segment(4));
 
         $data['record'] = $this->company->detail($company_id)->row_array();
+        // $this->session->set_userdata('company_name', $data['record']['name']);
         $this->template->load('templates/main_template', 'umkm/manage/list', $data);
     }
 
@@ -166,6 +169,7 @@ class Manage extends CI_Controller
 
     public function transfer_confirmation()
     {
+        $this->session->set_userdata('company_name', 'Konfirmasi Transfer');
         $user_id = $this->session->userdata('user_id');
         $data['record'] = $this->cart_detail->get_cart_product($user_id)->result();
         $this->template->load('templates/main_template', 'umkm/manage/transfer_confirmation', $data);
@@ -224,6 +228,7 @@ class Manage extends CI_Controller
 
     public function transfer_history()
     {
+        $this->session->set_userdata('company_name', 'Histori Transfer');
         $user_id = $this->session->userdata('user_id');
 
         if (isset($_POST['submit_search'])) { // if submit_search
