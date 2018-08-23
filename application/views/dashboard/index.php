@@ -68,9 +68,9 @@ function hari_ini($hari){
             }
         ?>
         <?php if ($num_rows_companies == 0) { ?>
-            Selamat datang di Beranda UMKM-APP! Anda belum memiliki UMKM, buat UMKM anda di <b><?php echo anchor('UMKM/register', 'sini!'); ?></b>
+            <b>UMKM - <?php echo 'Beranda' ?>!</b> Anda belum memiliki UMKM, buat UMKM anda di <b><?php echo anchor('UMKM/register', 'sini!'); ?></b>
         <?php } else { ?>
-            Selamat datang di Beranda UMKM-APP! Kelola UMKM yang sudah anda buat di <b><?php echo anchor('UMKM/manage', 'sini!'); ?></b><br />
+            <b>UMKM - <?php echo 'Beranda' ?>!</b> Kelola UMKM yang sudah anda buat di <b><?php echo anchor('UMKM/manage', 'sini!'); ?></b><br />
             Atau buat UMKM baru anda di <b><?php echo anchor('UMKM/register', 'sini!'); ?>
         <?php } ?>
         <br><br>
