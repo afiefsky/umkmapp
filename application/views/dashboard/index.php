@@ -68,10 +68,10 @@ function hari_ini($hari){
             }
         ?>
         <?php if ($num_rows_companies == 0) { ?>
-            <b>UMKM - <?php echo 'Beranda' ?>!</b> Anda belum memiliki UMKM, buat UMKM anda di <b><?php echo anchor('UMKM/register', 'sini!'); ?></b>
+            <b>UMKM - <?php echo 'Beranda' ?>!</b> Anda belum memiliki UMKM, buat UMKM anda di <b><?php echo anchor('umkm/register', 'sini!'); ?></b>
         <?php } else { ?>
-            <b>UMKM - <?php echo 'Beranda' ?>!</b> Kelola UMKM yang sudah anda buat di <b><?php echo anchor('UMKM/manage', 'sini!'); ?></b><br />
-            Atau buat UMKM baru anda di <b><?php echo anchor('UMKM/register', 'sini!'); ?>
+            <b>UMKM - <?php echo 'Beranda' ?>!</b> Kelola UMKM yang sudah anda buat di <b><?php echo anchor('umkm/manage', 'sini!'); ?></b><br />
+            Atau buat UMKM baru anda di <b><?php echo anchor('umkm/register', 'sini!'); ?>
         <?php } ?>
         <br><br>
         <table class="table table-bordered">

@@ -16,8 +16,8 @@ class Register extends CI_Controller
     		$password = $this->input->post('password');
     		$re_password = $this->input->post('re_password');
 
-            $back_account_number = $this->input->post('bank_account_number');
-            $back_name = $this->input->post('bank_name');
+            $bank_account_number = $this->input->post('bank_account_number');
+            $bank_name = $this->input->post('bank_name');
             $bank_account_owner = $this->input->post('bank_account_owner');
             $phone = $this->input->post('phone');
 
@@ -48,3 +48,4 @@ class Register extends CI_Controller
         $this->template->load('templates/admin_template', 'umkm/request');
     }
 }
+		

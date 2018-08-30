@@ -57,7 +57,13 @@ function hari_ini($hari){
 
             }
         ?>
-        <?php echo anchor('shop', 'Kembali', ['class' => 'btn btn-warning']); ?><br/><br/>
+        <?php
+        if ($this->session->userdata('username')=='admin' || $this->session->userdata('username')=='superadmin') {
+            echo anchor('admin/umkm', 'Kembali', ['class' => 'btn btn-danger']);
+        } else {
+            echo anchor('umkm/manage', 'Kembali', ['class' => 'btn btn-danger']);
+        }
+        ?><br><br>
         <!-- CONTENTS BELOW -->
         <table class="table table-bordered">
           <tr>
@@ -72,24 +78,30 @@ function hari_ini($hari){
             <td><?php echo $record['location']; ?></td>
           </tr>
           <tr>
-            <td><b>Kontak:</td>
-            <td><?php echo $record['phone']; ?></td>
-          </tr>
-          <tr>
             <td><b>Alamat Lengkap:</td>
             <td><?php echo $record['location_full']; ?></td>
           </tr>
           <tr>
+            <td><b>No. HP:</td>
+            <td><?php echo $record['phone']; ?></td>
+          </tr>
+          <tr>
             <td><b>Tanggal Dibuat:</td>
-            <td><?php echo hari_ini(date_format(date_create($record['created_at']), 'D')).', '.date_format(date_create($record['created_at']), 'd-m-Y'); ?></td>
+            <td><?php echo '<b>'.hari_ini(date_format(date_create($record['created_at']), 'D')).', '.date_format(date_create($record['created_at']), 'd-m-Y').'</b>'; ?></td>
           </tr>
           <tr>
               <td><b>Opsi:</td>
               <td>
                 <?php
-                echo anchor('shop/product', 'Belanja', ['class' => 'btn btn-info']);
-                echo " ";
-                echo anchor('shop/activity', 'Lihat Kegiatan', ['class' => 'btn btn-success']);
+                if ($this->session->userdata('username') == 'admin') {
+                    echo anchor('admin/check_umkm_product', 'Cek Produk', ['class' => 'btn btn-info']);
+                    echo " ";
+                    echo anchor('admin/check_umkm_activity', 'Cek Kegiatan', ['class' => 'btn btn-success']);
+                } else {
+                    echo anchor('umkm/manage/product', 'Kelola Produk', ['class' => 'btn btn-info']);
+                    echo " ";
+                    echo anchor('activity', 'Kelola Kegiatan', ['class' => 'btn btn-success']);
+                }
                 ?>
              </td>
           </tr>
@@ -98,4 +110,3 @@ function hari_ini($hari){
     </div><!-- /.row -->
   </div><!-- /#page-wrapper -->
 </div><!-- /#wrapper -->
-	

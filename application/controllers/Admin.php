@@ -20,7 +20,7 @@ class Admin extends CI_Controller
 	{
         $this->session->set_userdata('company_name', 'Daftar UMKM');
 		$data['active_page'] = '';
-		$data['record'] = $this->db->get('companies')->result();
+		$data['record'] = $this->db->get_where('companies', ['is_deleted' => '0'])->result();
 		$this->template->load('templates/admin_template', 'admin/umkm', $data);
 	}
 
