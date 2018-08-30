@@ -238,13 +238,29 @@ class Manage extends CI_Controller
 
             // Record
             $data['record'] = $this->cart_detail->get_cart_by_user_id_and_date_between($user_id, $date_start, $date_end)->result();
+            $this->__transfer_history_view($data);
         } elseif (isset($_POST['submit_print'])) { // if submit_print
-            echo 2;
+            // Post
+            $date_start = $this->input->post('date_start');
+            $date_end = $this->input->post('date_end');
+
+            // Record
+            $data['record'] = $this->cart_detail->get_cart_by_user_id_and_date_between($user_id, $date_start, $date_end)->result();
+            $this->__transfer_history_print($data);
         } else { // default
             $data['record'] = $this->cart_detail->get_cart_by_user_id($user_id)->result();
+            $this->__transfer_history_view($data);
         }
+    }
 
+    public function __transfer_history_view($data)
+    {
         $this->template->load('templates/main_template', 'umkm/manage/transfer_history', $data);
+    }
+
+    public function __transfer_history_print($data)
+    {
+        $this->load->view('umkm/manage/transfer_history_print', $data);
     }
 
     public function history_detail()

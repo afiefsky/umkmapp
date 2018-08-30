@@ -38,7 +38,7 @@ function hari_ini($hari){
 
 }
 ?>
-<h3>Halaman Konfirmasi Transfer Pelanggan</h3>
+<h3>Halaman Histori Transfer</h3>
 <h4><?php echo $this->session->flashdata('above_message'); ?></h4>
 <h4><?php echo $this->session->flashdata('message'); ?></h4>
 
@@ -55,7 +55,7 @@ function hari_ini($hari){
     <td><input type="date" name="date_end" class="form-control" placeholder="Tanggal Selesai" value="<?php echo date('Y-m-d'); ?>" required /></td>
     <td>
       <input type="submit" name="submit_search" value="Cari" class="btn btn-primary" />
-      <input type="submit" name="submit_print" value="Print" class="btn btn-warning" />
+      <input type="submit" name="submit_print" value="Print" formtarget="_blank" class="btn btn-warning" />
     </td>
   </tr>
 </table>

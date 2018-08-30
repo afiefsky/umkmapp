@@ -75,10 +75,10 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => 'sql302.byethost7.com',
-	'username' => 'b7_22628892',
-	'password' => 'Jb7H3cksQPe5yRMWDw',
-	'database' => 'b7_22628892_umkmapp',
+	'hostname' => 'localhost',
+	'username' => 'root',
+	'password' => '',
+	'database' => 'db_umkm',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
 	'pconnect' => FALSE,
