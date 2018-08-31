@@ -45,7 +45,7 @@ function hari_ini($hari){
 <?php echo form_open('umkm/manage/transfer_history'); ?>
 <!-- Search section start -->
 <table border="0">
-  <tr>
+  <tr bgcolor="orange">
     <td>Tanggal Mulai</td>
     <td>Tanggal Selesai</td>
   </tr>
@@ -57,7 +57,7 @@ function hari_ini($hari){
 <!-- Search section end -->
 <?php echo form_close(); ?>
 <table border='1' width="100%">
-  <tr>
+  <tr bgcolor="orange">
     <td><b>No</td>
     <td><b>Tanggal</td>
     <td><b>Kode</td>
