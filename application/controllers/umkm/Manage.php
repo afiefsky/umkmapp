@@ -155,6 +155,31 @@ class Manage extends CI_Controller
         }
     }
 
+    public function print_product()
+    {
+        $company_id = $this->session->userdata('company_id');
+        $user_id = $this->session->userdata('user_id');
+
+        $record_default = $this->company->product($company_id);
+
+        $this->load->library('pagination');
+        $config['base_url'] = base_url().'index.php/umkm/manage/product/';
+        $config['total_rows'] = $record_default->num_rows();
+        $config['per_page'] = 7;
+
+        $this->pagination->initialize($config);
+
+        $data['paging'] = $this->pagination->create_links();
+        $page = $this->uri->segment(4);
+        $page = $page == '' ? 0 : $page;
+
+        $record_paging = $this->company->product_paging($page, $config['per_page'], $company_id);
+        // $data['record'] = $record_paging->result();
+        $data['record'] = $this->cart_detail->get_history($company_id);
+        $this->load->view('umkm/manage/print_product', $data);
+        // $this->template->load('templates/main_template', 'umkm/manage/product', $data);
+    }
+
     public function delete()
     {
         $company_id = $this->uri->segment(4);

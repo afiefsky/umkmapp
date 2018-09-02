@@ -32,6 +32,9 @@
         } else {
             echo anchor('umkm/manage/list/'.$this->session->userdata('company_id'), 'Kembali', ['class' => 'btn btn-danger']);
         }
+        echo "<div align='right'>";
+        echo anchor('umkm/manage/print_product', 'Print', ['class'=>'btn btn-warning', 'target'=>'_blank']);
+        echo "</div>";
         ?><br><br>
         <?php
         if ($this->session->userdata('username')=='admin' || $this->session->userdata('username')=='superadmin') {

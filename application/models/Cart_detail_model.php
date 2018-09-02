@@ -35,6 +35,16 @@ class Cart_detail_model extends CI_Model
         return $this->db->query($query);
     }
 
+    public function get_history($company_id)
+    {
+        $this->db->select('crd.id, crd.created_at, prd.name, crd.qty, prd.price, prd.file_name');
+        $this->db->from('carts_details AS crd');
+        $this->db->join('products AS prd', 'prd.id = crd.product_id');
+        $this->db->where('prd.company_id = ', $company_id);
+        $this->db->order_by('crd.id', 'DESC');
+        return $this->db->get();
+    }
+
     public function get_cart_by_user_id($user_id)
     {
         $query = "SELECT com.name as com_name, car.transaction_code, pro.file_name, pro.name as pro_name, pro.price, cad.qty, car.status, car.id AS cart_id, cad.created_at, car.created_at AS date_created
