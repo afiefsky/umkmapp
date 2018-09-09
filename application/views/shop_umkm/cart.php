@@ -39,6 +39,7 @@
   $no = 1;
   $total = 0;
   foreach ($record->result() as $r) {
+      $count = ($r->price - (($r->price * 15) / 100)) * $r->qty;
       echo "
       <tr>
         <td>$no</td>
@@ -47,12 +48,12 @@
         <td>".rupiah($r->price)."</td>
         <td>15%</td>
         <td>".angka($r->qty)."</td>
-        <td>".rupiah(($r->price - (($r->price * 15) / 100)) * $r->qty)."</td>
-        <td>".anchor('shop/cancel_product/'.$r->detail_id, 'Cancel', ['class' => 'btn btn-danger'])."</td>
+        <td>".rupiah($count)."</td>
+        <td>".anchor('shop_umkm/cancel_product/'.$r->detail_id, 'Cancel', ['class' => 'btn btn-danger'])."</td>
       </tr>
       ";
       $no++;
-      $total = $total + ($r->price * $r->qty);
+      $total = $total + $count;
   }
   ?>
   <tr>

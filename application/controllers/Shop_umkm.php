@@ -9,6 +9,7 @@ class Shop_umkm extends CI_Controller
         $this->load->model('Product_model', 'product');
         $this->load->model('Cart_detail_model', 'cart_detail');
         $this->load->model('Cart_model', 'cart');
+        check_session_umkm();
     }
 
     public function __generateRandomString($length = 10) {
@@ -55,6 +56,15 @@ class Shop_umkm extends CI_Controller
         $cart_id = $this->uri->segment(3);
         $data['record'] = $this->cart_detail->get_with_product($cart_id);
         $this->template->load('templates/shop_umkm_template', 'shop_umkm/cart', $data);
+    }
+
+    public function cancel_product()
+    {
+        $detail_id = $this->uri->segment(3);
+
+        $this->db->where('id', $detail_id);
+        $this->db->update('carts_details', ['is_cancelled' => '1']);
+        redirect('shop_umkm/cart/'.$this->session->userdata('cart_id'));
     }
 
     public function qty_selection()
@@ -156,6 +166,105 @@ class Shop_umkm extends CI_Controller
         // email algorithm end
 
         redirect('shop_umkm');
+    }
+
+    public function check_transfer()
+    {
+        if (isset($_POST['submit'])) {
+            $transaction_code = $this->input->post('transaction_code');
+            $data = $this->db->get_where('carts', ['transaction_code' => $transaction_code]);
+            $cart_id = $data->row_array()['id'];
+            $scheduled_day = $this->cart->get_scheduled_day($cart_id)->row_array();
+
+            if ($data->num_rows() > 0) {
+                if ($data->row_array()['status']=='2') {
+                    $this->session->set_flashdata('message', 'MAAF, TRANSAKSI TERSEBUT TELAH DIKIRIMKAN SEBELUMNYA!!!');
+                    redirect('shop_umkm/check_transfer');
+                } elseif (date('Y-m-d H:i:s') > $scheduled_day['scheduled_day']) {
+                    $this->session->set_flashdata('message', 'MAAF, ANDA TELAH MELEWATI WAKTU YANG SUDAH DITENTUKAN!! SILAHKAN TRANSAKSI KEMBALI!!');
+                    redirect('shop_umkm/check_transfer');
+                }
+                $this->session->set_userdata('transaction_code', $transaction_code);
+                redirect('shop_umkm/submit_transfer_proof');
+            } else {
+                $this->session->set_flashdata('message', 'MAAF KODE TRANSAKSI TIDAK DITEMUKAN!');
+                redirect('shop_umkm/check_transfer');
+            }
+        } else {
+            $this->template->load('templates/shop_umkm_template', 'shop_umkm/check_transfer');
+        }
+    }
+
+    public function submit_transfer_proof()
+    {
+        if (isset($_POST['submit'])) {
+            $config['upload_path']          = './uploads/';
+            $config['allowed_types']        = 'gif|jpg|png|jpeg';
+
+            $this->load->library('upload', $config);
+
+            $this->upload->do_upload('file_name');
+
+            $data = $this->upload->data();
+
+            $cart_id = $this->session->userdata('cart_id');
+
+            $data = [
+                'status' => '2',
+                'file_name' => $data['file_name'],
+                'name' => $this->input->post('name'),
+                'address' => $this->input->post('address'),
+                'email' => $this->input->post('email'),
+                'phone' => $this->input->post('phone')
+            ];
+
+            $this->db->where('id', $cart_id);
+            $this->db->update('carts', $data);
+
+            // Decreasing the product qty
+            $data = '';
+            $cart_detail = $this->db->get_where('carts_details', ['cart_id'=>$cart_id])->result();
+            foreach ($cart_detail as $c) {
+                $product_id = $c->product_id;
+                $qty = $c->qty;
+
+                $query = "UPDATE products SET qty = qty - $qty WHERE id = $product_id";
+                $this->db->query($query);
+            }
+
+            $this->session->set_flashdata('message', '<h3>BARANG AKAN SEGERA DIKIRIMKAN OLEH PIHAK UMKM TERKAIT</h3>');
+            $this->session->set_flashdata('above_message', '<h3>BUKTI UNTUK TRANSAKSI DENGAN KODE: ['.$this->session->userdata('transaction_code').'] TELAH BERHASIL DIKIRIMKAN!!</h3><br><h3>TERIMA KASIH TELAH BERBELANJA MENGGUNAKAN UMKM APP');
+
+            // email algorithm start
+            $config = Array(
+                'protocol' => 'smtp',
+                'smtp_host' => 'ssl://smtp.gmail.com',
+                'smtp_port' => '465',
+                'smtp_user' => 'arezkyameliap@gmail.com',
+                'smtp_pass' => 'poldamku'
+            );
+            $this->load->library('email', $config);
+            $this->email->set_newline("\r\n");
+
+            $this->email->from('arezkyameliap@gmail.com', 'UMKM APP');
+            $this->email->to($this->input->post('email'));
+
+            $this->email->subject('NOTIFIKASI UMKMAPP');
+            $this->email->message("BARANG AKAN SEGERA DIKIRIMKAN OLEH PIHAK UMKM TERKAIT\r\nBUKTI UNTUK TRANSAKSI DENGAN KODE: ".$this->session->userdata('transaction_code')." TELAH BERHASIL DIKIRIMKAN!!\rTERIMA KASIH TELAH BERBELANJA MENGGUNAKAN UMKM APP");
+            $this->email->send();
+            // email algorithm end
+
+            redirect('shop_umkm');
+        } else {
+            $transaction_code = $this->session->userdata('transaction_code');
+            $data['record'] = $this->db->get_where('carts', ['transaction_code' => $transaction_code])->row_array();
+
+            $cart_id = $data['record']['id'];
+            $this->session->set_userdata('cart_id', $cart_id);
+            $data['record_detail'] = $this->cart_detail->get_with_product($cart_id)->result();
+
+            $this->template->load('templates/shop_umkm_template', 'shop_umkm/submit_transfer_proof', $data);
+        }
     }
 
     public function logout()

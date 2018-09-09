@@ -50,7 +50,7 @@ function hari_ini($hari){
 <b>Silahkan pilih UMKM sesuai dengan kebutuhan anda</b><br><br>
 <table width="100%">
   <tr>
-    <td align="right"><h4>Atau ajukan bukti transfer atas pembelian anda di <?php echo anchor('shop/check_transfer', 'SINI', ['class' => 'btn btn-success']); ?></h4></td>
+    <td align="right"><h4>Atau ajukan bukti transfer atas pembelian anda di <?php echo anchor('shop_umkm/check_transfer', 'SINI', ['class' => 'btn btn-success']); ?></h4></td>
   </tr>
 </table>
 <table class="table table-bordered">

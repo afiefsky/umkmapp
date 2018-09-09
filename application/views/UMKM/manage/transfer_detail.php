@@ -51,6 +51,7 @@
     <th>Nama</th>
     <th>Gambar</th>
     <th>Harga</th>
+    <th>Diskon</th>
     <th>Qty</th>
     <th>Sub Total</th>
   </tr>
@@ -58,18 +59,36 @@
   $no = 1;
   $total = 0;
   foreach ($record->result() as $r) {
-      echo "
-      <tr>
-        <td>$no</td>
-        <td><h4><b>$r->name</b></h4></td>
-        <td><img src=".base_url()."uploads/".$r->file_name." width='100' height='100'></td>
-        <td>".rupiah($r->price)."</td>
-        <td>".angka($r->qty)."</td>
-        <td>".rupiah($r->price * $r->qty)."</td>
-      </tr>
-      ";
-      $no++;
-      $total = $total + ($r->price * $r->qty);
+    if ($r->is_discount == '1') {
+        $count = ($r->price - (($r->price * 15) / 100)) * $r->qty;
+        echo "
+          <tr>
+            <td>$no</td>
+            <td><h4><b>$r->name</b></h4></td>
+            <td><img src=".base_url()."uploads/".$r->file_name." width='100' height='100'></td>
+            <td>".rupiah($r->price)."</td>
+            <td>15%</td>
+            <td>".angka($r->qty)."</td>
+            <td>".rupiah($count)."</td>
+          </tr>
+          ";
+          $no++;
+          $total = $total + ($count);
+    } else {
+        echo "
+          <tr>
+            <td>$no</td>
+            <td><h4><b>$r->name</b></h4></td>
+            <td><img src=".base_url()."uploads/".$r->file_name." width='100' height='100'></td>
+            <td>".rupiah($r->price)."</td>
+            <td> - </td>
+            <td>".angka($r->qty)."</td>
+            <td>".rupiah($r->price * $r->qty)."</td>
+          </tr>
+          ";
+          $no++;
+          $total = $total + ($r->price * $r->qty);
+    }
   }
   ?>
   <tr>
