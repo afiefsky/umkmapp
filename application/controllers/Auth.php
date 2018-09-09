@@ -41,6 +41,8 @@ class Auth extends CI_Controller
                     redirect('auth');
                 } else {
                     $data['user_roles'] = $user_roles->result();
+                    $this->db->where('id', $this->session->userdata('user_id'));
+                    $this->db->update('users', ['last_logged_in' => date('Y-m-d H:i:s')]);
                     redirect('dashboard');
                 }
             } else {
@@ -72,6 +74,8 @@ class Auth extends CI_Controller
                 $user_roles = $this->db->get_where('users_roles', ['user_id' => $this->session->userdata('user_id')]);
                 $role_count = $user_roles->num_rows();
                 if ($this->session->userdata('username')=='admin' || $this->session->userdata('username')=='superadmin') {
+                    $this->db->where('id', $this->session->userdata('user_id'));
+                    $this->db->update('users', ['last_logged_in' => date('Y-m-d H:i:s')]);
                     redirect('admin');
                 } else {
                     $this->session->unset_userdata('username');

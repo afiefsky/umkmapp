@@ -16,6 +16,13 @@ class Admin extends CI_Controller
 		$this->template->load('templates/admin_template', 'admin/index', $data);
 	}
 
+    // $this->db->select('com.*, use.last_logged_in');
+    //     $this->db->from('users_companies AS uco');
+    //     $this->db->join('users AS use', 'use.id = uco.user_id');
+    //     $this->db->join('companies AS com', 'com.id = uco.company_id');
+    //     $this->db->where('use.id = '.$this->session->userdata('user_id'));
+    //     $this->db->where('com.is_deleted = 0');
+    //     $data['record'] = $this->db->get()->result();
 	public function umkm()
 	{
         $this->session->set_userdata('company_name', 'Daftar UMKM');
