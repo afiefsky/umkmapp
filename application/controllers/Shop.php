@@ -139,7 +139,7 @@ class Shop extends CI_Controller
         $this->template->load('templates/shop_template', 'shop/detail_activity', $data);
     }
 
-    public function generateRandomString($length = 10) {
+    public function __generateRandomString($length = 10) {
         $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
         $charactersLength = strlen($characters);
         $randomString = '';
@@ -152,7 +152,7 @@ class Shop extends CI_Controller
     public function process()
     {
         $email = $this->input->post('email');
-        $transaction_code = strtoupper($this->generateRandomString());
+        $transaction_code = strtoupper($this->__generateRandomString());
         $check_code = $this->db->get_where('carts', ['transaction_code'=>$transaction_code])->num_rows();
         if ($check_code > 0) {
             $this->process();

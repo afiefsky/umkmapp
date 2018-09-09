@@ -66,7 +66,7 @@ function hari_ini($hari){
           <u><h4>$r->name</h4></u>
           <b>$r->location</b>
           <center>
-          ".anchor('shop/umkm/'.$r->id, '<img id="myImg" src='.base_url().'uploads/'.$r->image_url.' width="250" height="250" />')."
+          ".anchor('shop_umkm/umkm/'.$r->id, '<img id="myImg" src='.base_url().'uploads/'.$r->image_url.' width="250" height="250" />')."
         </td>
         ";
     // echo $no;
