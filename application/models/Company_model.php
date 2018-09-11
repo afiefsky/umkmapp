@@ -151,9 +151,9 @@ class Company_model extends CI_Model
 
     public function all()
     {
-        $this->db->where('is_confirmed !=', '0');
-        $this->db->where('is_deleted !=', '1');
-        $this->db->where('is_active !=', '0');
+        $this->db->where('is_confirmed =', '1');
+        $this->db->where('is_deleted =', '0');
+        $this->db->where('is_active =', '1');
         return $this->db->get('companies');
     }
 
