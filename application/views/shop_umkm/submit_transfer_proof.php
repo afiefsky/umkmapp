@@ -78,7 +78,8 @@ function hari_ini($hari){
     <td><input type="number" name="phone" class="form-control" placeholder="Nomor telpon penerima (call, sms, whatsapp, dll)" required></td>
   </tr>
   <tr>
-    <td colspan="2"><input type="file" name="file_name" class="form-control" required><h5><b>* MOHON FOTO DAN PILIH FILE GAMBAR BUKTI TRANSFER</b></h5></td>
+    <td>Upload Struk Bukti Pembayaran</td>
+    <td><input type="file" name="file_name" class="form-control" required><h5><b>* MOHON FOTO DAN PILIH FILE GAMBAR BUKTI TRANSFER</b></h5></td>
   </tr>
   <tr>
     <td colspan="2"><input type="submit" name="submit" class="btn btn-success" value="KIRIM"></td>

@@ -27,7 +27,17 @@ class Admin extends CI_Controller
 	{
         $this->session->set_userdata('company_name', 'Daftar UMKM');
 		$data['active_page'] = '';
-		$data['record'] = $this->db->get_where('companies', ['is_deleted' => '0'])->result();
+		// $data['record'] = $this->db->get_where('companies', ['is_deleted' => '0'])->result();
+
+        $this->db->select('com.*, usr.last_logged_in');
+        $this->db->from('users_companies AS usc');
+        $this->db->join('companies AS com', 'com.id = usc.company_id');
+        $this->db->join('users AS usr', 'usr.id = usc.user_id');
+        $this->db->where('com.is_deleted', '0');
+        $record = $this->db->get();
+
+        $data['record'] = $record->result();
+
 		$this->template->load('templates/admin_template', 'admin/umkm', $data);
 	}
 
@@ -152,4 +162,30 @@ class Admin extends CI_Controller
 
 		redirect('admin/umkm');
 	}
+
+    public function activate_umkm_alternate()
+    {
+        $company_id = $this->uri->segment(3);
+        $this->db->where('id', $company_id);
+        $this->db->update('companies', ['is_active' => '1']);
+
+        $data = $this->db->get_where('companies', ['id' => $company_id])->row_array();
+
+        $this->session->set_flashdata('message', 'UMKM '.$data['name'].' telah berhasil diaktivasi!!!');
+
+        redirect('admin/umkm');
+    }
+
+    public function deactivate_umkm_alternate()
+    {
+        $company_id = $this->uri->segment(3);
+        $this->db->where('id', $company_id);
+        $this->db->update('companies', ['is_active' => '0']);
+
+        $data = $this->db->get_where('companies', ['id' => $company_id])->row_array();
+
+        $this->session->set_flashdata('message', 'UMKM '.$data['name'].' telah berhasil dinpnaktifkan!!!');
+
+        redirect('admin/umkm');
+    }
 }

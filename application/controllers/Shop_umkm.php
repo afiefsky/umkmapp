@@ -25,7 +25,7 @@ class Shop_umkm extends CI_Controller
     public function index()
     {
         // $this->session->sess_destroy();
-        $data['record'] = $this->company->all();
+        $data['record'] = $this->company->all_without_self($this->session->userdata('user_id'));
         $this->template->load('templates/shop_umkm_template', 'shop_umkm/index', $data);
     }
 

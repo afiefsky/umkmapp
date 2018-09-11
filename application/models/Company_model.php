@@ -23,7 +23,7 @@ class Company_model extends CI_Model
      */
     public function detail($id)
     {
-        $this->db->select('com.*, usr.phone');
+        $this->db->select('com.*, usr.phone, usr.bank_account_owner');
         $this->db->from('users_companies AS usc');
         $this->db->join('companies AS com', 'com.id = usc.company_id');
         $this->db->join('users AS usr', 'usr.id = usc.user_id');
@@ -153,7 +153,21 @@ class Company_model extends CI_Model
     {
         $this->db->where('is_confirmed !=', '0');
         $this->db->where('is_deleted !=', '1');
+        $this->db->where('is_active !=', '0');
         return $this->db->get('companies');
     }
+
+    public function all_without_self($user_id)
+    {
+        $this->db->select('com.*, usr.last_logged_in');
+        $this->db->from('users_companies AS usc');
+        $this->db->join('companies AS com', 'com.id = usc.company_id');
+        $this->db->join('users AS usr', 'usr.id = usc.user_id');
+        $this->db->where('com.is_confirmed !=', '0');
+        $this->db->where('com.is_deleted !=', '1');
+        $this->db->where('com.is_active !=', '0');
+        $this->db->where('usr.id !=', $user_id);
+        return $this->db->get();
+    }
 }
-	
+

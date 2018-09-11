@@ -70,8 +70,12 @@ function hari_ini($hari){
             <td colspan="2"><img src="<?php echo base_url() . 'uploads/' . $record['image_url']; ?>" width="250" /></td>
           </tr>
           <tr>
-            <td><b>Nama:</td>
+            <td><b>Nama Toko:</td>
             <td><?php echo $record['name']; ?></td>
+          </tr>
+          <tr>
+            <td><b>Nama Pemilik:</td>
+            <td><?php echo $record['bank_account_owner']; ?></td>
           </tr>
           <tr>
             <td><b>Kota:</td>
