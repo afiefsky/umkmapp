@@ -34,7 +34,7 @@
               $button_enter = anchor('admin/check_umkm/'.$r->id, 'Enter', ['class' => 'btn btn-default']);
 
               if ($r->is_confirmed=='0') {
-                  $button_confirm = anchor('admin/activate_umkm/'.$r->id, 'Kpnfirm', ['class' => 'btn btn-success']);
+                  $button_confirm = anchor('admin/activate_umkm/'.$r->id, 'Konfirm', ['class' => 'btn btn-success']);
               } else {
                   $button_confirm = '';
               }

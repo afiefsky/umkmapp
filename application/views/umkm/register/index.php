@@ -3,7 +3,7 @@
 
         <div class="row">
           <div class="col-lg-12">
-            <h1>Dashboard</h1>
+            <h1>Form Tambah UMKM</h1>
             <?php echo anchor('dashboard', 'Beranda', ['class' => 'btn btn-primary']) ?><br/><br/>
             <?php echo form_open_multipart('umkm/register'); ?>
             <table class="table table-bordered">

@@ -68,6 +68,10 @@ function hari_ini($hari){
             <td><?php echo $record['name']; ?></td>
           </tr>
           <tr>
+            <td><b>Pemilik:</td>
+            <td><?php echo $record['bank_account_owner']; ?></td>
+          </tr>
+          <tr>
             <td><b>Kota:</td>
             <td><?php echo $record['location']; ?></td>
           </tr>
@@ -98,4 +102,4 @@ function hari_ini($hari){
     </div><!-- /.row -->
   </div><!-- /#page-wrapper -->
 </div><!-- /#wrapper -->
-	
+
