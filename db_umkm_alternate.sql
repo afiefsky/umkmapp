@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 100119
 File Encoding         : 65001
 
-Date: 2018-09-10 06:27:39
+Date: 2018-09-11 10:31:42
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -65,7 +65,7 @@ INSERT INTO `carts` VALUES ('1', '3', '3JG5YUQRWL', 'e-cash-palsu.jpg', 'kiki', 
 INSERT INTO `carts` VALUES ('2', '2', 'VAV5EMQGRN', 'buktitransfer.jpeg', 'TREVOR', 'JAKARTA PUSAT NO 10', 'afiefsky@gmail.com', '089666848126', '2', '2018-08-30 09:38:07', '2018-08-30 09:38:07');
 INSERT INTO `carts` VALUES ('3', null, null, null, null, null, null, null, '3', '2018-09-10 05:41:27', '2018-09-10 05:41:27');
 INSERT INTO `carts` VALUES ('4', '1', 'ACYKYDPYNI', null, null, null, null, null, '4', '2018-09-10 05:42:18', '2018-09-10 05:42:18');
-INSERT INTO `carts` VALUES ('5', '2', 'SICZQPO5SK', 'buktitransfer1.jpeg', 'MUHAMMAD AFIEF FARISTA', 'Jl Merah 10', 'afiefsky@gmail.com', '089666848126', '5', '2018-09-10 05:52:17', '2018-09-10 05:52:17');
+INSERT INTO `carts` VALUES ('5', '3', 'SICZQPO5SK', 'buktitransfer1.jpeg', 'MUHAMMAD AFIEF FARISTA', 'Jl Merah 10', 'afiefsky@gmail.com', '089666848126', '5', '2018-09-10 05:52:17', '2018-09-10 05:52:17');
 INSERT INTO `carts` VALUES ('6', null, null, null, null, null, null, null, '6', '2018-09-10 06:10:17', '2018-09-10 06:10:17');
 INSERT INTO `carts` VALUES ('7', '3', 'W3KJDHTCRU', 'buktitransfer3.jpeg', 'Renton', 'Maneuver Street', 'afiefsky@gmail.com', '08788812739', '7', '2018-09-10 06:11:17', '2018-09-10 06:11:17');
 
@@ -112,6 +112,7 @@ CREATE TABLE `companies` (
   `location_full` text,
   `is_confirmed` enum('0','1') NOT NULL DEFAULT '0',
   `is_deleted` enum('0','1') DEFAULT '0',
+  `is_active` enum('0','1') DEFAULT '1',
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `deleted_at` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
@@ -121,12 +122,12 @@ CREATE TABLE `companies` (
 -- ----------------------------
 -- Records of companies
 -- ----------------------------
-INSERT INTO `companies` VALUES ('1', 'Karya Agung', 'Capture.JPG', 'Makassar', 'Jl.Lapawawoi', '1', '1', '2018-08-28 22:45:02', '2018-08-28 22:45:02', '2018-08-29 08:45:37');
-INSERT INTO `companies` VALUES ('2', 'Karya Agung', 'Capture1.JPG', 'Watampone', 'Jl.Lapawawoi Kr.Sigeri', '1', '0', '2018-08-29 09:09:31', '2018-08-29 09:09:31', '2018-08-29 09:39:17');
-INSERT INTO `companies` VALUES ('3', 'Hellish Queen', 'batik.jpg', 'Jakarta Kota', 'Jakarta Kota Pondok Kelapa No 10', '0', '0', '2018-08-29 09:31:38', '2018-08-29 09:31:38', null);
-INSERT INTO `companies` VALUES ('4', 'Bristle Back', 'batik1.jpg', 'Jakarta Pusat', 'Jakarta Pusat Menteng No. 9', '1', '1', '2018-08-29 19:25:38', '2018-08-29 19:25:38', '2018-08-29 19:55:18');
-INSERT INTO `companies` VALUES ('5', 'Nur Atya Shop', 'backgroun_baju.JPG', 'Bandung', 'Jl.Dipati Ukur', '1', '0', '2018-08-29 19:57:21', '2018-08-29 19:57:21', '2018-08-29 20:03:12');
-INSERT INTO `companies` VALUES ('6', 'Karya Agung Kuliner', 'cooltext296387389850523.png', 'Makassar', 'Jl.Perintis Kemerdekaan', '1', '0', '2018-08-29 19:58:23', '2018-08-29 19:58:23', '2018-08-29 20:03:12');
+INSERT INTO `companies` VALUES ('1', 'Karya Agung', 'Capture.JPG', 'Makassar', 'Jl.Lapawawoi', '1', '1', '1', '2018-08-28 22:45:02', '2018-08-28 22:45:02', '2018-08-29 08:45:37');
+INSERT INTO `companies` VALUES ('2', 'Karya Agung', 'Capture1.JPG', 'Watampone', 'Jl.Lapawawoi Kr.Sigeri', '1', '0', '1', '2018-08-29 09:09:31', '2018-08-29 09:09:31', '2018-09-11 09:49:01');
+INSERT INTO `companies` VALUES ('3', 'Hellish Queen', 'batik.jpg', 'Jakarta Kota', 'Jakarta Kota Pondok Kelapa No 10', '1', '0', '0', '2018-08-29 09:31:38', '2018-08-29 09:31:38', '2018-09-11 09:47:31');
+INSERT INTO `companies` VALUES ('4', 'Bristle Back', 'batik1.jpg', 'Jakarta Pusat', 'Jakarta Pusat Menteng No. 9', '1', '1', '1', '2018-08-29 19:25:38', '2018-08-29 19:25:38', '2018-08-29 19:55:18');
+INSERT INTO `companies` VALUES ('5', 'Nur Atya Shop', 'backgroun_baju.JPG', 'Bandung', 'Jl.Dipati Ukur', '1', '0', '0', '2018-08-29 19:57:21', '2018-08-29 19:57:21', '2018-09-11 09:47:33');
+INSERT INTO `companies` VALUES ('6', 'Karya Agung Kuliner', 'cooltext296387389850523.png', 'Makassar', 'Jl.Perintis Kemerdekaan', '1', '0', '0', '2018-08-29 19:58:23', '2018-08-29 19:58:23', '2018-09-11 09:47:36');
 
 -- ----------------------------
 -- Table structure for products
@@ -225,6 +226,7 @@ CREATE TABLE `users` (
   `bank_name` text,
   `bank_account_owner` text COMMENT 'Atas nama',
   `is_owner` enum('0','1') NOT NULL DEFAULT '0',
+  `last_logged_in` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
@@ -234,12 +236,12 @@ CREATE TABLE `users` (
 -- ----------------------------
 -- Records of users
 -- ----------------------------
-INSERT INTO `users` VALUES ('1', 'superadmin', '17c4520f6cfd1ab53d8745e84681eb49', null, null, null, null, '1', '2018-05-20 20:28:34', '2018-05-20 20:28:34');
-INSERT INTO `users` VALUES ('2', 'silviasky@gmail.com', '3e47b75000b0924b6c9ba5759a7cf15d', '087812334522', '20011000322', 'BRI', 'Silvia Skywrath', '1', '2018-08-03 04:32:14', '2018-08-03 04:32:14');
-INSERT INTO `users` VALUES ('3', 'admin', '21232f297a57a5a743894a0e4a801fc3', null, null, null, null, '1', '2018-08-09 20:26:58', '2018-08-09 20:26:58');
-INSERT INTO `users` VALUES ('4', 'arezkyap@gmail.com', '7139bbd67895b3e9dc4577706d43720c', '085255557875', '6103010102211761', 'BRI', 'A.Rezky Amelia Putri', '0', '2018-08-29 09:03:44', '2018-08-29 09:03:44');
-INSERT INTO `users` VALUES ('5', 'druiyansyah@gmail.com', '3e47b75000b0924b6c9ba5759a7cf15d', '089666848126', null, null, 'Druiyansyah', '0', '2018-08-29 09:16:46', '2018-08-29 09:16:46');
-INSERT INTO `users` VALUES ('6', 'wimar@gmail.com', '3e47b75000b0924b6c9ba5759a7cf15d', '0897771672', '081982387498', 'BNI', 'WIMAR', '0', '2018-08-29 09:22:11', '2018-08-29 09:22:11');
+INSERT INTO `users` VALUES ('1', 'superadmin', '17c4520f6cfd1ab53d8745e84681eb49', null, null, null, null, '1', '2018-09-11 09:10:02', '2018-05-20 20:28:34', '2018-05-20 20:28:34');
+INSERT INTO `users` VALUES ('2', 'silviasky@gmail.com', '3e47b75000b0924b6c9ba5759a7cf15d', '087812334522', '20011000322', 'BRI', 'Silvia Skywrath', '1', '2018-09-11 09:49:22', '2018-08-03 04:32:14', '2018-08-03 04:32:14');
+INSERT INTO `users` VALUES ('3', 'admin', '21232f297a57a5a743894a0e4a801fc3', null, null, null, null, '1', '2018-09-11 10:28:59', '2018-08-09 20:26:58', '2018-08-09 20:26:58');
+INSERT INTO `users` VALUES ('4', 'arezkyap@gmail.com', '7139bbd67895b3e9dc4577706d43720c', '085255557875', '6103010102211761', 'BRI', 'A.Rezky Amelia Putri', '0', '2018-09-11 10:16:38', '2018-08-29 09:03:44', '2018-08-29 09:03:44');
+INSERT INTO `users` VALUES ('5', 'druiyansyah@gmail.com', '3e47b75000b0924b6c9ba5759a7cf15d', '089666848126', null, null, 'Druiyansyah', '0', '2018-09-10 09:10:15', '2018-08-29 09:16:46', '2018-08-29 09:16:46');
+INSERT INTO `users` VALUES ('6', 'wimar@gmail.com', '3e47b75000b0924b6c9ba5759a7cf15d', '0897771672', '081982387498', 'BNI', 'WIMAR', '0', '2018-09-02 09:10:19', '2018-08-29 09:22:11', '2018-08-29 09:22:11');
 
 -- ----------------------------
 -- Table structure for users_companies
