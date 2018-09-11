@@ -77,7 +77,7 @@ function hari_ini($hari){
   $button_status = '';
   foreach ($record as $r) {
     if ($r->status=='3') {
-        $button_status = "<b>Telah Dikonfirmasi oleh Admin";
+        $button_status = "<b>Telah Dikonfirmasi UMKM";
     } elseif ($r->status=='2') {
         $button_status = "<b>Menunggu Konfirmasi UMKM";
     } else {
