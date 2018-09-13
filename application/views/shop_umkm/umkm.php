@@ -57,7 +57,7 @@ function hari_ini($hari){
 
             }
         ?>
-        <?php echo anchor('shop', 'Kembali', ['class' => 'btn btn-warning']); ?><br/><br/>
+        <?php echo anchor('shop_umkm', 'Kembali', ['class' => 'btn btn-warning']); ?><br/><br/>
         <!-- CONTENTS BELOW -->
         <table class="table table-bordered">
           <tr>

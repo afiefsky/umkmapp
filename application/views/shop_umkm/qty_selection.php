@@ -15,6 +15,7 @@
     <th>Nama</th>
     <th>Gambar</th>
     <td>Harga</td>
+    <td>Stok Tersedia</td>
     <th>Qty</th>
     <th>Opsi</th>
   </tr>
@@ -22,6 +23,7 @@
     <td><h4><b><?php echo $record['name'] ?></b></h4></td>
     <td><img src="<?php echo base_url().'uploads/'.$record['file_name'] ?>" width="100" height="100"></td>
     <td><?php echo rupiah($record['price']); ?></td>
+    <td><?php echo $record['qty']; ?></td>
     <td width="10%"><input type="number" name="qty" value="1" required></td>
     <td><input type="submit" name="submit" class="btn btn-primary"></td>
   </tr>

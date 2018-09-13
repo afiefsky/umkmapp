@@ -16,7 +16,7 @@
 <table class="table table-bordered">
   <tr>
     <td>Email</td>
-    <td><input type="email" name="email" class="form-control" placeholder="Masukkan email anda" required></td>
+    <td><input type="email" name="email" class="form-control" placeholder="Masukkan email anda" value="<?php echo $this->session->userdata('username'); ?>" required readonly></td>
   </tr>
   <tr>
     <td colspan="2">
