@@ -34,7 +34,7 @@
   </tr>
   <tr>
     <td>Bukti Transfer</td>
-    <td><img src="<?php echo base_url().'uploads/'.$cart['file_name']?>" width="120" /></td>
+    <td><img src="<?php echo base_url().'uploads/'.$cart['file_name']?>" width="300" height="300" /></td>
   </tr>
   <tr>
     <td>
