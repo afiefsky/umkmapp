@@ -53,11 +53,13 @@ class User_model extends CI_Model
         return $this->db->get()->num_rows();
     }
 
-    public function getById($id)
+    public function getById($user_id)
     {
-        $this->db->select('*');
-        $this->db->from('users AS usr');
-        $this->db->where('usr.id', $id);
+        $this->db->select('usr.*, com.location_full');
+        $this->db->from('users_companies AS usc');
+        $this->db->join('companies AS com', 'com.id = usc.company_id');
+        $this->db->join('users AS usr', 'usr.id = usc.user_id');
+        $this->db->where('usr.id =', $user_id);
         return $this->db->get();
     }
 }

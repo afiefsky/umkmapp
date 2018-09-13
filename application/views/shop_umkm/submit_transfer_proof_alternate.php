@@ -67,7 +67,7 @@ function hari_ini($hari){
   </tr>
   <tr>
     <td>Alamat Lengkap Penerima</td>
-    <td><input type="text" name="address" class="form-control" placeholder="Alamat lengkap penerima" required></td>
+    <td><input type="text" name="address" class="form-control" placeholder="Alamat lengkap penerima" value="<?php echo $record_member['location_full']; ?>" readonly required></td>
   </tr>
   <tr>
     <td>E-Mail</td>
