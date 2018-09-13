@@ -9,6 +9,7 @@ class Shop_umkm extends CI_Controller
         $this->load->model('Product_model', 'product');
         $this->load->model('Cart_detail_model', 'cart_detail');
         $this->load->model('Cart_model', 'cart');
+        $this->load->model('User_model', 'user');
         check_session_umkm();
     }
 
@@ -255,6 +256,18 @@ class Shop_umkm extends CI_Controller
             // email algorithm end
 
             redirect('shop_umkm');
+        } elseif (isset($_POST['submit_alternate'])) {
+            $transaction_code = $this->session->userdata('transaction_code');
+            $data['record'] = $this->db->get_where('carts', ['transaction_code' => $transaction_code])->row_array();
+
+            $cart_id = $data['record']['id'];
+            $this->session->set_userdata('cart_id', $cart_id);
+            $data['record_detail'] = $this->cart_detail->get_with_product($cart_id)->result();
+
+            $user_id = $this->session->userdata('user_id');
+            $data['record_member'] = $this->user->getById($user_id)->row_array();
+
+            $this->template->load('templates/shop_umkm_template', 'shop_umkm/submit_transfer_proof_alternate', $data);
         } else {
             $transaction_code = $this->session->userdata('transaction_code');
             $data['record'] = $this->db->get_where('carts', ['transaction_code' => $transaction_code])->row_array();

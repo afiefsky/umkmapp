@@ -52,4 +52,12 @@ class User_model extends CI_Model
         $this->db->where('user_id', $id);
         return $this->db->get()->num_rows();
     }
+
+    public function getById($id)
+    {
+        $this->db->select('*');
+        $this->db->from('users AS usr');
+        $this->db->where('usr.id', $id);
+        return $this->db->get();
+    }
 }

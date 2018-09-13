@@ -59,13 +59,11 @@ function hari_ini($hari){
     <td colspan="2"><h4>MOHON ISI DATA BERIKUT DENGAN SEBENAR-BENARNYA</h4></td>
   </tr>
   <tr>
-    <td colspan="2"><h4>ATAU GUNAKAN DATA UMKM ANDA DI <input type="submit" name="submit_alternate" value="SINI!" class="btn btn-info" /></h4></td>
+    <td colspan="2"><h4><?php echo anchor('shop_umkm/submit_transfer_proof', 'Kembali', ['class'=>'btn btn-warning']); ?></h4></td>
   </tr>
-  <?php echo form_close(); ?>
-  <?php echo form_open_multipart('shop_umkm/submit_transfer_proof'); ?>
   <tr>
     <td width="20%">Nama Penerima</td>
-    <td><input type="text" name="name" class="form-control" placeholder="Atas Nama" required></td>
+    <td><input type="text" name="name" class="form-control" placeholder="Atas Nama" value="<?php echo $record_member['bank_account_owner']; ?>" readonly required></td>
   </tr>
   <tr>
     <td>Alamat Lengkap Penerima</td>
@@ -74,13 +72,13 @@ function hari_ini($hari){
   <tr>
     <td>E-Mail</td>
     <td>
-        <input type="email" name="email" class="form-control" placeholder="Email penerima" required>
+        <input type="email" name="email" class="form-control" placeholder="Email penerima" value="<?php echo $record_member['username']; ?>" readonly required>
         <h5>* STRUK TRANSAKSI AKAN DIKIRIMKAN MELALUI EMAIL</h5>
     </td>
   </tr>
   <tr>
     <td>Nomor Telpon</td>
-    <td><input type="number" name="phone" class="form-control" placeholder="Nomor telpon penerima (call, sms, whatsapp, dll)" required></td>
+    <td><input type="number" name="phone" class="form-control" placeholder="Nomor telpon penerima (call, sms, whatsapp, dll)" value="<?php echo $record_member['phone']; ?>" readonly required></td>
   </tr>
   <tr>
     <td>Upload Struk Bukti Pembayaran</td>
