@@ -1,7 +1,9 @@
 <?php
     $message = $this->session->flashdata('message');
-    function rupiah($angka){
-        $hasil_rupiah = "Rp. " . number_format($angka,0,',','.');
+    function rupiah($angka)
+    {
+        $hasil_rupiah = 'Rp. '.number_format($angka, 0, ',', '.');
+
         return $hasil_rupiah;
     }
 ?>

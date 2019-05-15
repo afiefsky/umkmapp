@@ -1,7 +1,9 @@
 <?php
     $message = $this->session->flashdata('message');
-    function rupiah($angka){
-        $hasil_rupiah = "Rp. " . number_format($angka,0,',','.');
+    function rupiah($angka)
+    {
+        $hasil_rupiah = 'Rp. '.number_format($angka, 0, ',', '.');
+
         return $hasil_rupiah;
     }
 ?>
@@ -12,7 +14,7 @@
         <!-- CONTENTS -->
         <h2>Daftar Produk UMKM <?php echo $this->session->userdata['company_name']; ?></h2>
         <?php
-        if ($this->session->userdata('username')=='admin' || $this->session->userdata('username')=='superadmin') {
+        if ($this->session->userdata('username') == 'admin' || $this->session->userdata('username') == 'superadmin') {
             echo form_open('admin/check_umkm_product');
         } else {
             echo form_open('umkm/manage/product');
@@ -20,24 +22,24 @@
         ?>
         <?php
         if ($this->session->userdata('username') == 'admin') {
-            echo "";
+            echo '';
         } else {
             echo '<input type="submit" name="form_page" value="Tambah Produk" class="btn btn-success"><br /><br />';
         }
         ?>
         <?php echo form_close(); ?>
         <?php
-        if ($this->session->userdata('username')=='admin' || $this->session->userdata('username')=='superadmin') {
+        if ($this->session->userdata('username') == 'admin' || $this->session->userdata('username') == 'superadmin') {
             echo anchor('admin/check_umkm/'.$this->session->userdata('company_id'), 'Kembali', ['class' => 'btn btn-danger']);
         } else {
             echo anchor('umkm/manage/list/'.$this->session->userdata('company_id'), 'Kembali', ['class' => 'btn btn-danger']);
         }
         echo "<div align='right'>";
         echo anchor('umkm/manage/print_product', 'Print', ['class'=>'btn btn-warning', 'target'=>'_blank']);
-        echo "</div>";
+        echo '</div>';
         ?><br><br>
         <?php
-        if ($this->session->userdata('username')=='admin' || $this->session->userdata('username')=='superadmin') {
+        if ($this->session->userdata('username') == 'admin' || $this->session->userdata('username') == 'superadmin') {
             echo form_open('admin/check_umkm_product');
         } else {
             echo form_open('umkm/manage/product');
@@ -65,18 +67,17 @@
           <?php
           $no = 1 + $this->uri->segment(4);
           foreach ($record as $r) {
-              if ($this->session->userdata('username')=='admin') {
+              if ($this->session->userdata('username') == 'admin') {
                   $edit_button = '';
                   $delete_button = '';
                   $see_button = anchor('shop/product', 'Lihat Produk', ['class' => 'btn btn-primary']);
               } else {
                   $edit_button = anchor('product/edit/'.$r->id, 'Edit', ['class' => 'btn btn-info']);
 
-
                   $delete_button = anchor('product/delete/'.$r->id, 'Hapus',
                       [
-                          'class' => 'btn btn-danger',
-                          'onclick' => 'return confirm_delete()'
+                          'class'   => 'btn btn-danger',
+                          'onclick' => 'return confirm_delete()',
                       ]
                   );
                   $see_button = '';
@@ -88,10 +89,10 @@
                 <td>".rupiah($r->price)."</td>
                 <td><a href='".base_url()."uploads/$r->file_name' target='_BLANK'><img src='".base_url()."uploads/$r->file_name' width='75' /></a></td>
                 <td>".
-                    $edit_button." ".
-                    $delete_button ." ".$see_button."</td>
-              </tr>";
-          $no++;
+                    $edit_button.' '.
+                    $delete_button.' '.$see_button.'</td>
+              </tr>';
+              $no++;
           }
           ?>
         </table>

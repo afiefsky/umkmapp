@@ -2,7 +2,7 @@
 /**
  * DOCUMENTATION
  * CERTAIN CODE STILL NEED TO BE WORKIN ON
- * MORE CLEAN CODE NEEDED FOR BETTER DEVELOPMENT IN THE FUTURE
+ * MORE CLEAN CODE NEEDED FOR BETTER DEVELOPMENT IN THE FUTURE.
  */
 class User_model extends CI_Model
 {
@@ -11,19 +11,19 @@ class User_model extends CI_Model
         $user = $this->db->get_where('users',
             [
                 'username' => $data['username'],
-                'password' => md5($data['password'])
+                'password' => md5($data['password']),
             ]
         );
 
         if ($user->num_rows() > 0) {
             /**
-             * Below is logic for storing session for username and its id
+             * Below is logic for storing session for username and its id.
              */
             $user_data = $user->row_array();
             $this->session->set_userdata([
-                'id' => $user_data['id'],
-                'user_id' => $user_data['id'], // use the session be it id or user_id
-                'username' => $user_data['username']
+                'id'       => $user_data['id'],
+                'user_id'  => $user_data['id'], // use the session be it id or user_id
+                'username' => $user_data['username'],
             ]);
 
             return 1;
@@ -38,9 +38,10 @@ class User_model extends CI_Model
         $check = $user->num_rows();
         if ($check == 0) {
             $this->db->insert('users', $data);
+
             return 1;
         } else {
-            $this->session->set_flashdata('error', 'Akun dengan username '. $data['username'] . ' sudah ada!!<br />Silahkan daftar menggunakan username lainnya!!!');
+            $this->session->set_flashdata('error', 'Akun dengan username '.$data['username'].' sudah ada!!<br />Silahkan daftar menggunakan username lainnya!!!');
             redirect('register');
         }
     }
@@ -50,6 +51,7 @@ class User_model extends CI_Model
         $this->db->select('*');
         $this->db->from('users_companies');
         $this->db->where('user_id', $id);
+
         return $this->db->get()->num_rows();
     }
 
@@ -60,6 +62,7 @@ class User_model extends CI_Model
         $this->db->join('companies AS com', 'com.id = usc.company_id');
         $this->db->join('users AS usr', 'usr.id = usc.user_id');
         $this->db->where('usr.id =', $user_id);
+
         return $this->db->get();
     }
 }

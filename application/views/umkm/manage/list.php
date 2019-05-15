@@ -2,43 +2,43 @@
     $message = $this->session->flashdata('message');
 ?>
 <?php
-function hari_ini($hari){
-    switch($hari){
+function hari_ini($hari)
+{
+    switch ($hari) {
         case 'Sun':
-            $hari_ini = "Minggu";
+            $hari_ini = 'Minggu';
         break;
 
         case 'Mon':
-            $hari_ini = "Senin";
+            $hari_ini = 'Senin';
         break;
 
         case 'Tue':
-            $hari_ini = "Selasa";
+            $hari_ini = 'Selasa';
         break;
 
         case 'Wed':
-            $hari_ini = "Rabu";
+            $hari_ini = 'Rabu';
         break;
 
         case 'Thu':
-            $hari_ini = "Kamis";
+            $hari_ini = 'Kamis';
         break;
 
         case 'Fri':
-            $hari_ini = "Jumat";
+            $hari_ini = 'Jumat';
         break;
 
         case 'Sat':
-            $hari_ini = "Sabtu";
+            $hari_ini = 'Sabtu';
         break;
 
         default:
-            $hari_ini = "Tidak di ketahui";
+            $hari_ini = 'Tidak di ketahui';
         break;
     }
 
     return "$hari_ini";
-
 }
 ?>
 <div id="wrapper">
@@ -48,17 +48,16 @@ function hari_ini($hari){
         <h1>UMKM <?php echo $record['name']; ?></h1>
         <?php
             $this->session->set_userdata('company_name', $record['name']);
-            if ($message!='') {
+            if ($message != '') {
                 echo '<div class="alert alert-success alert-dismissable">
                     <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
                     '.$message.'
                 </div>';
             } else {
-
             }
         ?>
         <?php
-        if ($this->session->userdata('username')=='admin' || $this->session->userdata('username')=='superadmin') {
+        if ($this->session->userdata('username') == 'admin' || $this->session->userdata('username') == 'superadmin') {
             echo anchor('admin/umkm', 'Kembali', ['class' => 'btn btn-danger']);
         } else {
             echo anchor('umkm/manage', 'Kembali', ['class' => 'btn btn-danger']);
@@ -67,7 +66,7 @@ function hari_ini($hari){
         <!-- CONTENTS BELOW -->
         <table class="table table-bordered">
           <tr>
-            <td colspan="2"><img src="<?php echo base_url() . 'uploads/' . $record['image_url']; ?>" width="250" /></td>
+            <td colspan="2"><img src="<?php echo base_url().'uploads/'.$record['image_url']; ?>" width="250" /></td>
           </tr>
           <tr>
             <td><b>Nama Toko:</td>
@@ -99,11 +98,11 @@ function hari_ini($hari){
                 <?php
                 if ($this->session->userdata('username') == 'admin') {
                     echo anchor('admin/check_umkm_product', 'Cek Produk', ['class' => 'btn btn-info']);
-                    echo " ";
+                    echo ' ';
                     echo anchor('admin/check_umkm_activity', 'Cek Kegiatan', ['class' => 'btn btn-success']);
                 } else {
                     echo anchor('umkm/manage/product', 'Kelola Produk', ['class' => 'btn btn-info']);
-                    echo " ";
+                    echo ' ';
                     echo anchor('activity', 'Kelola Kegiatan', ['class' => 'btn btn-success']);
                 }
                 ?>

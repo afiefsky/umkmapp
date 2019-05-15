@@ -83,13 +83,17 @@
 </head>
 <?php
     $message = $this->session->flashdata('message');
-    function rupiah($angka){
-        $hasil_rupiah = "Rp. " . number_format($angka,0,',','.');
+    function rupiah($angka)
+    {
+        $hasil_rupiah = 'Rp. '.number_format($angka, 0, ',', '.');
+
         return $hasil_rupiah;
     }
 
-    function angka($angka){
-        $hasil_rupiah = number_format($angka,0,',','.');
+    function angka($angka)
+    {
+        $hasil_rupiah = number_format($angka, 0, ',', '.');
+
         return $hasil_rupiah;
     }
 ?>
@@ -149,36 +153,36 @@
   $no = 1;
   $total = 0;
   foreach ($record->result() as $r) {
-    if ($r->is_discount == '1') {
-        $count = ($r->price - (($r->price * 15) / 100)) * $r->qty;
-        echo "
+      if ($r->is_discount == '1') {
+          $count = ($r->price - (($r->price * 15) / 100)) * $r->qty;
+          echo "
           <tr>
             <td>$no</td>
             <td><h4><b>$r->name</b></h4></td>
-            <td><img src=".base_url()."uploads/".$r->file_name." width='100' height='100'></td>
-            <td>".rupiah($r->price)."</td>
+            <td><img src=".base_url().'uploads/'.$r->file_name." width='100' height='100'></td>
+            <td>".rupiah($r->price).'</td>
             <td>15%</td>
-            <td>".angka($r->qty)."</td>
-            <td>".rupiah($count)."</td>
+            <td>'.angka($r->qty).'</td>
+            <td>'.rupiah($count).'</td>
           </tr>
-          ";
+          ';
           $no++;
           $total = $total + ($count);
-    } else {
-        echo "
+      } else {
+          echo "
           <tr>
             <td>$no</td>
             <td><h4><b>$r->name</b></h4></td>
-            <td><img src=".base_url()."uploads/".$r->file_name." width='100' height='100'></td>
-            <td>".rupiah($r->price)."</td>
+            <td><img src=".base_url().'uploads/'.$r->file_name." width='100' height='100'></td>
+            <td>".rupiah($r->price).'</td>
             <td> - </td>
-            <td>".angka($r->qty)."</td>
-            <td>".rupiah($r->price * $r->qty)."</td>
+            <td>'.angka($r->qty).'</td>
+            <td>'.rupiah($r->price * $r->qty).'</td>
           </tr>
-          ";
+          ';
           $no++;
           $total = $total + ($r->price * $r->qty);
-    }
+      }
   }
   ?>
   <tr>

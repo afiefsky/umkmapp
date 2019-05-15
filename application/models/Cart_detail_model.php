@@ -9,6 +9,7 @@ class Cart_detail_model extends CI_Model
         $this->db->join('products AS prd', 'prd.id = crd.product_id', 'right');
         $this->db->where('cart_id', $cart_id);
         $this->db->where('is_cancelled != "1"');
+
         return $this->db->get();
     }
 
@@ -16,7 +17,7 @@ class Cart_detail_model extends CI_Model
      * var $user_id as parameter
      * cart_detail AS cad
      * LEFT JOIN carts AS car
-     * RIGHT JOIN products AS pro
+     * RIGHT JOIN products AS pro.
      */
     public function get_cart_product($user_id)
     {
@@ -42,6 +43,7 @@ class Cart_detail_model extends CI_Model
         $this->db->join('products AS prd', 'prd.id = crd.product_id');
         $this->db->where('prd.company_id = ', $company_id);
         $this->db->order_by('crd.id', 'DESC');
+
         return $this->db->get();
     }
 

@@ -9,13 +9,12 @@
         <h1>Daftar UMKM Anda</h1>
         <?php echo anchor('dashboard', 'Kembali', ['class' => 'btn btn-warning']) ?><br/><br/>
         <?php
-            if ($message!='') {
+            if ($message != '') {
                 echo '<div class="alert alert-success alert-dismissable">
                     <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
                     '.$message.'
                 </div>';
             } else {
-
             }
         ?>
         <?php
@@ -37,22 +36,22 @@
             <th>Opsi</th>
           </tr>
           <?php
-          $no=1 + $this->uri->segment(4);
+          $no = 1 + $this->uri->segment(4);
           foreach ($record as $r) {
-            if ($r->is_confirmed=='0') {
-              $button = 'MOHON TUNGGU KONFIRMASI ADMIN';
-            } else {
-              $button = anchor('umkm/manage/list/'.$r->company_id, 'Enter', ['class' => 'btn btn-primary']) .
+              if ($r->is_confirmed == '0') {
+                  $button = 'MOHON TUNGGU KONFIRMASI ADMIN';
+              } else {
+                  $button = anchor('umkm/manage/list/'.$r->company_id, 'Enter', ['class' => 'btn btn-primary']).
                         '<br><br>'.anchor('umkm/manage/delete/'.$r->company_id, 'Delete', ['class'=>'btn btn-danger', 'onclick'=>'return confirm_delete()']);
-            }
+              }
               echo "
                   <tr>
                     <td>$no</td>
                     <td>$r->name</td>
                     <td><img src='".base_url()."uploads/$r->image_url' width='100'></td>
-                    <td>".$button."</td>
+                    <td>".$button.'</td>
                   </tr>
-              ";
+              ';
               $no++;
           }
           ?>

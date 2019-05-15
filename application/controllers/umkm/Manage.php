@@ -71,17 +71,16 @@ class Manage extends CI_Controller
         $this->template->load('templates/main_template', 'umkm/manage/list', $data);
     }
 
-
     /**
      * $this->template->load('templating file loc', '$contents loc');
-     * example: $this->template->load('templates/main_template', 'umkm/manage/add_product');
+     * example: $this->template->load('templates/main_template', 'umkm/manage/add_product');.
      */
     public function product()
     {
         if (isset($_POST['submit'])) {
             // Uploading Start
-            $config['upload_path']          = './uploads/';
-            $config['allowed_types']        = 'gif|jpg|png|jpeg';
+            $config['upload_path'] = './uploads/';
+            $config['allowed_types'] = 'gif|jpg|png|jpeg';
 
             $this->load->library('upload', $config);
 
@@ -94,15 +93,15 @@ class Manage extends CI_Controller
             $price = $this->input->post('price');
             $price = str_replace(['Rp', '.', ' '], '', $price);
             $data = [
-                'name' => $name,
-                'qty' => $qty,
+                'name'       => $name,
+                'qty'        => $qty,
                 'company_id' => $this->session->userdata('company_id'),
-                'file_name' => $image['file_name'],
-                'price' => $price
+                'file_name'  => $image['file_name'],
+                'price'      => $price,
             ];
 
             $this->db->insert('products', $data);
-            $this->session->set_flashdata('message', 'Barang ' . $name . ' telah berhasil disimpan!');
+            $this->session->set_flashdata('message', 'Barang '.$name.' telah berhasil disimpan!');
             redirect('umkm/manage/product');
         } elseif (isset($_POST['form_page'])) {
             $data['active_page'] = 'umkm/manage';
@@ -220,7 +219,7 @@ class Manage extends CI_Controller
         // 2. User email from session above
         $customer_email = $this->session->flashdata('email');
         $data = [
-            'status' => '3'
+            'status' => '3',
         ];
 
         $this->db->where('id', $cart_id);
@@ -230,13 +229,13 @@ class Manage extends CI_Controller
         $this->session->set_flashdata('above_message', '<h3>RINCIAN KONFIRMASI DAN PEMBELIAN TELAH DIKIRIMKAN KEPADA EMAIL '.$customer_email);
 
         // email algorithm start
-        $config = Array(
-            'protocol' => 'smtp',
+        $config = [
+            'protocol'  => 'smtp',
             'smtp_host' => 'ssl://smtp.gmail.com',
             'smtp_port' => '465',
             'smtp_user' => 'arezkyameliap@gmail.com',
-            'smtp_pass' => 'poldamku'
-        );
+            'smtp_pass' => 'poldamku',
+        ];
         $this->load->library('email', $config);
         $this->email->set_newline("\r\n");
 
@@ -244,7 +243,7 @@ class Manage extends CI_Controller
         $this->email->to($customer_email);
 
         $this->email->subject('NOTIFIKASI UMKMAPP');
-        $this->email->message("TRANSFER ANDA TELAH DIKONFIRMASI, SAAT INI BARANG ANDA SEDANG DIKIRIMKAN KE LOKASI ANDA");
+        $this->email->message('TRANSFER ANDA TELAH DIKONFIRMASI, SAAT INI BARANG ANDA SEDANG DIKIRIMKAN KE LOKASI ANDA');
         $this->email->send();
         // email algorithm end
 
@@ -301,4 +300,3 @@ class Manage extends CI_Controller
         $this->template->load('templates/main_template', 'umkm/manage/history_detail', $data);
     }
 }
-

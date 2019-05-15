@@ -22,7 +22,7 @@ class Shop extends CI_Controller
      * Session:
      * - company_id
      * - active_url
-     * - company_name
+     * - company_name.
      */
     public function umkm()
     {
@@ -69,7 +69,7 @@ class Shop extends CI_Controller
         if (empty($cart_session)) {
             // carting session for non-logged-in customer
             $data = [
-                'description' => ''
+                'description' => '',
             ];
             $this->db->insert('carts', $data);
 
@@ -77,7 +77,7 @@ class Shop extends CI_Controller
             $this->session->set_userdata('cart_id', $cart_id);
 
             $data = [
-                'description' => $cart_id
+                'description' => $cart_id,
             ];
 
             $this->db->where('id', $cart_id);
@@ -89,11 +89,11 @@ class Shop extends CI_Controller
         $cart_id = $this->session->userdata('cart_id');
         $description = 'Cart = '.$cart_id.', Product = '.$product_id;
         $data = [
-            'cart_id' => $cart_id,
-            'product_id' => $product_id,
-            'qty' => $qty,
-            'description' => $description,
-            'is_cancelled' => '0'
+            'cart_id'      => $cart_id,
+            'product_id'   => $product_id,
+            'qty'          => $qty,
+            'description'  => $description,
+            'is_cancelled' => '0',
         ];
 
         $this->db->insert('carts_details', $data);
@@ -139,13 +139,15 @@ class Shop extends CI_Controller
         $this->template->load('templates/shop_template', 'shop/detail_activity', $data);
     }
 
-    public function __generateRandomString($length = 10) {
+    public function __generateRandomString($length = 10)
+    {
         $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
         $charactersLength = strlen($characters);
         $randomString = '';
         for ($i = 0; $i < $length; $i++) {
             $randomString .= $characters[rand(0, $charactersLength - 1)];
         }
+
         return $randomString;
     }
 
@@ -174,13 +176,13 @@ class Shop extends CI_Controller
                                       <h3>MOHON LUNASI PEMBAYARAN ANDA SEBELUM '.$scheduled_day['scheduled_day']);
 
         // email algorithm start
-        $config = Array(
-            'protocol' => 'smtp',
+        $config = [
+            'protocol'  => 'smtp',
             'smtp_host' => 'ssl://smtp.gmail.com',
             'smtp_port' => '465',
             'smtp_user' => 'arezkyameliap@gmail.com',
-            'smtp_pass' => 'poldamku'
-        );
+            'smtp_pass' => 'poldamku',
+        ];
         $this->load->library('email', $config);
         $this->email->set_newline("\r\n");
 
@@ -188,7 +190,7 @@ class Shop extends CI_Controller
         $this->email->to($email);
 
         $this->email->subject('NOTIFIKASI UMKMAPP');
-        $this->email->message("Kode Transaksi = ".$transaction_code."\nMohon lakukan pembayaran dengan transfer ke rekening :\r\n\n(".$data['bank_name'].") -- ".$data['bank_account_number']." -- A/N = ".$data['bank_account_owner']);
+        $this->email->message('Kode Transaksi = '.$transaction_code."\nMohon lakukan pembayaran dengan transfer ke rekening :\r\n\n(".$data['bank_name'].') -- '.$data['bank_account_number'].' -- A/N = '.$data['bank_account_owner']);
         $this->email->send();
         // email algorithm end
 
@@ -204,7 +206,7 @@ class Shop extends CI_Controller
             $scheduled_day = $this->cart->get_scheduled_day($cart_id)->row_array();
 
             if ($data->num_rows() > 0) {
-                if ($data->row_array()['status']=='2') {
+                if ($data->row_array()['status'] == '2') {
                     $this->session->set_flashdata('message', 'MAAF, TRANSAKSI TERSEBUT TELAH DIKIRIMKAN SEBELUMNYA!!!');
                     redirect('shop/check_transfer');
                 } elseif (date('Y-m-d H:i:s') > $scheduled_day['scheduled_day']) {
@@ -225,8 +227,8 @@ class Shop extends CI_Controller
     public function submit_transfer_proof()
     {
         if (isset($_POST['submit'])) {
-            $config['upload_path']          = './uploads/';
-            $config['allowed_types']        = 'gif|jpg|png|jpeg';
+            $config['upload_path'] = './uploads/';
+            $config['allowed_types'] = 'gif|jpg|png|jpeg';
 
             $this->load->library('upload', $config);
 
@@ -237,12 +239,12 @@ class Shop extends CI_Controller
             $cart_id = $this->session->userdata('cart_id');
 
             $data = [
-                'status' => '2',
+                'status'    => '2',
                 'file_name' => $data['file_name'],
-                'name' => $this->input->post('name'),
-                'address' => $this->input->post('address'),
-                'email' => $this->input->post('email'),
-                'phone' => $this->input->post('phone')
+                'name'      => $this->input->post('name'),
+                'address'   => $this->input->post('address'),
+                'email'     => $this->input->post('email'),
+                'phone'     => $this->input->post('phone'),
             ];
 
             $this->db->where('id', $cart_id);
@@ -263,13 +265,13 @@ class Shop extends CI_Controller
             $this->session->set_flashdata('above_message', '<h3>BUKTI UNTUK TRANSAKSI DENGAN KODE: ['.$this->session->userdata('transaction_code').'] TELAH BERHASIL DIKIRIMKAN!!</h3><br><h3>TERIMA KASIH TELAH BERBELANJA MENGGUNAKAN UMKM APP');
 
             // email algorithm start
-            $config = Array(
-                'protocol' => 'smtp',
+            $config = [
+                'protocol'  => 'smtp',
                 'smtp_host' => 'ssl://smtp.gmail.com',
                 'smtp_port' => '465',
                 'smtp_user' => 'arezkyameliap@gmail.com',
-                'smtp_pass' => 'poldamku'
-            );
+                'smtp_pass' => 'poldamku',
+            ];
             $this->load->library('email', $config);
             $this->email->set_newline("\r\n");
 

@@ -11,13 +11,12 @@
         <h1>Form Edit Produk</h1>
         <?php echo anchor('umkm/manage/product', 'Kembali', ['class' => 'btn btn-danger']); ?><br/><br/>
         <?php
-            if ($message!='') {
+            if ($message != '') {
                 echo '<div class="alert alert-success alert-dismissable">
                     <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
                     '.$message.'
                 </div>';
             } else {
-
             }
         ?>
         <!-- CONTENTS BELOW -->

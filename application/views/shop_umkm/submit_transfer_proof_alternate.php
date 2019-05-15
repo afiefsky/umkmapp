@@ -1,53 +1,57 @@
 <?php
     $message = $this->session->flashdata('message');
-    function rupiah($angka){
-        $hasil_rupiah = "Rp. " . number_format($angka,0,',','.');
+    function rupiah($angka)
+    {
+        $hasil_rupiah = 'Rp. '.number_format($angka, 0, ',', '.');
+
         return $hasil_rupiah;
     }
 
-    function angka($angka){
-        $hasil_rupiah = number_format($angka,0,',','.');
+    function angka($angka)
+    {
+        $hasil_rupiah = number_format($angka, 0, ',', '.');
+
         return $hasil_rupiah;
     }
 ?>
 <?php
-function hari_ini($hari){
-    switch($hari){
+function hari_ini($hari)
+{
+    switch ($hari) {
         case 'Sun':
-            $hari_ini = "Minggu";
+            $hari_ini = 'Minggu';
         break;
 
         case 'Mon':
-            $hari_ini = "Senin";
+            $hari_ini = 'Senin';
         break;
 
         case 'Tue':
-            $hari_ini = "Selasa";
+            $hari_ini = 'Selasa';
         break;
 
         case 'Wed':
-            $hari_ini = "Rabu";
+            $hari_ini = 'Rabu';
         break;
 
         case 'Thu':
-            $hari_ini = "Kamis";
+            $hari_ini = 'Kamis';
         break;
 
         case 'Fri':
-            $hari_ini = "Jumat";
+            $hari_ini = 'Jumat';
         break;
 
         case 'Sat':
-            $hari_ini = "Sabtu";
+            $hari_ini = 'Sabtu';
         break;
 
         default:
-            $hari_ini = "Tidak di ketahui";
+            $hari_ini = 'Tidak di ketahui';
         break;
     }
 
-    return "<b>" . $hari_ini . "</b>";
-
+    return '<b>'.$hari_ini.'</b>';
 }
 ?>
 <?php echo form_open_multipart('shop_umkm/submit_transfer_proof'); ?>
@@ -95,7 +99,7 @@ function hari_ini($hari){
     <td><b>Kode Transaksi</b></td>
   </tr>
   <tr>
-    <td><?php echo hari_ini(date_format(date_create($record['created_at']), 'D')) . '<b>, '.date_format(date_create($record['created_at']), 'd-m-Y').'</b>' ?></td>
+    <td><?php echo hari_ini(date_format(date_create($record['created_at']), 'D')).'<b>, '.date_format(date_create($record['created_at']), 'd-m-Y').'</b>' ?></td>
     <td>
       <?php echo $record['transaction_code']; ?>
     </td>
@@ -120,13 +124,13 @@ function hari_ini($hari){
       <tr>
         <td>$no</td>
         <td><h4><b>$r->name</b></h4></td>
-        <td><img src=".base_url()."uploads/".$r->file_name." width='100' height='100'></td>
-        <td>".rupiah($r->price)."</td>
+        <td><img src=".base_url().'uploads/'.$r->file_name." width='100' height='100'></td>
+        <td>".rupiah($r->price).'</td>
         <td>15%</td>
-        <td>".angka($r->qty)."</td>
-        <td>".rupiah($count)."</td>
+        <td>'.angka($r->qty).'</td>
+        <td>'.rupiah($count).'</td>
       </tr>
-      ";
+      ';
       $no++;
       $total = $total + $count;
   }

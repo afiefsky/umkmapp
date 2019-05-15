@@ -1,42 +1,42 @@
 <?php
 $this->session->set_userdata('active_url', $this->uri->segment(1).'/'.$this->uri->segment(2));
-function hari_ini($hari){
-    switch($hari){
+function hari_ini($hari)
+{
+    switch ($hari) {
         case 'Sun':
-            $hari_ini = "Minggu";
+            $hari_ini = 'Minggu';
         break;
 
         case 'Mon':
-            $hari_ini = "Senin";
+            $hari_ini = 'Senin';
         break;
 
         case 'Tue':
-            $hari_ini = "Selasa";
+            $hari_ini = 'Selasa';
         break;
 
         case 'Wed':
-            $hari_ini = "Rabu";
+            $hari_ini = 'Rabu';
         break;
 
         case 'Thu':
-            $hari_ini = "Kamis";
+            $hari_ini = 'Kamis';
         break;
 
         case 'Fri':
-            $hari_ini = "Jumat";
+            $hari_ini = 'Jumat';
         break;
 
         case 'Sat':
-            $hari_ini = "Sabtu";
+            $hari_ini = 'Sabtu';
         break;
 
         default:
-            $hari_ini = "Tidak di ketahui";
+            $hari_ini = 'Tidak di ketahui';
         break;
     }
 
-    return "<b>" . $hari_ini . "</b>";
-
+    return '<b>'.$hari_ini.'</b>';
 }
 ?>
 <head>
@@ -133,13 +133,12 @@ function hari_ini($hari){
         <h1>Daftar Kegiatan UMKM <?php echo $this->session->userdata('company_name'); ?></h1>
         <?php
             // message if needed
-            if ($message!='') {
+            if ($message != '') {
                 echo '<div class="alert alert-success alert-dismissable">
                     <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
                     '.$message.'
                 </div>';
             } else {
-
             }
         ?>
         <?php
@@ -151,28 +150,28 @@ function hari_ini($hari){
           $no = 0;
           $counter = 2;
           foreach ($record->result() as $r) {
-            $date = date_create($r->date);
-            $day = date_format($date, 'D');
-            // echo $no;
-              if ($no==$counter) {
-                echo "
+              $date = date_create($r->date);
+              $day = date_format($date, 'D');
+              // echo $no;
+              if ($no == $counter) {
+                  echo "
                 <td align='center' width='33.5%'>
                   <u>$r->name</u><br>
-                  ".hari_ini($day).", ".date_format($date, 'd-m-Y')."
+                  ".hari_ini($day).', '.date_format($date, 'd-m-Y').'
                   <center>
-                  ".anchor('shop/detail_activity/'.$r->id, '<img id="myImg" src='.base_url().'uploads/'.$r->file_name.' width="220" height="220" />')."
+                  '.anchor('shop/detail_activity/'.$r->id, '<img id="myImg" src='.base_url().'uploads/'.$r->file_name.' width="220" height="220" />').'
                 </td></tr><tr>
-                ";
-                $counter = $counter + 3;
+                ';
+                  $counter = $counter + 3;
               } else {
-                echo "
+                  echo "
                 <td align='center' width='33.5%'>
                   <u>$r->name</u><br>
-                  ".hari_ini($day).", ".date_format($date, 'd-m-Y')."
+                  ".hari_ini($day).', '.date_format($date, 'd-m-Y').'
                   <center>
-                  ".anchor('shop/detail_activity/'.$r->id, '<img id="myImg" src='.base_url().'uploads/'.$r->file_name.' width="220" height="220" />')."
+                  '.anchor('shop/detail_activity/'.$r->id, '<img id="myImg" src='.base_url().'uploads/'.$r->file_name.' width="220" height="220" />').'
                 </td>
-                ";
+                ';
               }
               echo '
               ';
