@@ -36,9 +36,15 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse navbar-ex1-collapse">
           <ul class="nav navbar-nav side-nav">
-            <li <?php if ($active_page=='dashboard') { echo 'class="active"'; } ?>><?php echo anchor('admin', '<i class="fa fa-dashboard"></i> Beranda');?></li>
-            <li <?php if ($active_page=='umkm/manage') { echo 'class="active"'; } ?>><?php echo anchor('admin/umkm', '<i class="fa fa-bar-chart-o"></i> UMKM');?></li>
-            <!-- <li <?php if ($active_page=='umkm/manage') { echo 'class="active"'; } ?>><?php echo anchor('admin/activate_company', '<i class="fa fa-desktop"></i> AKTIVASI UMKM');?></li> -->
+            <li <?php if ($active_page == 'dashboard') {
+    echo 'class="active"';
+} ?>><?php echo anchor('admin', '<i class="fa fa-dashboard"></i> Beranda'); ?></li>
+            <li <?php if ($active_page == 'umkm/manage') {
+    echo 'class="active"';
+} ?>><?php echo anchor('admin/umkm', '<i class="fa fa-bar-chart-o"></i> UMKM'); ?></li>
+            <!-- <li <?php if ($active_page == 'umkm/manage') {
+    echo 'class="active"';
+} ?>><?php echo anchor('admin/activate_company', '<i class="fa fa-desktop"></i> AKTIVASI UMKM'); ?></li> -->
             <!-- <li><a href="<?php echo base_url().'assets/dist/'; ?>tables.html"><i class="fa fa-table"></i> Tables</a></li>
             <li><a href="<?php echo base_url().'assets/dist/'; ?>forms.html"><i class="fa fa-edit"></i> Forms</a></li>
             <li><a href="<?php echo base_url().'assets/dist/'; ?>typography.html"><i class="fa fa-font"></i> Typography</a></li>
@@ -64,7 +70,7 @@
                 <li><a href="#"><i class="fa fa-envelope"></i> Inbox <span class="badge">7</span></a></li>
                 <li><a href="#"><i class="fa fa-gear"></i> Settings</a></li>
                 <li class="divider"></li>
-                <li><?php echo anchor('auth/destroy', '<i class="fa fa-power-off"></i> Log Out');?></li>
+                <li><?php echo anchor('auth/destroy', '<i class="fa fa-power-off"></i> Log Out'); ?></li>
               </ul>
             </li>
           </ul>

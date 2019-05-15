@@ -8,7 +8,7 @@ class Auth extends CI_Controller
      * -- Private means it's usable for current class only
      * -- Variables List should be declared
      * var data;
-     * var result;
+     * var result;.
      */
     protected $data;
     protected $result;
@@ -16,7 +16,7 @@ class Auth extends CI_Controller
     public function __construct()
     {
         parent::__construct();
-        $this->load->model('User_model', 'user', TRUE);
+        $this->load->model('User_model', 'user', true);
     }
 
     public function index()
@@ -35,7 +35,7 @@ class Auth extends CI_Controller
 
                 $user_roles = $this->db->get_where('users_roles', ['user_id' => $this->session->userdata('user_id')]);
                 $role_count = $user_roles->num_rows();
-                if ($this->session->userdata('username')=='admin') {
+                if ($this->session->userdata('username') == 'admin') {
                     $this->session->unset_userdata('username');
                     $this->session->set_flashdata('error', 'Username dan password salah!!!<br /><br />');
                     redirect('auth');
@@ -73,7 +73,7 @@ class Auth extends CI_Controller
 
                 $user_roles = $this->db->get_where('users_roles', ['user_id' => $this->session->userdata('user_id')]);
                 $role_count = $user_roles->num_rows();
-                if ($this->session->userdata('username')=='admin' || $this->session->userdata('username')=='superadmin') {
+                if ($this->session->userdata('username') == 'admin' || $this->session->userdata('username') == 'superadmin') {
                     $this->db->where('id', $this->session->userdata('user_id'));
                     $this->db->update('users', ['last_logged_in' => date('Y-m-d H:i:s')]);
                     redirect('admin');

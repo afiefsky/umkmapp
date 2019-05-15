@@ -22,7 +22,7 @@
             <td>Foto</td>
             <td>
                 <?php
-                if ($edit_pic==0) {
+                if ($edit_pic == 0) {
                     echo '<input type="submit" name="request_pic_edit" class="btn btn-info" value="Ubah Foto">';
                 } else {
                     echo '<input type="file" name="file_name" placeholder="Pilih file" class="form-control" required><br />';

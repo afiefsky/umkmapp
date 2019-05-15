@@ -7,6 +7,7 @@ class Cart_model extends CI_Model
         $this->db->select('(created_at + INTERVAL "1" DAY) AS scheduled_day');
         $this->db->from('carts');
         $this->db->where('id', $id);
+
         return $this->db->get();
     }
 }

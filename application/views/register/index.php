@@ -1,6 +1,6 @@
 <?php
     echo form_open('register/index');
-    echo '<h3>' . $error . '</h3>'; // this error display the flash session set on the controller
+    echo '<h3>'.$error.'</h3>'; // this error display the flash session set on the controller
 ?>
 <h2>Masukkan e-mail, data akun bank anda, password, dan ketik ulang password</h2>
 <h4>Email:</h4>

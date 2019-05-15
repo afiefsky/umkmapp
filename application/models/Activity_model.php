@@ -11,6 +11,7 @@ class Activity_model extends CI_Model
                     INNER JOIN users_companies AS usc
                         ON usc.company_id = com.id
                     WHERE usc.user_id = $user_id";
+
         return $this->db->query($query);
     }
 }

@@ -10,7 +10,6 @@ class Product extends CI_Controller
 
     public function delete()
     {
-
         $id = $this->uri->segment(3);
         $this->product->delete($id);
         redirect('umkm/manage/product');
@@ -21,30 +20,29 @@ class Product extends CI_Controller
         if (isset($_POST['submit'])) {
             $product_id = $this->uri->segment(3);
 
-            $config['upload_path']          = './uploads/';
-            $config['allowed_types']        = 'gif|jpg|png';
+            $config['upload_path'] = './uploads/';
+            $config['allowed_types'] = 'gif|jpg|png';
             $this->load->library('upload', $config);
             $this->upload->do_upload('gambar');
             $image = $this->upload->data();
             $selected_product = $this->db->get_where('products', ['id'=>$product_id])->row_array();
-            if ($image['file_name']=='') {
+            if ($image['file_name'] == '') {
                 $image['file_name'] = $selected_product['file_name'];
             } else {
-
             }
 
             $name = $this->input->post('name');
             $qty = $this->input->post('qty');
             $data = [
-                'name' => $name,
-                'qty' => $qty,
+                'name'       => $name,
+                'qty'        => $qty,
                 'company_id' => $this->session->userdata('company_id'),
-                'file_name' => $image['file_name']
+                'file_name'  => $image['file_name'],
             ];
 
             $this->db->where('id', $product_id);
             $this->db->update('products', $data);
-            $this->session->set_flashdata('message', 'Barang ' . $name . ' telah berhasil diubah!');
+            $this->session->set_flashdata('message', 'Barang '.$name.' telah berhasil diubah!');
             redirect('umkm/manage/product');
         } elseif (isset($_POST['picture'])) {
             $id = $this->uri->segment(3);

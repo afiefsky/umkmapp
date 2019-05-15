@@ -29,8 +29,7 @@ class Profile extends CI_Controller
             }
 
             $data = $this->db->get_where('users', ['id'=>$user_id])->row_array();
-            if ($password==$data['password']) {
-
+            if ($password == $data['password']) {
             } else {
                 $password = md5($password);
             }
@@ -42,12 +41,12 @@ class Profile extends CI_Controller
             $bank_account_owner = $this->input->post('bank_account_owner');
 
             $data = [
-                'username' => $username,
-                'phone' => $phone,
+                'username'            => $username,
+                'phone'               => $phone,
                 'bank_account_number' => $bank_account_number,
-                'bank_name' => $bank_name,
-                'bank_account_owner' => $bank_account_owner,
-                'password' => $password
+                'bank_name'           => $bank_name,
+                'bank_account_owner'  => $bank_account_owner,
+                'password'            => $password,
             ];
 
             $this->db->where('id', $user_id);

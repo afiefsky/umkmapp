@@ -1,41 +1,41 @@
 <?php
-function current_date($hari){
-    switch($hari){
+function current_date($hari)
+{
+    switch ($hari) {
         case 'Sun':
-            $hari_ini = "Minggu";
+            $hari_ini = 'Minggu';
         break;
 
         case 'Mon':
-            $hari_ini = "Senin";
+            $hari_ini = 'Senin';
         break;
 
         case 'Tue':
-            $hari_ini = "Selasa";
+            $hari_ini = 'Selasa';
         break;
 
         case 'Wed':
-            $hari_ini = "Rabu";
+            $hari_ini = 'Rabu';
         break;
 
         case 'Thu':
-            $hari_ini = "Kamis";
+            $hari_ini = 'Kamis';
         break;
 
         case 'Fri':
-            $hari_ini = "Jumat";
+            $hari_ini = 'Jumat';
         break;
 
         case 'Sat':
-            $hari_ini = "Sabtu";
+            $hari_ini = 'Sabtu';
         break;
 
         default:
-            $hari_ini = "Tidak di ketahui";
+            $hari_ini = 'Tidak di ketahui';
         break;
     }
 
-    return "<b>" . $hari_ini . "</b>";
-
+    return '<b>'.$hari_ini.'</b>';
 }
 ?>
 <?php $active_page = ''; ?>
@@ -93,7 +93,7 @@ function current_date($hari){
                     <li id="header_inbox_bar" class="dropdown">
                         <table>
                             <tr>
-                                <td><h4><?php echo current_date(date("D")).', '.date("d-m-Y") . '&nbsp&nbsp&nbsp'; ?></h4></td>
+                                <td><h4><?php echo current_date(date('D')).', '.date('d-m-Y').'&nbsp&nbsp&nbsp'; ?></h4></td>
                                 <td><h4><div id='txt'></div></h4></td>
                             </tr>
                         </table>
@@ -104,7 +104,9 @@ function current_date($hari){
             </div>
             <div class="top-menu">
                 <ul class="nav pull-right top-menu">
-                    <li><?php if ($this->uri->segment(2)=='') echo anchor('auth', 'Login UMKM', ['class' => 'logout']); ?></li>
+                    <li><?php if ($this->uri->segment(2) == '') {
+    echo anchor('auth', 'Login UMKM', ['class' => 'logout']);
+} ?></li>
                 </ul>
             </div>
         </header>

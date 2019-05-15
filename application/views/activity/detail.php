@@ -1,41 +1,41 @@
 <?php
-function hari_ini($hari){
-    switch($hari){
+function hari_ini($hari)
+{
+    switch ($hari) {
         case 'Sun':
-            $hari_ini = "Minggu";
+            $hari_ini = 'Minggu';
         break;
 
         case 'Mon':
-            $hari_ini = "Senin";
+            $hari_ini = 'Senin';
         break;
 
         case 'Tue':
-            $hari_ini = "Selasa";
+            $hari_ini = 'Selasa';
         break;
 
         case 'Wed':
-            $hari_ini = "Rabu";
+            $hari_ini = 'Rabu';
         break;
 
         case 'Thu':
-            $hari_ini = "Kamis";
+            $hari_ini = 'Kamis';
         break;
 
         case 'Fri':
-            $hari_ini = "Jumat";
+            $hari_ini = 'Jumat';
         break;
 
         case 'Sat':
-            $hari_ini = "Sabtu";
+            $hari_ini = 'Sabtu';
         break;
 
         default:
-            $hari_ini = "Tidak di ketahui";
+            $hari_ini = 'Tidak di ketahui';
         break;
     }
 
     return "$hari_ini";
-
 }
 ?>
 <head>
@@ -131,27 +131,26 @@ function hari_ini($hari){
       <div class="col-lg-12">
         <h1>Kegiatan <?php echo $record['name']; ?></h1>
         <?php
-        if ($this->session->userdata('username')=='admin' || $this->session->userdata('username')=='superadmin') {
-            echo anchor('admin/check_umkm_activity', 'Kembali', ['class' => 'btn btn-warning']) . '<br /><br />';
+        if ($this->session->userdata('username') == 'admin' || $this->session->userdata('username') == 'superadmin') {
+            echo anchor('admin/check_umkm_activity', 'Kembali', ['class' => 'btn btn-warning']).'<br /><br />';
         } else {
-            echo anchor($this->session->userdata('active_url'), 'Kembali', ['class' => 'btn btn-warning']) . '<br /><br />';
+            echo anchor($this->session->userdata('active_url'), 'Kembali', ['class' => 'btn btn-warning']).'<br /><br />';
         }
         ?>
         <?php
         // in case you need a message
-        if ($message!='') {
+        if ($message != '') {
             echo '<div class="alert alert-success alert-dismissable">
                 <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
                 '.$message.'
             </div>';
         } else {
-
         }
         ?>
         <table class="table table-bordered">
           <tr>
             <td width="30%" align="center">
-              <img id="myImg" src="<?php echo base_url().'uploads/'.$record['file_name'];?>" width="300" height="300">
+              <img id="myImg" src="<?php echo base_url().'uploads/'.$record['file_name']; ?>" width="300" height="300">
               <div id="myModal" class="modal">
                 <span class="close">&times;</span>
                 <img class="modal-content" id="img01">
@@ -162,7 +161,7 @@ function hari_ini($hari){
               <b>Tanggal:</b>
               <?php
                 echo hari_ini(date_format(date_create($record['date']), 'D'));
-                echo ", ";
+                echo ', ';
                 echo date_format(date_create($record['date']), 'd-m-Y');
               ?>
               <br /><br />
@@ -173,7 +172,7 @@ function hari_ini($hari){
           <tr>
             <td>
                 <?php
-                if ($this->session->userdata('username')=='admin' || $this->session->userdata('username')=='superadmin') {
+                if ($this->session->userdata('username') == 'admin' || $this->session->userdata('username') == 'superadmin') {
                     echo anchor('activity/edit/'.$this->uri->segment(3), 'EDIT', ['class'=>'btn btn-info', 'disabled'=>'true']);
                 } else {
                     echo anchor('activity/edit/'.$this->uri->segment(3), 'EDIT', ['class'=>'btn btn-info']);
@@ -182,7 +181,7 @@ function hari_ini($hari){
             </td>
             <td>
                 <?php
-                if ($this->session->userdata('username')=='admin' || $this->session->userdata('username')=='superadmin') {
+                if ($this->session->userdata('username') == 'admin' || $this->session->userdata('username') == 'superadmin') {
                     echo anchor('activity/delete/'.$this->uri->segment(3), 'HAPUS', ['class'=>'btn btn-danger', 'onclick' => 'return confirm_delete()', 'disabled'=>'true']);
                 } else {
                     echo anchor('activity/delete/'.$this->uri->segment(3), 'HAPUS', ['class'=>'btn btn-danger', 'onclick' => 'return confirm_delete()']);

@@ -4,22 +4,22 @@ class Company_model extends CI_Model
 {
     public function insert($data)
     {
-    	$check = $this->db->insert('companies', $data);
-    	// RETURN THE ID FROM THE NEWEST INSERTED DATA TO COMPANY TABLE
-    	$insert_id = $this->db->insert_id();
+        $check = $this->db->insert('companies', $data);
+        // RETURN THE ID FROM THE NEWEST INSERTED DATA TO COMPANY TABLE
+        $insert_id = $this->db->insert_id();
 
-    	$user_id = $this->session->userdata('user_id');
-    	$data = [
-    		'user_id' => $user_id,
-    		'company_id' => $insert_id
-    	];
-    	$this->db->insert('users_companies', $data);
+        $user_id = $this->session->userdata('user_id');
+        $data = [
+            'user_id'    => $user_id,
+            'company_id' => $insert_id,
+        ];
+        $this->db->insert('users_companies', $data);
 
-    	return $insert_id;
+        return $insert_id;
     }
 
     /**
-     * $id = company_id
+     * $id = company_id.
      */
     public function detail($id)
     {
@@ -29,12 +29,13 @@ class Company_model extends CI_Model
         $this->db->join('users AS usr', 'usr.id = usc.user_id');
         $this->db->where('company_id', $id);
         $this->db->order_by('id', 'ASC');
+
         return $this->db->get();
     }
 
     public function list($user_id)
     {
-        /**
+        /*
          * usr = users table
          * com = companies table
          * ucm = users_companies table, a many to many relationship will resulting a new hidden table
@@ -46,12 +47,13 @@ class Company_model extends CI_Model
         $this->db->where('usr.id', $user_id);
         $this->db->where('com.is_deleted !=', '1');
         $this->db->order_by('com.id');
+
         return $this->db->get();
     }
 
     public function list_paging($page, $limiter, $user_id)
     {
-        /**
+        /*
          * usr = users table
          * com = companies table
          * ucm = users_companies table, a many to many relationship will resulting a new hidden table
@@ -64,12 +66,13 @@ class Company_model extends CI_Model
         $this->db->where('com.is_deleted !=', '1');
         $this->db->order_by('com.id');
         $this->db->limit($limiter, $page);
+
         return $this->db->get();
     }
 
     public function list_by_keyword($keyword, $user_id)
     {
-        /**
+        /*
          * usr = users table
          * com = companies table
          * ucm = users_companies table, a many to many relationship will resulting a new hidden table
@@ -82,12 +85,13 @@ class Company_model extends CI_Model
         $this->db->where('com.is_deleted !=', '1');
         $this->db->like('com.name', $keyword);
         $this->db->order_by('com.id');
+
         return $this->db->get();
     }
 
     public function list_by_keyword_paging($page, $limiter, $keyword, $user_id)
     {
-        /**
+        /*
          * usr = users table
          * com = companies table
          * ucm = users_companies table, a many to many relationship will resulting a new hidden table
@@ -101,6 +105,7 @@ class Company_model extends CI_Model
         $this->db->like('com.name', $keyword);
         $this->db->order_by('com.id');
         $this->db->limit($limiter, $page);
+
         return $this->db->get();
     }
 
@@ -111,6 +116,7 @@ class Company_model extends CI_Model
                     products
                     WHERE
                     company_id = $company_id ORDER BY id DESC";
+
         return $this->db->query($query);
     }
 
@@ -121,6 +127,7 @@ class Company_model extends CI_Model
                     products
                     WHERE
                     company_id = $company_id ORDER BY id DESC LIMIT $page, $limiter";
+
         return $this->db->query($query);
     }
 
@@ -133,6 +140,7 @@ class Company_model extends CI_Model
                     company_id = $company_id
                     AND
                     products.name LIKE '%$keyword%'";
+
         return $this->db->query($query);
     }
 
@@ -146,6 +154,7 @@ class Company_model extends CI_Model
                     AND
                     products.name LIKE '%$keyword%'
                     LIMIT $page, $limiter";
+
         return $this->db->query($query);
     }
 
@@ -154,6 +163,7 @@ class Company_model extends CI_Model
         $this->db->where('is_confirmed =', '1');
         $this->db->where('is_deleted =', '0');
         $this->db->where('is_active =', '1');
+
         return $this->db->get('companies');
     }
 
@@ -167,7 +177,7 @@ class Company_model extends CI_Model
         $this->db->where('com.is_deleted !=', '1');
         $this->db->where('com.is_active !=', '0');
         $this->db->where('usr.id !=', $user_id);
+
         return $this->db->get();
     }
 }
-
